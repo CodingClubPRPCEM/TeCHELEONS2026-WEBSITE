@@ -1089,9 +1089,164 @@
                 padding-bottom: 3.5rem;
             }
         }
+
+        /* =================================================================
+           PROFESSIONAL LOADING SCREEN - TECHELONS'26
+           Lightweight, cinematic, premium first impression
+           ================================================================= */
+        
+        #techelons-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        #techelons-loader.loaded {
+            opacity: 0;
+            transform: scale(1.05);
+            pointer-events: none;
+        }
+
+        .loader-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            animation: loaderFadeIn 0.8s ease;
+        }
+
+        .loader-tagline {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: loaderFadeIn 0.8s ease 0.2s both;
+        }
+
+        .loader-progress {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #8b5cf6, #00d4ff);
+            background-size: 200% 100%;
+            animation: loaderProgress 1.5s ease-in-out infinite;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes loaderFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes loaderProgress {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Hide content until loader finishes */
+        body.loading main,
+        body.loading nav,
+        body.loading footer {
+            opacity: 0;
+        }
+
+        body:not(.loading) main,
+        body:not(.loading) nav,
+        body:not(.loading) footer {
+            animation: contentFadeIn 0.8s ease forwards;
+        }
+
+        @keyframes contentFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Respect reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            #techelons-loader,
+            .loader-brand,
+            .loader-tagline,
+            .loader-progress-bar {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            #techelons-loader.loaded {
+                display: none;
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            .loader-brand {
+                font-size: 2rem;
+            }
+
+            .loader-tagline {
+                font-size: 0.75rem;
+            }
+
+            .loader-progress {
+                width: 150px;
+                height: 2px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body class="bg-gray-900 text-gray-100 font-sans loading">
+
+    <!-- Professional Loading Screen -->
+    <div id="techelons-loader" aria-live="polite" aria-busy="true">
+        <div class="loader-brand">TECHELONS'26</div>
+        <div class="loader-tagline">Step to Pioneer</div>
+        <div class="loader-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div class="loader-progress-bar"></div>
+        </div>
+    </div>
 
     <script id="event-data-json" type="application/json">
         {
@@ -1973,6 +2128,146 @@
     </footer>
 
     <script>
+        /* =================================================================
+           PROFESSIONAL PRELOADER - TECHELONS'26
+           Preloads critical assets with timeout fallback
+           ================================================================= */
+        
+        (function initPreloader() {
+            const loader = document.getElementById('techelons-loader');
+            const body = document.body;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // If user prefers reduced motion, skip loader
+            if (prefersReducedMotion) {
+                body.classList.remove('loading');
+                if (loader) loader.style.display = 'none';
+                return;
+            }
+
+            // Critical assets to preload
+            const criticalAssets = [];
+            
+            // Preload fonts
+            if (document.fonts) {
+                criticalAssets.push(
+                    document.fonts.load('700 1em Orbitron'),
+                    document.fonts.load('400 1em Rajdhani')
+                );
+            }
+
+            // Minimum display time for smooth experience
+            const minDisplayTime = 1200;
+            const maxWaitTime = 3000; // Timeout fallback for slow networks
+            const startTime = Date.now();
+
+            function hideLoader() {
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+
+                setTimeout(() => {
+                    if (loader) {
+                        loader.classList.add('loaded');
+                        loader.setAttribute('aria-busy', 'false');
+                    }
+                    body.classList.remove('loading');
+
+                    // Remove loader from DOM after animation
+                    setTimeout(() => {
+                        if (loader && loader.parentNode) {
+                            loader.parentNode.removeChild(loader);
+                        }
+                    }, 600);
+                }, remainingTime);
+            }
+
+            // Preload critical assets
+            Promise.all(criticalAssets)
+                .then(hideLoader)
+                .catch(() => {
+                    console.warn('Some assets failed to preload, continuing anyway');
+                    hideLoader();
+                });
+
+            // Timeout fallback - never trap user
+            setTimeout(() => {
+                if (body.classList.contains('loading')) {
+                    console.warn('Loader timeout reached, forcing hide');
+                    hideLoader();
+                }
+            }, maxWaitTime);
+        })();
+
+        /* =================================================================
+           PROFESSIONAL PRELOADER - TECHELONS'26
+           Preloads critical assets with timeout fallback
+           ================================================================= */
+        
+        (function initPreloader() {
+            const loader = document.getElementById('techelons-loader');
+            const body = document.body;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // If user prefers reduced motion, skip loader
+            if (prefersReducedMotion) {
+                body.classList.remove('loading');
+                if (loader) loader.style.display = 'none';
+                return;
+            }
+
+            // Critical assets to preload
+            const criticalAssets = [];
+            
+            // Preload fonts
+            if (document.fonts) {
+                criticalAssets.push(
+                    document.fonts.load('700 1em Orbitron'),
+                    document.fonts.load('400 1em Rajdhani')
+                );
+            }
+
+            // Minimum display time for smooth experience
+            const minDisplayTime = 1200;
+            const maxWaitTime = 3000; // Timeout fallback for slow networks
+            const startTime = Date.now();
+
+            function hideLoader() {
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+
+                setTimeout(() => {
+                    if (loader) {
+                        loader.classList.add('loaded');
+                        loader.setAttribute('aria-busy', 'false');
+                    }
+                    body.classList.remove('loading');
+
+                    // Remove loader from DOM after animation
+                    setTimeout(() => {
+                        if (loader && loader.parentNode) {
+                            loader.parentNode.removeChild(loader);
+                        }
+                    }, 600);
+                }, remainingTime);
+            }
+
+            // Preload critical assets
+            Promise.all(criticalAssets)
+                .then(hideLoader)
+                .catch(() => {
+                    console.warn('Some assets failed to preload, continuing anyway');
+                    hideLoader();
+                });
+
+            // Timeout fallback - never trap user
+            setTimeout(() => {
+                if (body.classList.contains('loading')) {
+                    console.warn('Loader timeout reached, forcing hide');
+                    hideLoader();
+                }
+            }, maxWaitTime);
+        })();
+
         document.addEventListener('DOMContentLoaded', () => {
             // Setup mobile menu immediately (not dependent on data)
             setupMobileMenu();
