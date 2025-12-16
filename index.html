@@ -7,6 +7,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -15,8 +16,8 @@
                     colors: {
                         'primary-light': '#f8fafc',
                         'secondary-light': '#f1f5f9',
-                        'accent-primary': '#0891b2',
-                        'accent-secondary': '#06b6d4',
+                        'accent-primary': '#00d4ff',
+                        'accent-secondary': '#8b5cf6',
                         'brand-purple': '#7c3aed',
                         'brand-blue': '#0284c7',
                         'text-primary': '#1e293b',
@@ -35,15 +36,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Professional Dark Theme */
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            background-attachment: fixed;
-            font-family: 'Rajdhani', sans-serif;
-            color: #e5e7eb;
+        /* Clean Premium Dark Theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        /* Subtle animated background pattern */
+        :root {
+            /* Color System */
+            --primary: #00d4ff;
+            --secondary: #8b5cf6;
+            --background: #0a0f1c;
+            --surface: rgba(17, 24, 39, 0.5);
+            --border: rgba(0, 212, 255, 0.2);
+            --text-primary: #e5e7eb;
+            --text-secondary: #94a3b8;
+            
+            /* Spacing Scale */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 8px 24px rgba(0, 212, 255, 0.2);
+            
+            /* Typography Scale */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%);
+            background-attachment: fixed;
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Subtle background pattern */
         body::before {
             content: '';
             position: fixed;
@@ -52,71 +101,96 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 20% 50%, rgba(8, 145, 178, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.02) 0%, transparent 50%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 20% 60%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
             z-index: -1;
-            animation: float 30s ease-in-out infinite;
+            pointer-events: none;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
-            50% { transform: translateY(-10px) translateX(5px); opacity: 0.7; }
-        }
-        
-        /* Clean Navigation Links */
-        .nav-link {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Mobile Menu Slide Animation */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
             position: relative;
+            z-index: 999;
+        }
+        
+        #mobile-menu.show {
+            max-height: 400px;
+        }
+        
+        .mobile-menu-button {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-button.open {
+            transform: rotate(90deg);
+        }
+        
+        /* Clean Minimal Navigation */
+        nav {
+            height: 64px;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        nav .tech-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        nav .gradient-text {
+            background-image: linear-gradient(135deg, #00d4ff, #8b5cf6);
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0.75rem;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
         }
         
         .nav-link:hover {
-            color: #0891b2 !important;
-            transform: translateY(-2px);
+            color: #e5e7eb;
         }
         
         .nav-link.active {
-            color: #0891b2 !important;
-            font-weight: 600;
+            color: #00d4ff;
         }
         
         .nav-link.active::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 30px;
-            height: 3px;
-            background: linear-gradient(90deg, #0891b2, #06b6d4);
-            border-radius: 2px;
+            width: 20px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 1px;
         }
 
         /* Professional Tech Font */
         .tech-brand {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            letter-spacing: 0.08em;
+            font-weight: 700;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            line-height: 1.3;
-            word-spacing: 0.04em;
-            position: relative;
+            line-height: 1.2;
         }
 
         /* Elegant Gradient Text */
         .gradient-text {
-            background-image: linear-gradient(135deg, #0891b2, #06b6d4, #7c3aed, #0284c7);
-            background-size: 200% 100%;
+            background-image: linear-gradient(135deg, #00d4ff, #8b5cf6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: gradient-shift 6s ease infinite;
-            transition: all 0.3s ease;
-        }
-        
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
         
         /* Logo Container Animations */
@@ -163,122 +237,58 @@
         }
         
         .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .animate-pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
         
         .animate-fade-in {
-            animation: fade-in 1s ease-out forwards;
-        }
-        
-        .animate-slide-up {
-            animation: slide-up 1s ease-out 0.3s forwards;
-            opacity: 0;
+            animation: fade-in 0.8s ease-out forwards;
         }
         
         /* Premium TECHELONS Title Styling */
         @keyframes shimmer {
-            0% { background-position: -200% center; }
+            0% { background-position: 0% center; }
             100% { background-position: 200% center; }
-        }
-        
-        @keyframes glow-pulse {
-            0%, 100% { 
-                filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8))
-                        drop-shadow(0 0 40px rgba(168, 85, 247, 0.6))
-                        drop-shadow(0 0 60px rgba(34, 211, 238, 0.4))
-                        drop-shadow(0 4px 30px rgba(0, 0, 0, 0.9));
-            }
-            50% { 
-                filter: drop-shadow(0 0 35px rgba(6, 182, 212, 1))
-                        drop-shadow(0 0 65px rgba(168, 85, 247, 0.8))
-                        drop-shadow(0 0 95px rgba(34, 211, 238, 0.6))
-                        drop-shadow(0 4px 40px rgba(0, 0, 0, 0.9));
-            }
-        }
-        
-        @keyframes float-title {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
         }
         
         .title-premium {
             background: linear-gradient(
-                110deg,
-                #06b6d4 0%,
-                #22d3ee 15%,
-                #a78bfa 35%,
-                #c084fc 50%,
-                #e879f9 65%,
-                #a78bfa 85%,
-                #06b6d4 100%
+                90deg,
+                #00d4ff 0%,
+                #8b5cf6 50%,
+                #00d4ff 100%
             );
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmer 4s linear infinite, glow-pulse 2.5s ease-in-out infinite, float-title 5s ease-in-out infinite;
-            font-weight: 900;
-            letter-spacing: 0.12em;
+            animation: shimmer 6s linear infinite;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            position: relative;
             display: inline-block;
         }
         
         /* Title Animations */
-        @keyframes gradient-text {
-            0%, 100% { 
-                background-position: 0% 50%;
-            }
-            50% { 
-                background-position: 100% 50%;
-            }
-        }
-        
         @keyframes title-reveal {
-            0% {
+            from {
                 opacity: 0;
-                transform: scale(0.9) translateY(20px);
-                filter: blur(10px);
+                transform: translateY(-20px);
             }
-            100% {
+            to {
                 opacity: 1;
-                transform: scale(1) translateY(0);
-                filter: blur(0);
+                transform: translateY(0);
             }
-        }
-        
-        @keyframes pulse-slow {
-            0%, 100% { 
-                opacity: 0.2;
-                transform: scale(1);
-            }
-            50% { 
-                opacity: 0.3;
-                transform: scale(1.1);
-            }
-        }
-        
-        .animate-gradient-text {
-            animation: gradient-text 4s ease infinite;
         }
         
         .animate-title-reveal {
-            animation: title-reveal 1.2s ease-out forwards;
-        }
-        
-        .animate-pulse-slow {
-            animation: pulse-slow 3s ease-in-out infinite;
+            animation: title-reveal 0.8s ease-out forwards;
         }
         
         /* Fade-in animation for sections */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -287,128 +297,143 @@
         }
         
         .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+            animation: fadeInUp 0.6s ease-out forwards;
         }
         
-        /* Professional Button */
+        .animate-fade-in {
+            opacity: 1;
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        
+        /* Clean Button */
         .gradient-button {
-            background: linear-gradient(135deg, #0891b2, #06b6d4);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 12px rgba(8, 145, 178, 0.2);
-        }
-        
-        .gradient-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-        
-        .gradient-button:hover::before {
-            left: 100%;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+            cursor: pointer;
         }
         
         .gradient-button:hover {
-            background: linear-gradient(135deg, #0284c7, #0891b2);
-            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
             transform: translateY(-2px);
         }
 
-        /* Modern Filter Buttons */
+        /* Modern Filter Buttons - Touch Friendly */
         .filter-button {
-            @apply px-6 py-2.5 rounded-full font-semibold transition-all duration-300 border-2;
-            min-width: 140px;
-            border-color: #22d3ee;
-            background: rgba(255,255,255,0.05);
-            color: #e5e7eb;
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            background: rgba(17, 24, 39, 0.6);
+            color: #94a3b8;
             font-size: 0.95rem;
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            min-width: 140px;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .filter-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
         .filter-button.active {
-            background: linear-gradient(135deg, #0891b2, #06b6d4);
-            @apply text-white border-transparent;
-            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.5);
-            transform: scale(1.02);
-        }
-        .filter-button:not(.active):hover {
-            background: rgba(34, 211, 238, 0.2);
-            border-color: #22d3ee;
-            color: #22d3ee;
-            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.4);
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
             transform: translateY(-2px);
         }
         
-        /* Clean Professional Cards */
+        .filter-button:not(.active):hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.5);
+            color: #00d4ff;
+            transform: translateY(-1px);
+        }
+        
+        .filter-button:not(.active):hover::before {
+            opacity: 1;
+        }
+        
+        .filter-button:active {
+            transform: translateY(0);
+        }
+        
+        /* Clean Professional Cards - Clickable & Confident */
         .neon-card {
-            background: rgba(17, 24, 39, 0.5);
+            background: rgba(17, 24, 39, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
         }
         
         .neon-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(124, 58, 237, 0.05));
-            border-radius: 1rem;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+            transition: opacity 0.4s ease;
         }
         
         .neon-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
-            border-color: rgba(34, 211, 238, 0.6);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 212, 255, 0.25), 0 0 60px rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
         }
         
         .neon-card:hover::before {
             opacity: 1;
         }
         
-        /* Modern Category Badges */
-        .category-badge {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(6, 182, 212, 0.1));
-            border: 1px solid rgba(8, 145, 178, 0.3);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            color: #0891b2;
-            font-weight: 600;
+        .neon-card:active {
+            transform: translateY(-4px);
         }
         
-        .neon-card:hover .category-badge {
-            background: linear-gradient(135deg, rgba(8, 145, 178, 0.2), rgba(6, 182, 212, 0.2));
-            border-color: rgba(8, 145, 178, 0.5);
-            box-shadow: 0 2px 8px rgba(8, 145, 178, 0.15);
+        /* Modern Category Badges */
+        .category-badge {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            color: #00d4ff;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
         }
 
-        /* Professional Scroll Container - 1.4x Larger, Shows 3 Images */
+        /* Professional Scroll Container */
         .scroll-container {
             display: flex;
             overflow-x: auto;
             scroll-behavior: smooth;
-            gap: 1.05rem;
-            padding: 1.4rem;
+            gap: 1rem;
+            padding: 1rem;
             cursor: grab;
             scrollbar-width: thin;
-            scrollbar-color: #22d3ee rgba(17, 24, 39, 0.5);
-            max-width: 1400px;
+            scrollbar-color: #00d4ff rgba(17, 24, 39, 0.5);
+            max-width: 1200px;
             margin: 0 auto;
-            border: 2px solid rgba(34, 211, 238, 0.3);
-            border-radius: 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
             background: rgba(17, 24, 39, 0.3);
         }
 
@@ -417,46 +442,41 @@
         }
 
         .scroll-container::-webkit-scrollbar {
-            height: 8px;
+            height: 6px;
         }
 
         .scroll-container::-webkit-scrollbar-track {
             background: rgba(17, 24, 39, 0.5);
-            border-radius: 10px;
+            border-radius: 8px;
         }
 
         .scroll-container::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #0891b2, #22d3ee);
-            border-radius: 10px;
+            background: #00d4ff;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
         .scroll-container::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(90deg, #22d3ee, #06b6d4);
-            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.5);
+            background: #8b5cf6;
         }
 
-        .scroll-container::-webkit-scrollbar-thumb:active {
-            background: linear-gradient(90deg, #06b6d4, #0891b2);
-        }
-
-        /* Refined Scroll Items - 1.4x Larger */
+        /* Refined Scroll Items */
         .scroll-item {
             flex: 0 0 auto;
-            width: 392px;
-            height: 280px;
-            border-radius: 1rem;
+            width: 360px;
+            height: 240px;
+            border-radius: 12px;
             overflow: hidden;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid rgba(34, 211, 238, 0.4);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
         .scroll-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
-            border-color: rgba(34, 211, 238, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
         }
 
         .scroll-item img {
@@ -475,27 +495,26 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(17, 24, 39, 0.8);
+            background: rgba(17, 24, 39, 0.9);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 211, 238, 0.5);
-            color: #22d3ee;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .scroll-nav-btn:hover {
-            background: #0891b2;
+            background: #00d4ff;
             color: white;
-            box-shadow: 0 6px 16px rgba(34, 211, 238, 0.5);
-            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 212, 255, 0.3);
         }
 
         .scroll-nav-btn.left {
@@ -504,6 +523,118 @@
 
         .scroll-nav-btn.right {
             right: 10px;
+        }
+        
+        /* Hero Layering */
+        #hero-video {
+            opacity: 0.4;
+        }
+        
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 15, 28, 0.7) 0%, rgba(10, 15, 28, 0.85) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Hero CTA Buttons */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            min-width: 160px;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-cta {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+                min-width: auto;
+            }
+        }
+        
+        .hero-cta-primary {
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.3);
+        }
+        
+        .hero-cta-primary:hover {
+            box-shadow: 0 6px 24px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .hero-cta-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-cta-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+        
+        /* Responsive Hero Content Adjustments */
+        @media (max-width: 640px) {
+            #hero {
+                min-height: 100vh !important;
+                min-height: 100dvh !important;
+            }
+            
+            .hero-content {
+                padding-top: 50px !important;
+                padding-bottom: 30px !important;
+            }
+            
+            .title-premium {
+                font-size: 2rem !important;
+                line-height: 1.1 !important;
+            }
+        }
+        
+        @media (min-width: 641px) and (max-width: 768px) {
+            .title-premium {
+                font-size: 2.5rem !important;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .title-premium {
+                font-size: 3rem !important;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .title-premium {
+                font-size: 3.5rem !important;
+            }
         }
 
         /* Professional Event Cards */
@@ -514,24 +645,24 @@
             padding: 1.5rem;
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(10px);
-            border-radius: 0.75rem;
-            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
         .event-info-card:hover {
-            border-color: rgba(34, 211, 238, 0.6);
-            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
             transform: translateY(-2px);
         }
 
         .event-info-card img {
-            width: 160px;
-            height: 120px;
+            width: 140px;
+            height: 105px;
             object-fit: cover;
-            border-radius: 0.5rem;
-            border: 1px solid rgba(34, 211, 238, 0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
         }
 
         @media (max-width: 768px) {
@@ -550,7 +681,412 @@
             }
             
             .tech-brand {
-                font-size: 0.9em;
+                letter-spacing: 0.04em;
+                font-size: 2.5rem;
+            }
+            
+            nav .tech-brand {
+                font-size: 1rem;
+                letter-spacing: 0.03em;
+            }
+            
+            nav {
+                height: 56px;
+            }
+            
+            nav .flex {
+                height: 56px;
+            }
+            
+            .hero-cta {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Radial Gradient for Spotlight */
+        .bg-gradient-radial {
+            background: radial-gradient(circle, var(--tw-gradient-stops));
+        }
+        
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.5), transparent);
+            transform: translateX(-50%);
+        }
+        
+        .milestone-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        
+        .milestone-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.3);
+            z-index: 2;
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.2);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        .parallax-layer {
+            transition: transform 0.3s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .animate-fade-in,
+            .animate-float,
+            .title-premium {
+                animation: none;
+            }
+            
+            #hero-canvas {
+                display: none;
+            }
+            
+            #hero-video {
+                animation: none;
+            }
+        }
+
+        /* Distinguished Guests Gallery Styles */
+        .guests-gallery-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+
+        .guests-gallery-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.5s ease;
+        }
+
+        .guest-card {
+            flex: 0 0 401px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .guest-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+        }
+
+        .guest-card img {
+            width: 401px;
+            height: 246px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .guest-name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+            padding: 20px 16px 16px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .guest-card:hover .guest-name-overlay {
+            transform: translateY(0);
+        }
+
+        .guest-name-overlay h4 {
+            color: #00d4ff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            color: #00d4ff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-nav-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-nav-btn.left {
+            left: 0;
+        }
+
+        .gallery-nav-btn.right {
+            right: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .guest-card {
+                flex: 0 0 401px;
+            }
+            
+            .guest-card img {
+                width: 401px;
+                height: 246px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .guests-gallery-container {
+                padding: 0 50px;
+            }
+
+            .guest-card {
+                flex: 0 0 401px;
+            }
+
+            .guest-card img {
+                width: 401px;
+                height: 246px;
+            }
+
+            .gallery-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* =================================================================
+           MOBILE-FIRST RESPONSIVENESS AUDIT (<768px)
+           - Reduced vertical padding for compact mobile experience
+           - Consistent spacing rhythm (py-12 mobile, py-20/24 desktop)
+           - Enhanced readability with proper line heights
+           - Comfortable tap targets (min 44x44px)
+           - Desktop visuals preserved above 768px
+           ================================================================= */
+        
+        @media (max-width: 767px) {
+            /* Section Padding Reduction - Consistent Rhythm */
+            #chief-guest,
+            #leadership,
+            #events,
+            #history,
+            #contact {
+                padding-top: 3rem !important;  /* py-12 = 3rem */
+                padding-bottom: 3rem !important;
+            }
+
+            /* Heading Size Adjustments for Mobile Readability */
+            .tech-brand,
+            h1, h2, h3 {
+                line-height: 1.3;
+            }
+
+            /* Card Spacing Reduction */
+            .neon-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            /* Button Tap Targets - Minimum 44x44px */
+            button,
+            .mobile-nav-link,
+            .nav-link {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 0.75rem 1rem;
+            }
+
+            /* Mobile Menu Enhanced Touch Targets */
+            .mobile-nav-link {
+                padding: 0.875rem 1rem !important;
+                font-size: 0.9375rem !important;
+            }
+
+            /* Event Cards - Compact Layout */
+            .event-card {
+                padding: 1rem !important;
+            }
+
+            /* Grid Adjustments - Single Column Priority */
+            .grid {
+                gap: 1rem !important;
+            }
+
+            /* Hero Section - Reduce Height for Mobile */
+            #hero {
+                min-height: 85vh !important;
+                padding-top: 5rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-content {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+
+            /* Chief Guest - Compact Mobile Layout */
+            #chief-guest .max-w-5xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            /* Leadership Cards - Stack Properly */
+            #leadership .grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* History Section - Reduce Spacing */
+            #history .mb-16 {
+                margin-bottom: 2rem !important;
+            }
+
+            #history .mb-12 {
+                margin-bottom: 1.5rem !important;
+            }
+
+            /* Contact Section - Compact Layout */
+            #contact .grid {
+                gap: 1.5rem !important;
+            }
+
+            /* Footer - Reduce Padding */
+            footer {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            footer .py-8 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            /* Badge Elements - Smaller on Mobile */
+            .inline-flex.items-center.gap-2 {
+                padding: 0.375rem 0.75rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* Guests Gallery - Mobile Optimization */
+            .guests-gallery-container {
+                margin-bottom: 2rem !important;
+            }
+
+            /* Reduce Animation Intensity on Mobile */
+            * {
+                animation-duration: 0.2s !important;
+                transition-duration: 0.2s !important;
+            }
+
+            /* Disable Complex Hover Effects on Touch Devices */
+            .neon-card:hover,
+            .event-card:hover {
+                transform: none !important;
+            }
+
+            /* Text Readability Enhancements */
+            p, li, span, div {
+                line-height: 1.6;
+            }
+
+            /* Modal - Full Screen on Mobile */
+            #eventModal {
+                padding: 1rem !important;
+            }
+
+            #eventModal > div {
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+
+            /* Ensure Proper Spacing Between Sections */
+            section + section {
+                margin-top: 0 !important;
+            }
+        }
+
+        /* Tablet Adjustments (768px - 1024px) - Moderate Padding */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            #chief-guest,
+            #events,
+            #history {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            #leadership,
+            #contact {
+                padding-top: 3.5rem;
+                padding-bottom: 3.5rem;
             }
         }
     </style>
@@ -645,228 +1181,299 @@
         }
     </script>
 
-    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-lg shadow-lg border-b border-cyan-400/30">
+    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-lg" style="border-bottom: 1px solid rgba(0, 212, 255, 0.15); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
+            <div class="flex items-center justify-between" style="height: 64px;">
                 <div class="flex items-center">
-                    <a href="#hero" class="text-2xl font-extrabold flex items-center tech-brand">
+                    <a href="#hero" class="tech-brand" style="text-decoration: none;">
                         <span class="gradient-text" id="nav-event-name"></span>
                     </a>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#hero" class="nav-link text-text-secondary px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#chief-guest" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Chief Guest</a>
-                        <a href="#support-system" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Support</a>
-                        <a href="#events" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Events</a>
-                        <a href="#history" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Previous</a>
-                        <a href="#contact" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Contact</a>
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="#hero" class="nav-link">Home</a>
+                        <a href="#chief-guest" class="nav-link">Chief Guest</a>
+                        <a href="#support-system" class="nav-link">Support</a>
+                        <a href="#events" class="nav-link">Events</a>
+                        <a href="#history" class="nav-link">Previous</a>
+                        <a href="#contact" class="nav-link">Contact</a>
             
                     </div>
                 </div>
-                <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
+                <button id="mobile-menu-button" type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-300 focus:outline-none md:hidden" aria-controls="mobile-menu" aria-expanded="false">
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                 </button>
             </div>
         </div>
-        <div class="hidden md:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
-                <a href="#hero" class="nav-link text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#chief-guest" class="nav-link text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Chief Guest</a>
-                <a href="#support-system" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Support</a>
-                <a href="#events" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Events</a>
-                <a href="#history" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Previous</a>
-                <a href="#contact" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+        <div id="mobile-menu" class="md:hidden" style="border-top: 1px solid rgba(0, 212, 255, 0.1);">
+            <div class="px-4 py-3 space-y-1 bg-gray-900">
+                <a href="#hero" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Home</a>
+                <a href="#chief-guest" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Chief Guest</a>
+                <a href="#support-system" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Support</a>
+                <a href="#events" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Events</a>
+                <a href="#history" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Previous</a>
+                <a href="#contact" class="nav-link mobile-nav-link block px-3 py-2.5 rounded-lg text-sm font-medium" style="color: #94a3b8;">Contact</a>
             </div>
         </div>
     </nav>
     
     <main>
         
-        <section id="hero" class="relative pt-16 pb-24 text-center overflow-hidden border-b border-gray-200">
+        <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden" style="min-height: 100vh; min-height: 100dvh; border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
             <!-- Background Video -->
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+
+            <video id="hero-video" autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
                 <source src="Untitled design.mp4" type="video/mp4">
             </video>
             
-            <!-- Dark overlay for better text visibility -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-1"></div>
+            <!-- Dark overlay -->
+            <div class="hero-overlay"></div>
             
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Three.js Canvas -->
+            <canvas id="hero-canvas"></canvas>
+            
+            <!-- Hero Content -->
+            <div class="hero-content w-full max-w-6xl mx-auto px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-6 md:py-8">
                 
-                
+                <!-- Event Type Badge -->
+                <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-2 sm:mb-3" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(10px);">
+                    <i class="fas fa-star" style="color: #00d4ff; font-size: 0.75rem;"></i>
+                    <span id="event-type" class="text-xs sm:text-sm font-semibold tracking-wide uppercase" style="color: #00d4ff;">National Level Event</span>
+                </div>
 
-                <!-- LOGO SECTION -->
-<div class="flex flex-col items-center mb-8 group animate-fade-in">
-
-    <!-- LOGO CONTAINER -->
-    <div class="relative mb-4 animate-float">
-        <div
-            class="absolute inset-0 rounded-2xl blur-2xl opacity-50
-            bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600
-            group-hover:opacity-70 transition-all duration-500 animate-pulse-glow">
-        </div>
-
-        <div
-            class="relative w-32 h-32 rounded-2xl
-            bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-md flex items-center justify-center
-            border-2 border-cyan-400/60 shadow-2xl shadow-cyan-400/30
-            group-hover:scale-110 group-hover:border-cyan-400 group-hover:shadow-cyan-400/50 transition-all duration-300 hover:rotate-3">
-
-            <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="Club Logo" class="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
-        </div>
-    </div>
-
-    <!-- EVENT TYPE TEXT -->
-    <p id="event-type"
-       class="text-base md:text-lg text-cyan-300 font-bold tracking-wide uppercase drop-shadow-lg animate-slide-up" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
-    </p>
-</div>
-
-                
-                <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-6 tech-brand" style="line-height: 1.1;">
-                    <span id="event-name-hero" class="title-premium"></span>
+                <!-- Main Event Name -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-2 sm:mb-3 tech-brand" style="line-height: 1;">
+                    <span id="event-name-hero" class="title-premium">TECHELONS'26</span>
                 </h1>
                 
-                <div class="flex justify-center mb-6">
-                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
+                <!-- Event Date - Prominent -->
+                <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3" style="color: #00d4ff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); letter-spacing: 0.05em; line-height: 1.1;" id="event-date-hero">20 JAN 2026</p>
+                
+                <!-- Tagline -->
+                <p class="text-sm sm:text-base md:text-lg lg:text-xl font-medium mb-4 sm:mb-5 md:mb-6 text-gray-300 max-w-2xl mx-auto" style="letter-spacing: 0.02em; line-height: 1.3;" id="event-tagline-hero">Step to Pioneer</p>
+                
+                <!-- Primary CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-5 sm:mb-6 md:mb-8">
+                    <a href="#events" class="hero-cta hero-cta-primary w-full sm:w-auto">
+                        <i class="fas fa-rocket"></i>
+                        <span>Register Now</span>
+                    </a>
+                    <a href="#events" class="hero-cta hero-cta-secondary w-full sm:w-auto">
+                        <i class="fas fa-compass"></i>
+                        <span>Explore Events</span>
+                    </a>
                 </div>
                 
-                <p class="text-xl md:text-2xl font-semibold mb-6 text-white drop-shadow-lg" style="text-shadow: 0 2px 10px rgba(0,0,0,0.7);" id="event-tagline-hero"></p>
-                
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg" style="text-shadow: 0 2px 15px rgba(0,0,0,0.7);" id="institute-name">P.R.Pote Patil Educational Group, Amravati</h2>
-                <p class="text-base text-gray-200 mb-2 drop-shadow-md" id="institute-group-details"></p>
-                <p class="text-base text-cyan-300 font-semibold mb-6 drop-shadow-lg">ACCREDITED WITH NAAC A++ GRADE</p>
-                
-                <p class="text-2xl md:text-3xl font-medium mb-8 text-cyan-400 drop-shadow-lg" style="text-shadow: 0 2px 12px rgba(0,0,0,0.8);" id="event-date-hero"></p>
-                
-                <div class="max-w-5xl mx-auto pt-8">
-                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-center shadow-2xl hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-300">
-                        <i class="fas fa-award text-5xl text-cyan-400 mb-4 drop-shadow-lg"></i>
-                        <h3 class="text-2xl font-bold text-white mb-4 drop-shadow-lg">About TECHELONS</h3>
-                        <p class="text-gray-100 text-base leading-relaxed drop-shadow-md">
-                            Techelons is one of the most important and well known technical festivals organized by P. R. Pote Patil Educational Group, Amravati under the guidance of Shri Pravin Pote Patil and Shri Shreyas Dada Pote Patil. In the last 10 Years of Techelons Journey, various well-known and world famous international guests have arrived and inaugurated the events. Techelons is the technical festival which provides a platform to the participants from multidisciplinary fields to show their talents and win exiting and bumper prizes. We welcome you all in Techelons 2024 at P. R. Pote Patil Educational Group, Amravati.
-                        </p>
+                <!-- Institute Info - Secondary -->
+                <div class="pt-4 sm:pt-5 border-t border-white/10">
+                    <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+                        <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="Institute Logo" class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain mb-1 sm:mb-2 opacity-70" />
+                        <h2 class="text-sm sm:text-base md:text-lg font-semibold text-gray-300 text-center px-4" id="institute-name">P.R.Pote Patil Educational Group, Amravati</h2>
+                        <p class="text-xs sm:text-sm text-gray-400 text-center" id="institute-group-details">An Autonomous Institute</p>
+                        <p class="text-[10px] sm:text-xs font-semibold text-gray-400 text-center">ACCREDITED WITH NAAC A++ GRADE</p>
                     </div>
                 </div>
             </div>
         </section>
         
-<section id="chief-guest" class="py-16 bg-gray-900 border-t border-b border-cyan-400/30">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="chief-guest" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+    <!-- Animated Particle Background -->
+    <div class="section-particles" id="chiefGuestParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+    <!-- Spotlight Background Effect -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-400/10 via-cyan-400/5 to-transparent rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-purple-500/8 via-transparent to-transparent rounded-full blur-2xl"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <!-- Header -->
-        <div class="text-center mb-10">
-            <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">
-                Keynote Speaker
-            </span>
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
+                <i class="fas fa-microphone-alt" style="color: #00d4ff; font-size: 0.875rem;"></i>
+                <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Keynote Speaker</span>
+            </div>
 
-            <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">
-                <span class="text-cyan-400">Chief Guest</span> of TECHELONS'26
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-4 tech-brand" style="line-height: 1.1;">
+                <span class="title-premium">Chief Guest</span>
+            </h2>
+            <p class="text-gray-400 text-lg mt-3 font-medium">TECHELONS'26</p>
+        </div>
+
+        <!-- Elevated Card with Spotlight -->
+        <div class="relative max-w-3xl mx-auto">
+            <!-- Glow Effect Behind Card -->
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-cyan-400/20 blur-3xl rounded-3xl transform scale-105"></div>
+            
+            <div class="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-10 md:p-14 text-center shadow-2xl transform transition-all duration-500 hover:scale-[1.02]" style="border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15), 0 0 100px rgba(139, 92, 246, 0.1);">
+
+                <!-- Stage Icon -->
+                <div class="relative inline-block mb-8">
+                    <div class="absolute inset-0 bg-cyan-400/20 blur-2xl rounded-full"></div>
+                    <div class="relative w-24 h-24 mx-auto bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-full flex items-center justify-center" style="border: 2px solid rgba(0, 212, 255, 0.4);">
+                        <i class="fas fa-award text-5xl text-cyan-400"></i>
+                    </div>
+                </div>
+
+                <!-- Guest Name - Hero Typography -->
+                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 tech-brand" style="line-height: 1; letter-spacing: 0.02em;">
+                    <span class="title-premium" id="guest-name">Dr. Eklavya Singh</span>
+                </h3>
+
+                <!-- Designation - Secondary Emphasis -->
+                <p class="text-xl md:text-2xl font-bold mb-8" style="color: #00d4ff; letter-spacing: 0.05em;" id="guest-designation">CEO, Future Tech Innovations</p>
+
+                <!-- Divider -->
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8 rounded-full"></div>
+
+                <!-- Speech Topic - Featured -->
+                <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 mb-8" style="border: 1px solid rgba(0, 212, 255, 0.2);">
+                    <div class="flex items-center justify-center gap-3 mb-3">
+                        <i class="fas fa-quote-left text-cyan-400 text-lg"></i>
+                        <span class="text-xs font-bold tracking-widest uppercase text-cyan-400">Keynote Address</span>
+                        <i class="fas fa-quote-right text-cyan-400 text-lg"></i>
+                    </div>
+                    <p class="text-lg md:text-xl font-semibold text-white leading-relaxed" style="letter-spacing: 0.01em;" id="guest-speech-topic">Pioneering the Next Decade in Technology</p>
+                </div>
+
+                <!-- Welcome Message -->
+                <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                    <span class="text-cyan-400 font-semibold">We are honored</span> to welcome a <span class="text-white font-semibold">visionary leader</span> who will inspire the next generation of <span class="text-cyan-400 font-semibold">pioneers and innovators</span> at TECHELONS'26.
+                </p>
+
+                <!-- Accent Decorations -->
+                <div class="flex justify-center gap-2 mt-8">
+                    <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                    <div class="w-2 h-2 rounded-full bg-purple-500 animate-pulse" style="animation-delay: 0.2s;"></div>
+                    <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style="animation-delay: 0.4s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stage Floor Line -->
+        <div class="mt-12 max-w-4xl mx-auto">
+            <div class="h-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent rounded-full"></div>
+        </div>
+    </div>
+</section>
+
+
+       <section id="leadership" class="py-20 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1);">
+    <!-- Animated Particle Background -->
+    <div class="section-particles" id="leadershipParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+        
+        <!-- Section Header -->
+        <div class="mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(10px);">
+                <i class="fas fa-users" style="color: #00d4ff; font-size: 0.75rem;"></i>
+                <span class="text-xs font-bold tracking-wider uppercase" style="color: #00d4ff;">Leadership</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">
+                Meet Our <span style="color: #00d4ff;">Visionary Leaders</span>
             </h2>
         </div>
 
-        <!-- Card -->
-        <div class="bg-gray-800/50 backdrop-blur-md border border-cyan-400/30 rounded-2xl p-8 max-w-2xl mx-auto text-center flex flex-col items-center shadow-2xl hover:border-cyan-400/60 transition-all duration-300">
-
-            <!-- IMAGE -->
-            <div class="relative w-40 h-40 mb-6 group">
-
-                <!-- Subtle ring -->
-                <div class="absolute inset-0 rounded-full border-2 border-cyan-400/40 
-                            group-hover:border-cyan-400/70 shadow-lg shadow-cyan-400/20
-                            transition-all duration-300">
-                </div>
-
-                <!-- Image or Icon -->
-                <div class="w-full h-full rounded-full bg-gray-700 flex items-center justify-center overflow-hidden">
-                    <i class="fas fa-user-circle text-7xl text-gray-400 group-hover:scale-105 transition-transform duration-300"></i>
+        <!-- Mentor Card - Elevated & Centered -->
+        <div class="flex justify-center mb-20">
+            <div class="relative max-w-sm w-full">
+                <!-- Elevated Glow -->
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-500/10 to-cyan-400/10 blur-2xl rounded-2xl transform scale-110"></div>
+                
+                <div class="relative neon-card p-10 transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.7); border: 1px solid rgba(0, 212, 255, 0.3);">
+                    <!-- Profile Image with Ring -->
+                    <div class="relative inline-block mb-6">
+                        <div class="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full"></div>
+                        <img src="https://prpotepatilengg.ac.in/assets/images/mentor.png" alt="Mentor" class="relative w-36 h-36 rounded-full mx-auto object-cover transition-transform duration-300 hover:scale-105" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);">
+                    </div>
+                    
+                    <!-- Name -->
+                    <h3 class="text-2xl font-bold text-white mb-2" style="letter-spacing: 0.02em;">Late Ramchandraji Pote Patil</h3>
+                    
+                    <!-- Role Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mt-2" style="background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4);">
+                        <i class="fas fa-crown text-cyan-400 text-xs"></i>
+                        <span class="text-sm font-bold" style="color: #00d4ff;">Mentor</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- TEXT SECTION -->
-            <h3 class="text-2xl font-bold text-cyan-400 mb-2" id="guest-name"></h3>
-            <p class="text-lg font-semibold text-gray-300 mb-3" id="guest-designation"></p>
-            <p class="text-gray-400 text-base italic" id="guest-speech-topic"></p>
+        <!-- Pillars Section Header -->
+        <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-bold text-white">
+                Our <span style="color: #00d4ff;">Pillars of Strength</span>
+            </h3>
+        </div>
 
-            <p class="text-gray-400 mt-4 text-sm">
-                We are honored to welcome a visionary leader to inspire the next generation of pioneers at TECHELONS'26.
-            </p>
+        <!-- Pillars Grid - Uniform & Symmetrical -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            
+            <!-- Chairman Card -->
+            <div class="neon-card p-8 text-center transition-all duration-300 hover:transform hover:-translate-y-1" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
+                <!-- Profile Image -->
+                <div class="relative inline-block mb-6">
+                    <img src="https://prpotepatilengg.ac.in/assets/images/chairman.png" alt="Chairman" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
+                </div>
+                
+                <!-- Name -->
+                <h4 class="text-xl font-bold text-white mb-2">Shri. Pravin Pote Patil</h4>
+                
+                <!-- Role -->
+                <p class="text-base font-semibold" style="color: #00d4ff;">Chairman</p>
+            </div>
+
+            <!-- Vice-Chairman Card -->
+            <div class="neon-card p-8 text-center transition-all duration-300 hover:transform hover:-translate-y-1" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
+                <!-- Profile Image -->
+                <div class="relative inline-block mb-6">
+                    <img src="https://prpotepatilengg.ac.in/assets/images/vice-chairman.png" alt="Vice Chairman" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
+                </div>
+                
+                <!-- Name -->
+                <h4 class="text-xl font-bold text-white mb-2">Shri. Shreyash Dada Pote Patil</h4>
+                
+                <!-- Role -->
+                <p class="text-base font-semibold" style="color: #00d4ff;">Vice-Chairman</p>
+            </div>
+
         </div>
     </div>
 </section>
 
-
-       <section id="leadership" class="py-16 text-center bg-gray-800">
-
-    <!-- Title -->
-    <p class="text-xs tracking-wide mb-2 uppercase text-cyan-400 font-semibold">Leadership</p>
-    <h2 class="text-2xl md:text-3xl font-bold mb-10 text-white">
-        Meet Our <span class="text-cyan-400">Mentor</span>
-    </h2>
-
-    <!-- TOP (MENTOR) -->
-    <div class="flex justify-center mb-12">
-        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl max-w-xs text-center hover:border-cyan-400/60 transition-all duration-300">
-            <img src="https://i.ibb.co/QFTbVrbq/mentor.png" alt="mentor" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
-            <h3 class="text-lg font-bold mt-5 text-white">Liate Ramchandra Pote</h3>
-            <p class="text-cyan-400 mt-2 text-sm font-semibold">Mentor</p>
-        </div>
-    </div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-white">
-        Meet Our <span class="text-cyan-400">Pillars</span>
-    </h2>
-    <!-- BOTTOM (VISIONARY LEADERS) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-
-        <!-- Card 1 -->
-        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl text-center hover:border-cyan-400/60 transition-all duration-300">
-          <img src="https://i.ibb.co/mrkNSTx7/chairman.png"  alt="chairman" alt="chairman" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
-            <h3 class="text-lg font-bold mt-5 text-white">Shri. Pravin Pote Patil</h3>
-            <p class="text-cyan-400 mt-2 text-sm font-semibold">Chairman</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl text-center hover:border-cyan-400/60 transition-all duration-300">
-            <img src="https://i.ibb.co/p6s17cpY/vice-chairman.png" alt="vice chairman" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
-            <h3 class="text-lg font-bold mt-5 text-white">Shri. Shreyash Dada Pote Patil</h3>
-            <p class="text-cyan-400 mt-2 text-sm font-semibold">Vice-Chairman</p>
-        </div>
-
-    </div>
-
-</section>
-
-        <section id="events" class="py-20 bg-gray-900 border-t border-b border-cyan-400/30">
-          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="events" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+          <!-- Animated Particle Background -->
+          <div class="section-particles" id="eventsParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
 
             <!-- HEADER -->
-            <div class="text-center mb-10">
-              <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">
-                Competitions
-              </span>
+            <div class="text-center mb-12">
+              <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
+                <i class="fas fa-trophy" style="color: #00d4ff; font-size: 0.875rem;"></i>
+                <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Competitions</span>
+              </div>
 
-              <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">
+              <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 tech-brand">
                 Events by <span class="text-cyan-400">Stream</span>
               </h2>
 
-              <p class="text-base text-gray-400 mt-4 max-w-2xl mx-auto">
-                Select a stream to see the specialized and general events available.
+              <p class="text-base text-gray-400 mt-5 max-w-2xl mx-auto">
+                Select a stream to explore specialized and general events across all domains.
               </p>
             </div>
 
             <!-- STREAM FILTER BUTTONS -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-              <button class="filter-button active px-6 py-2.5 text-base rounded-full"
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-14">
+              <button class="filter-button active"
                 data-stream="engineering">Engineering</button>
 
-              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+              <button class="filter-button"
                 data-stream="nursing">Nursing</button>
 
-              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+              <button class="filter-button"
                 data-stream="pharmacy">Pharmacy / BAMS</button>
 
-              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+              <button class="filter-button"
                 data-stream="common">General</button>
             </div>
 
@@ -879,353 +1486,407 @@
         </section>
 
 
-<!-- EVENT MODAL -->
+<!-- EVENT MODAL - Premium Design -->
 <div id="event-modal"
-  class="fixed inset-0 hidden items-center justify-center bg-black/70 z-50 backdrop-blur-sm">
-  <div class="bg-gray-900 border border-cyan-400/50 p-8 rounded-2xl max-w-xl w-full relative shadow-2xl">
-    <button onclick="closeEventModal()" class="absolute top-4 right-4 text-gray-400 hover:text-cyan-400 text-2xl transition-colors">&times;</button>
-
-    <h3 id="modal-title" class="text-2xl font-bold text-cyan-400 mb-3"></h3>
-    <p id="modal-desc" class="text-gray-400 mb-3 text-sm"></p>
-    <p id="modal-date" class="text-gray-300 mb-5 text-sm font-semibold"></p>
-
-    <button class="w-full py-3 text-base rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-      Register Now
+  class="fixed inset-0 hidden items-center justify-center bg-black/80 z-50 backdrop-blur-md px-4">
+  <div class="bg-gradient-to-br from-gray-800/95 to-gray-900/95 backdrop-blur-xl p-8 sm:p-10 rounded-3xl max-w-2xl w-full relative shadow-2xl" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(0, 212, 255, 0.15);">
+    
+    <!-- Close Button -->
+    <button onclick="closeEventModal()" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-gray-800/50 text-gray-400 hover:text-white hover:bg-cyan-400/20 hover:border-cyan-400 border border-gray-700 text-xl transition-all duration-300">
+      <i class="fas fa-times"></i>
     </button>
+
+    <!-- Icon Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3);">
+      <i class="fas fa-calendar-check" style="color: #00d4ff; font-size: 0.875rem;"></i>
+      <span class="text-xs font-bold tracking-wider uppercase" style="color: #00d4ff;">Event Details</span>
+    </div>
+
+    <!-- Title -->
+    <h3 id="modal-title" class="text-3xl md:text-4xl font-black mb-4 tech-brand" style="color: #00d4ff; letter-spacing: 0.02em; line-height: 1.2;"></h3>
+    
+    <!-- Date Badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg mb-6" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3);">
+      <i class="fas fa-clock text-cyan-400 text-sm"></i>
+      <p id="modal-date" class="text-white text-sm font-semibold"></p>
+    </div>
+    
+    <!-- Description -->
+    <p id="modal-desc" class="text-gray-300 text-base leading-relaxed mb-8"></p>
+
+    <!-- Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent mb-8"></div>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button class="flex-1 py-4 px-6 text-base rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
+        <i class="fas fa-rocket"></i>
+        <span>Register Now</span>
+      </button>
+      <button onclick="closeEventModal()" class="sm:w-auto px-6 py-4 text-base rounded-xl bg-gray-800/50 border-2 border-gray-700 text-gray-300 font-semibold hover:bg-gray-700/50 hover:border-gray-600 hover:text-white transition-all duration-300">
+        Close
+      </button>
+    </div>
   </div>
 </div>
 
-        <section id="history" class="py-20 bg-gray-800 border-t border-b border-cyan-400/30">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="history" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+            <!-- Animated Particle Background -->
+            <div class="section-particles" id="historyParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+            <!-- Parallax Background Elements -->
+            <div class="absolute inset-0 pointer-events-none parallax-bg">
+                <div class="absolute top-10 left-10 w-64 h-64 bg-cyan-400/5 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-20 right-10 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 <!-- HEADER -->
-                <div class="text-center mb-12">
-                    <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">Legacy</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Journey of <span class="text-cyan-400">TECHELONS</span></h2>
-                    <p class="text-base text-gray-400 mt-4 max-w-2xl mx-auto">
-                        A legacy of innovation, excellence, and inspiration that continues to grow.
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
+                        <i class="fas fa-history" style="color: #00d4ff; font-size: 0.875rem;"></i>
+                        <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Legacy</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-white mt-4 tech-brand" style="letter-spacing: 0.02em;">
+                        Evolution of <span class="title-premium">TECHELONS</span>
+                    </h2>
+                    <p class="text-base text-gray-400 mt-5 max-w-2xl mx-auto">
+                        From inception to innovation—a journey of excellence and inspiration
                     </p>
                 </div>
 
-                <!-- ABOUT TECHLONS 2025 -->
-                <div class="neon-card p-6 mb-12">
-                    <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">About TECHELONS 2025</h3>
-                    <div class="text-gray-300 text-sm leading-relaxed space-y-3 max-w-4xl mx-auto">
-                        <p>TECHELONS 2025 marked a milestone year in our journey, bringing together brilliant minds from across the nation to showcase innovation and technical excellence.</p>
-                        <p>The event featured groundbreaking projects in emerging technologies including AI, Robotics, and Sustainable Engineering, with over 50+ competitions and workshops.</p>
-                        <p>Distinguished industry leaders and innovators graced the occasion, inspiring students to push boundaries and pioneer new solutions for real-world challenges.</p>
-                        <p>With participation from 100+ institutions and thousands of passionate students, TECHELONS 2025 created an ecosystem of collaboration and learning.</p>
-                        <p>The event's success reinforced our commitment to nurturing the next generation of tech pioneers and innovators who will shape tomorrow's world.</p>
+                <!-- LEGACY CONTENT -->
+                <div class="neon-card p-8 md:p-10 mb-16 max-w-4xl mx-auto">
+                    <div class="text-gray-300 text-base leading-relaxed space-y-4">
+                        <p>TECHELONS launched in 2024 with a vision to create India's premier technical festival, bringing together brilliant minds from across the nation to showcase innovation and technical excellence. The inaugural event featured 500+ participants and 30+ competitions, establishing a strong foundation for what would become a national phenomenon.</p>
+                        
+                        <p>By 2025, TECHELONS had scaled exponentially, welcoming 100+ institutions and 5000+ attendees. The event featured groundbreaking projects in emerging technologies including AI, Robotics, and Sustainable Engineering, with over 50+ competitions and workshops across multiple domains. Distinguished industry leaders and innovators graced the occasion, inspiring students to push boundaries and pioneer new solutions for real-world challenges.</p>
+                        
+                        <p>Now in 2026, TECHELONS continues to evolve as we pioneer the next decade in technology. Join us as we create an ecosystem of collaboration, learning, and innovation that will shape tomorrow's world.</p>
                     </div>
                 </div>
 
-                <!-- GUEST VISITS CAROUSEL -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
-                        <span class="text-cyan-400">Distinguished Guests</span> & Visits
+                
+
+                <!-- KEY HIGHLIGHTS -->
+                <div class="mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center tech-brand">
+                        Memorable <span class="text-cyan-400">Moments</span>
                     </h3>
                     
-                    <div class="relative">
-                        <button class="scroll-nav-btn left" onclick="scrollGuestImages('left')">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Highlight 1 -->
+                        <div class="neon-card p-6 text-center parallax-layer" data-speed="0.4">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400/20 to-purple-500/20 flex items-center justify-center" style="border: 2px solid rgba(0, 212, 255, 0.4);">
+                                <i class="fas fa-trophy text-3xl text-cyan-400"></i>
+                            </div>
+                            <h4 class="text-5xl font-black text-white mb-2 tech-brand">100+</h4>
+                            <p class="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">Institutions</p>
+                            <p class="text-gray-400 text-sm">From across the nation</p>
+                        </div>
+                        
+                        <!-- Highlight 2 -->
+                        <div class="neon-card p-6 text-center parallax-layer" data-speed="0.5">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500/20 to-cyan-400/20 flex items-center justify-center" style="border: 2px solid rgba(139, 92, 246, 0.4);">
+                                <i class="fas fa-users text-3xl text-purple-400"></i>
+                            </div>
+                            <h4 class="text-5xl font-black text-white mb-2 tech-brand">5000+</h4>
+                            <p class="text-purple-400 font-bold text-sm mb-2 uppercase tracking-wider">Participants</p>
+                            <p class="text-gray-400 text-sm">Brilliant young minds</p>
+                        </div>
+                        
+                        <!-- Highlight 3 -->
+                        <div class="neon-card p-6 text-center parallax-layer" data-speed="0.6">
+                            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400/20 to-purple-500/20 flex items-center justify-center" style="border: 2px solid rgba(0, 212, 255, 0.4);">
+                                <i class="fas fa-lightbulb text-3xl text-cyan-400"></i>
+                            </div>
+                            <h4 class="text-5xl font-black text-white mb-2 tech-brand">50+</h4>
+                            <p class="text-cyan-400 font-bold text-sm mb-2 uppercase tracking-wider">Competitions</p>
+                            <p class="text-gray-400 text-sm">Across multiple domains</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DISTINGUISHED GUESTS GALLERY -->
+                <div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center tech-brand">
+                        <span class="text-cyan-400">Distinguished</span> Guests
+                    </h3>
+                    
+                    <div class="guests-gallery-container">
+                        <button class="gallery-nav-btn left" onclick="scrollGuestsGallery('left')">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         
-                        <div class="scroll-container" id="guestScroll">
-                            <!-- Guest Images from Previous Events - Unique Only -->
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/CzRj4zvV/10.jpg" alt="Distinguished Guest Visit" loading="lazy">
+                        <div class="guests-gallery-track" id="guestsGalleryTrack">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/1.jpg" alt="Hon. Dr. A. P. J. Abdul Kalam" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. A. P. J. Abdul Kalam</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/3dkgZdL8/11.jpg" alt="Guest Visit" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/2.jpg" alt="Hon. Dr. Vijay Bhatkar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Vijay Bhatkar</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/fJVxvJHV/13.jpg" alt="Guest Speaker" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/3.jpg" alt="Hon. Chetan Bhagat" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Chetan Bhagat</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/7fjStwcY/18.jpg" alt="Guest Visit" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/4.jpg" alt="Hon. R. S. Gawai" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. R. S. Gawai</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/HjZw5Q9R/2.jpg" alt="Event Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/5.jpg" alt="Hon. Devishing Shekhawat" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Devishing Shekhawat</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/yk20ps58/20.jpg" alt="Guest of Honor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/6.jpg" alt="Hon. Dr. Dinesh Keskar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Dinesh Keskar</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/GH6vgdNp/21.jpg" alt="Special Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/8.jpg" alt="Hon. Kiran Bedi" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Kiran Bedi</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/D8R1pnDZ/22.jpg" alt="Guest Visit" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/9.jpg" alt="Hon. M. S. Bitta" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. M. S. Bitta</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/N5ZRCBVT/25.jpg" alt="Chief Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/10.jpg" alt="Hon. Dr. Raghunath Mashelkar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Raghunath Mashelkar</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/7fjStwc0/26.jpg" alt="Guest Speaker" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/11.jpg" alt="Hon. Nitin Gadkari" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Nitin Gadkari</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/N5ZRCBV1/27.jpg" alt="Special Visitor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/12.jpg" alt="Hon. Tessy Thomas" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Tessy Thomas</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/PP01VTcy/28.jpg" alt="Guest of Honor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/13.jpg" alt="Hon. Sujit Benerjee" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Sujit Benerjee</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/svb5Hs8n/29.jpg" alt="Distinguished Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/15.jpg" alt="Hon. Dr. Narendra Jadhav" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Narendra Jadhav</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/2Vgn9rJc/30.jpg" alt="Special Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/16.jpg" alt="Hon. Dr. Mohd. Yunus" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Mohd. Yunus</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/YhTQDMVy/31.jpg" alt="Event Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/18.jpg" alt="Hon. Vinod Tawade" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Vinod Tawade</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/QF51RvGg/32.jpg" alt="Chief Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/20.jpg" alt="Hon. Devendra Fadanvis" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Devendra Fadanvis</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/186wLbhc/33.jpg" alt="Guest Speaker" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/21.jpg" alt="Hon. Navjot Singh Sidhu" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Navjot Singh Sidhu</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/NKTmWZqx/34.jpg" alt="Distinguished Visitor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/22.jpg" alt="Hon. S. Guruprasad" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. S. Guruprasad</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/WdrgQxLn/35.jpg" alt="Guest of Honor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/23.jpg" alt="Hon. Sri Sri Ravishankar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Sri Sri Ravishankar</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/ZW3p1Xtw/36.jpg" alt="Special Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/24.jpg" alt="Hon. Anurima Sinha" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Anurima Sinha</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/yD9cw24G/39.jpg" alt="Distinguished Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/25.jpg" alt="Hon. Dr. Vikram Singh" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Vikram Singh</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/Z0783rLh/4.jpg" alt="Chief Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/26.jpg" alt="Hon. Dr. Indrajeet Deshmukh" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Indrajeet Deshmukh</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/sMS7tbCC/40.jpg" alt="Guest Speaker" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/27.jpg" alt="Hon. Ashok Khade" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Ashok Khade</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/LJfLrGFm/41.jpg" alt="Special Visitor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/28.jpg" alt="Hon. Swami Atmapriyananda" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Swami Atmapriyananda</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/CZgkYJwy/42.jpg" alt="Guest of Honor" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/29.jpg" alt="Hon. Dinesh Amalnerkar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dinesh Amalnerkar</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/BXjxCXh9/9.jpg" alt="Event Guest" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/30.jpg" alt="Hon. Dr. Ramshankar Katheriya" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Dr. Ramshankar Katheriya</h4></div>
                             </div>
-                            <div class="scroll-item">
-                                <img src="https://i.postimg.cc/3kpmPzQ8/apj-abdul-kalam.jpg" alt="Dr. APJ Abdul Kalam" loading="lazy">
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/31.jpg" alt="Hon. Suresh Naik" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Suresh Naik</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/32.jpg" alt="Hon. Gaur Gopal Das" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Gaur Gopal Das</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/33.jpg" alt="Dr. Rajendra Singh" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Dr. Rajendra Singh</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/34.jpg" alt="Hon. Kumar Vishwas" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Kumar Vishwas</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/35.jpg" alt="Hon. B. K. Shivani" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. B. K. Shivani</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/36.jpg" alt="Hon. Sonu Sharma" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Sonu Sharma</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/37.jpg" alt="Hon. Gyanvatsal Swami" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Gyanvatsal Swami</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/38.jpg" alt="Hon. Laxmi Agarwal" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Laxmi Agarwal</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/39.jpg" alt="Hon. Rajeshwari Modi" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Rajeshwari Modi</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/40.jpg" alt="Hon. Pankaj Killedar" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Pankaj Killedar</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/41.jpg" alt="Hon. Jaya Kishori" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Jaya Kishori</h4></div>
+                            </div>
+                            <div class="guest-card">
+                                <img src="https://prpotepatilengg.ac.in/assets/images/our-eminient/42.jpg" alt="Hon. Himani Chawda" loading="lazy">
+                                <div class="guest-name-overlay"><h4>Hon. Himani Chawda</h4></div>
                             </div>
                         </div>
                         
-                        <button class="scroll-nav-btn right" onclick="scrollGuestImages('right')">
+                        <button class="gallery-nav-btn right" onclick="scrollGuestsGallery('right')">
                             <i class="fas fa-chevron-right"></i>
                         </button>
-                    </div>
-                </div>
-
-                <!-- PREVIOUS EVENTS -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
-                        Highlights from <span class="text-cyan-400">Past Events</span>
-                    </h3>
-                    
-                    <div class="space-y-5">
-                        <!-- Event 1 -->
-                        <div class="event-info-card">
-                            <img src="https://via.placeholder.com/200x150/1e293b/22d3ee?text=Hackathon" alt="Hackathon Event">
-                            <div class="flex-1">
-                                <h4 class="text-xl font-bold text-cyan-400 mb-2">National Hackathon 2025</h4>
-                                <p class="text-gray-300 mb-2 text-sm">48-hour coding marathon with 200+ participants building innovative solutions for social impact. Winners received funding and mentorship opportunities.</p>
-                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 50+ Teams</span>
-                            </div>
-                        </div>
-
-                        <!-- Event 2 -->
-                        <div class="event-info-card">
-                            <img src="https://via.placeholder.com/200x150/1e293b/7c3aed?text=Robotics" alt="Robotics Competition">
-                            <div class="flex-1">
-                                <h4 class="text-xl font-bold text-cyan-400 mb-2">Robo Wars Championship</h4>
-                                <p class="text-gray-300 mb-2 text-sm">Intense robot combat competition featuring autonomous bots and remote-controlled machines. Showcased cutting-edge mechatronics and AI.</p>
-                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 30+ Robots</span>
-                            </div>
-                        </div>
-
-                        <!-- Event 3 -->
-                        <div class="event-info-card">
-                            <img src="https://via.placeholder.com/200x150/1e293b/06b6d4?text=Tech+Talk" alt="Tech Talk">
-                            <div class="flex-1">
-                                <h4 class="text-xl font-bold text-cyan-400 mb-2">Industry Expert Sessions</h4>
-                                <p class="text-gray-300 mb-2 text-sm">Inspiring talks and workshops by industry leaders on emerging technologies, career guidance, and entrepreneurship in tech.</p>
-                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 15+ Speakers</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GALLERY SECTION -->
-                <div>
-                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
-                        <span class="text-cyan-400">Event Gallery</span>
-                    </h3>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- Gallery Image 1 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+1" alt="Event Gallery 1" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 2 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+2" alt="Event Gallery 2" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 3 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/7c3aed?text=Gallery+3" alt="Event Gallery 3" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 4 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+4" alt="Event Gallery 4" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 5 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+5" alt="Event Gallery 5" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 6 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/7c3aed?text=Gallery+6" alt="Event Gallery 6" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 7 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+7" alt="Event Gallery 7" class="w-full h-full object-cover">
-                        </div>
-                        
-                        <!-- Gallery Image 8 -->
-                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
-                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+8" alt="Event Gallery 8" class="w-full h-full object-cover">
-                        </div>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <section id="contact" class="py-20 bg-gray-800 border-t border-b border-cyan-400/30">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
-                    <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">Get in Touch</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Contact <span class="text-cyan-400">Us</span></h2>
-                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto">Have questions? Reach out to us through any of the following channels</p>
+        <section id="contact" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+            <!-- Animated Particle Background -->
+            <div class="section-particles" id="contactParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+                
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
+                        <i class="fas fa-envelope" style="color: #00d4ff; font-size: 0.875rem;"></i>
+                        <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Get in Touch</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-white mt-4 tech-brand" style="letter-spacing: 0.02em;">
+                        Contact <span class="title-premium">Us</span>
+                    </h2>
+                    <p class="text-base text-gray-400 mt-5 max-w-2xl mx-auto">
+                        Questions about TECHELONS'26? We're here to help
+                    </p>
                 </div>
 
-                <!-- Quick Contact Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <!-- Email Card -->
-                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
-                        <div class="flex flex-col items-center text-center">
-                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
-                                <i class="fas fa-envelope text-3xl text-cyan-400"></i>
-                            </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Email Us</h4>
-                            <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm break-all">techelons@prpotepatilengg.ac.in</a>
-                        </div>
-                    </div>
-
-                    <!-- Phone Card -->
-                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
-                        <div class="flex flex-col items-center text-center">
-                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
-                                <i class="fas fa-phone text-3xl text-cyan-400"></i>
-                            </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Call Us</h4>
-                            <a href="tel:+919960451781" class="text-cyan-400 hover:text-cyan-300 text-sm">+91 99604 51781</a>
-                            <a href="tel:+917387762333" class="text-cyan-400 hover:text-cyan-300 text-sm">+91 73877 62333</a>
-                        </div>
-                    </div>
-
-                    <!-- Location Card -->
-                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
-                        <div class="flex flex-col items-center text-center">
-                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
-                                <i class="fas fa-location-dot text-3xl text-cyan-400"></i>
-                            </div>
-                            <h4 class="text-lg font-bold text-white mb-2">Visit Us</h4>
-                            <p class="text-gray-400 text-sm" id="venue-name"></p>
-                            <p class="text-gray-400 text-xs mt-1" id="venue-address"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Institute Info Card -->
-                <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-cyan-400/30 p-8 rounded-2xl mb-12 shadow-xl">
+                <!-- Primary Contact Info -->
+                <div class="neon-card p-8 md:p-10 mb-12 max-w-4xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-university text-cyan-400 mr-3"></i>
-                                Institute Information
-                            </h3>
-                            <div class="space-y-3">
-                                <div class="flex items-start">
-                                    <i class="fas fa-building text-cyan-400 mt-1 mr-3 text-sm"></i>
-                                    <div>
-                                        <p class="text-white font-semibold">P.R. Pote Patil Educational Group</p>
-                                        <p class="text-gray-400 text-sm">An Autonomous Institute</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-award text-cyan-400 mt-1 mr-3 text-sm"></i>
-                                    <p class="text-gray-400 text-sm">Accredited with NAAC A++ Grade</p>
-                                </div>
-                                <div class="flex items-start">
-                                    <i class="fas fa-map-marker-alt text-cyan-400 mt-1 mr-3 text-sm"></i>
-                                    <p class="text-gray-400 text-sm">Pote Patil Road, Kathora, Amravati - 444602, Maharashtra, India</p>
+                        
+                        <!-- Email & Phone -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                                    <i class="fas fa-envelope text-cyan-400 mr-2"></i>
+                                    Email
+                                </h3>
+                                <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors break-all">
+                                    techelons@prpotepatilengg.ac.in
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                                    <i class="fas fa-phone text-cyan-400 mr-2"></i>
+                                    Phone
+                                </h3>
+                                <div class="space-y-2">
+                                    <a href="tel:+919960451781" class="block text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                                        +91 99604 51781
+                                    </a>
+                                    <a href="tel:+917387762333" class="block text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                                        +91 73877 62333
+                                    </a>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Location & Website -->
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                                    <i class="fas fa-location-dot text-cyan-400 mr-2"></i>
+                                    Venue
+                                </h3>
+                                <p class="text-gray-300 text-base font-medium mb-1" id="venue-name"></p>
+                                <p class="text-gray-400 text-sm" id="venue-address"></p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
+                                    <i class="fas fa-globe text-cyan-400 mr-2"></i>
+                                    Website
+                                </h3>
+                                <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                                    prpotepatilengg.ac.in
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Institute Info -->
+                <div class="neon-card p-6 md:p-8 mb-12 max-w-4xl mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                         <div>
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
-                                <i class="fas fa-link text-cyan-400 mr-3"></i>
-                                Quick Links
-                            </h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center">
-                                    <i class="fas fa-globe text-cyan-400 mr-3 text-sm"></i>
-                                    <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-sm">www.prpotepatilengg.ac.in</a>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-envelope text-cyan-400 mr-3 text-sm"></i>
-                                    <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm">techelons@prpotepatilengg.ac.in</a>
-                                </div>
-                            </div>
-                            <div class="mt-6">
-                                <h4 class="text-white font-semibold mb-3 text-sm">Follow Us</h4>
-                                <div class="flex space-x-4">
-                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Facebook">
-                                        <i class="fab fa-facebook text-cyan-400 text-lg"></i>
-                                    </a>
-                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Instagram">
-                                        <i class="fab fa-instagram text-cyan-400 text-lg"></i>
-                                    </a>
-                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="LinkedIn">
-                                        <i class="fab fa-linkedin text-cyan-400 text-lg"></i>
-                                    </a>
-                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Twitter">
-                                        <i class="fab fa-twitter text-cyan-400 text-lg"></i>
-                                    </a>
-                                </div>
-                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">P.R. Pote Patil Educational Group</h3>
+                            <p class="text-gray-400 text-sm">An Autonomous Institute • NAAC A++ Grade</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Facebook" aria-label="Facebook">
+                                <i class="fab fa-facebook text-cyan-400"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Instagram" aria-label="Instagram">
+                                <i class="fab fa-instagram text-cyan-400"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin text-cyan-400"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Twitter" aria-label="Twitter">
+                                <i class="fab fa-twitter text-cyan-400"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Organizing Committee - Compact Horizontal -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
-                        <span class="text-cyan-400">Organizing Committee</span>
+                <!-- Organizing Committee -->
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+                        <span class="text-cyan-400">Organizing</span> Committee
                     </h3>
-                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-4">
+                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
                     </div>
                 </div>
 
@@ -1234,96 +1895,92 @@
         
     </main>
 
-    <footer class="bg-gray-900 border-t-2 border-cyan-400/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer style="position: relative; background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden;">
+        <!-- Footer Particle Background -->
+        <div id="footerParticleContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" style="position: relative; z-index: 1;">
             <!-- Main Footer Content -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-6">
                 <!-- About Section -->
-                <div class="md:col-span-2">
-                    <h4 class="text-2xl font-bold mb-3 tech-brand"><span class="text-cyan-400" id="footer-event-name"></span></h4>
-                    <p class="text-gray-400 text-sm mb-3" id="footer-group-details"></p>
-                    <p class="text-gray-500 text-xs leading-relaxed mb-4">A National Level Technical Festival showcasing innovation, technology, and talent across Engineering, Pharmacy, and Nursing domains. Join us for competitions, workshops, and networking opportunities.</p>
-                    <div class="flex space-x-3">
-                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Facebook">
-                            <i class="fab fa-facebook text-lg"></i>
+                <div class="md:col-span-5">
+                    <h4 class="text-xl font-bold mb-2" style="color: #fff;"><span id="footer-event-name"></span></h4>
+                    <p class="text-sm mb-3 font-medium" style="color: #94a3b8; font-family: 'JetBrains Mono', monospace;" id="footer-group-details"></p>
+                    <p class="text-xs leading-relaxed mb-4 max-w-md" style="color: #64748b;">A National Level Technical Festival showcasing innovation, technology, and talent across Engineering, Pharmacy, and Nursing domains.</p>
+                    <div class="flex space-x-2">
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Facebook">
+                            <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Instagram">
-                            <i class="fab fa-instagram text-lg"></i>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Instagram">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="LinkedIn">
-                            <i class="fab fa-linkedin text-lg"></i>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Twitter">
-                            <i class="fab fa-twitter text-lg"></i>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Twitter">
+                            <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="YouTube">
-                            <i class="fab fa-youtube text-lg"></i>
+                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="YouTube">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- Quick Links -->
-                <div>
-                    <h5 class="text-white font-bold text-lg mb-4 border-b border-cyan-400/30 pb-2">Quick Links</h5>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>About</a></li>
-                        <li><a href="#competitions" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Competitions</a></li>
-                        <li><a href="#guests" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Special Guests</a></li>
-                        <li><a href="#team" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Our Team</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Contact Us</a></li>
+                <div class="md:col-span-3">
+                    <h5 class="font-semibold text-sm mb-3 uppercase tracking-wide" style="color: #fff; font-family: 'JetBrains Mono', monospace;">Quick Links</h5>
+                    <ul class="space-y-1.5">
+                        <li><a href="#home" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">Home</a></li>
+                        <li><a href="#about" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">About</a></li>
+                        <li><a href="#competitions" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">Competitions</a></li>
+                        <li><a href="#guests" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">Special Guests</a></li>
+                        <li><a href="#team" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">Our Team</a></li>
+                        <li><a href="#contact" class="text-sm transition-colors" style="color: #94a3b8;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#94a3b8'">Contact Us</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Info -->
-                <div>
-                    <h5 class="text-white font-bold text-lg mb-4 border-b border-cyan-400/30 pb-2">Contact Info</h5>
-                    <ul class="space-y-3">
-                        <li class="flex items-start text-gray-400 text-sm">
-                            <i class="fas fa-map-marker-alt text-cyan-400 mt-1 mr-2 text-xs"></i>
-                            <span>Pote Patil Road, Kathora,<br>Amravati - 444602</span>
+                <div class="md:col-span-4">
+                    <h5 class="font-semibold text-sm mb-3 uppercase tracking-wide" style="color: #fff; font-family: 'JetBrains Mono', monospace;">Contact Info</h5>
+                    <ul class="space-y-2">
+                        <li class="text-sm" style="color: #94a3b8;">
+                            <div class="font-medium mb-0.5" style="color: #cbd5e1;">Location</div>
+                            <span class="text-xs" style="color: #64748b;">Pote Patil Road, Kathora, Amravati - 444602</span>
                         </li>
-                        <li class="flex items-center text-gray-400 text-sm">
-                            <i class="fas fa-phone text-cyan-400 mr-2 text-xs"></i>
-                            <a href="tel:+919960451781" class="hover:text-cyan-400 transition-colors">+91 99604 51781</a>
+                        <li class="text-sm" style="color: #94a3b8;">
+                            <div class="font-medium mb-0.5" style="color: #cbd5e1;">Phone</div>
+                            <a href="tel:+919960451781" class="transition-colors text-xs" style="color: #64748b;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#64748b'">+91 99604 51781</a>
                         </li>
-                        <li class="flex items-center text-gray-400 text-sm">
-                            <i class="fas fa-envelope text-cyan-400 mr-2 text-xs"></i>
-                            <a href="mailto:techelons@prpotepatilengg.ac.in" class="hover:text-cyan-400 transition-colors break-all">techelons@prpotepatilengg.ac.in</a>
+                        <li class="text-sm" style="color: #94a3b8;">
+                            <div class="font-medium mb-0.5" style="color: #cbd5e1;">Email</div>
+                            <a href="mailto:techelons@prpotepatilengg.ac.in" class="transition-colors text-xs break-all" style="color: #64748b;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#64748b'">techelons@prpotepatilengg.ac.in</a>
                         </li>
-                        <li class="flex items-center text-gray-400 text-sm">
-                            <i class="fas fa-globe text-cyan-400 mr-2 text-xs"></i>
-                            <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="hover:text-cyan-400 transition-colors">prpotepatilengg.ac.in</a>
+                        <li class="text-sm" style="color: #94a3b8;">
+                            <div class="font-medium mb-0.5" style="color: #cbd5e1;">Website</div>
+                            <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="transition-colors text-xs" style="color: #64748b;" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color='#64748b'">prpotepatilengg.ac.in</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
-            <div class="pt-8 border-t border-cyan-400/30">
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <p class="text-gray-400 text-xs text-center md:text-left">
-                        &copy; 2026 <span class="text-cyan-400 font-semibold">TECHELONS'26</span>. All Rights Reserved. 
-                        <span class="text-gray-500">|</span> 
-                        <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="hover:text-cyan-400 transition-colors">P.R. Pote Patil Educational Group, Amravati</a>
-                    </p>
-                    <div class="flex items-center space-x-4 text-xs text-gray-500">
-                        <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
-                        <span>|</span>
-                        <a href="#" class="hover:text-cyan-400 transition-colors">Terms & Conditions</a>
-                    </div>
-                </div>
+            <div class="pt-6" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                <p class="text-center text-xs" style="color: #64748b; font-family: 'JetBrains Mono', monospace;">
+                    &copy; 2026 <span style="color: #00d4ff; font-weight: 600;">TECHELONS'26</span> • Think Beyond Technology • P.R. Pote Patil Educational Group, Amravati
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Setup mobile menu immediately (not dependent on data)
+            setupMobileMenu();
+            
             if (renderWebsite()) { // Check if data loading was successful
-                setupMobileMenu();
                 setupScrollSpy();
                 setupDragScroll();
-                startAutoScroll(); // Start automatic scrolling for guest images
+                startGuestsAutoScroll(); // Start automatic scrolling for guest gallery
             }
         });
 
@@ -1368,43 +2025,37 @@
             const logoSrc = e.logo || "https://cdn-icons-png.flaticon.com/512/2916/2916315.png";
             const category = e.category || "Event";
             eventsContainer.innerHTML += `
-                <div class="neon-card p-5 rounded-xl group cursor-pointer hover:shadow-medium transition-all duration-300">
-                <img src="${imgSrc}" class="rounded-lg mb-3 w-full h-40 object-cover">
-                
-                <!-- EVENT LOGO -->
-                <div class="flex justify-center mb-3">
-                  <div class="relative group">
-                    <div
-                      class="absolute inset-0 rounded-xl blur-lg opacity-20 
-                      bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 
-                      group-hover:opacity-40 transition-all duration-300">
-                    </div>
-
-                    <div
-                      class="relative w-16 h-16 rounded-xl 
-                      bg-gray-800/80 backdrop-blur-sm flex items-center justify-center 
-                      border border-cyan-400/30 
-                      group-hover:scale-105 group-hover:border-cyan-400/60 transition-all duration-300">
-                      
-                      <img src="${logoSrc}" alt="Event Logo"
-                        class="w-10 h-10 object-contain" />
-                    </div>
-                  </div>
+                <div class="neon-card p-6 rounded-xl group transition-all duration-400" onclick="openEventModal('${e.title}','${e.desc}','${e.date}')">
+                <!-- Image with Overlay -->
+                <div class="relative rounded-xl mb-4 overflow-hidden">
+                  <img src="${imgSrc}" class="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-110">
+                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
                 </div>
                 
                 <!-- Category Badge -->
-                <div class="flex justify-center mb-2">
-                    <span class="category-badge text-xs px-3 py-1 rounded-full font-semibold bg-cyan-400/20 text-cyan-400 border border-cyan-400/30">
+                <div class="flex justify-center mb-3">
+                    <span class="text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.4);">
                         ${category}
                     </span>
                 </div>
                 
-                <h4 class="text-lg font-bold text-white mb-1 tech-brand text-center">${e.title}</h4>
-                <p class="text-gray-400 mb-2 text-center text-xs">${e.date}</p>
-                <button onclick="openEventModal('${e.title}','${e.desc}','${e.date}')"
-                    class="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white text-sm font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
-                    View Details
-                </button>
+                <!-- Title -->
+                <h4 class="text-xl font-black text-white mb-2 tech-brand text-center group-hover:text-cyan-400 transition-colors duration-300" style="letter-spacing: 0.02em;">${e.title}</h4>
+                
+                <!-- Date -->
+                <div class="flex items-center justify-center gap-2 mb-4 text-gray-400 text-sm">
+                  <i class="fas fa-calendar-alt text-cyan-400"></i>
+                  <p>${e.date}</p>
+                </div>
+                
+                <!-- CTA Button with Hover Hint -->
+                <div class="relative">
+                  <button
+                    class="w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-xl group-hover:shadow-cyan-400/40 group-hover:-translate-y-1">
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
+                    <span>View Details</span>
+                  </button>
+                </div>
                 </div>
             `;
             });
@@ -1497,15 +2148,21 @@
             const button = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('mobile-menu');
             
+            if (!button || !menu) return;
+            
             button.addEventListener('click', () => {
-                const isExpanded = button.getAttribute('aria-expanded') === 'true' || false;
-                button.setAttribute('aria-expanded', !isExpanded);
-                menu.classList.toggle('hidden');
+                const isOpen = menu.classList.contains('show');
+                menu.classList.toggle('show');
+                button.classList.toggle('open');
+                button.setAttribute('aria-expanded', !isOpen);
             });
             
-            menu.querySelectorAll('a').forEach(link => {
+            // Close mobile menu when clicking on a link
+            const mobileLinks = menu.querySelectorAll('.mobile-nav-link');
+            mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    menu.classList.add('hidden');
+                    menu.classList.remove('show');
+                    button.classList.remove('open');
                     button.setAttribute('aria-expanded', 'false');
                 });
             });
@@ -1540,85 +2197,427 @@
             });
         }
 
-        // --- Guest Images Carousel Scroll ---
-        function scrollGuestImages(direction) {
-            const container = document.getElementById('guestScroll');
-            const scrollAmount = 410; // One image width (392px) + gap
+        // --- Guest Gallery Carousel ---
+        let currentGuestIndex = 0;
+        let guestsAutoScrollInterval;
+        let isGuestsAutoScrollPaused = false;
+        const GUESTS_SCROLL_INTERVAL = 4000; // 4 seconds between auto-scrolls
+
+        function scrollGuestsGallery(direction) {
+            const track = document.getElementById('guestsGalleryTrack');
+            const cards = track.querySelectorAll('.guest-card');
+            const totalCards = cards.length;
+            
+            // Determine visible cards based on screen size
+            const screenWidth = window.innerWidth;
+            let visibleCards = 2;
+            if (screenWidth <= 640) visibleCards = 1;
+            
+            const maxIndex = Math.max(0, totalCards - visibleCards);
             
             // Pause auto-scroll when user clicks arrows
-            pauseAutoScroll();
+            pauseGuestsAutoScroll();
             
             if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                currentGuestIndex = Math.max(0, currentGuestIndex - 1);
             } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                currentGuestIndex = Math.min(maxIndex, currentGuestIndex + 1);
             }
             
-            // Resume after 3 seconds
-            resumeAutoScroll();
-        }
-
-        // --- Drag to Scroll Functionality ---
-        function setupDragScroll() {
-            const slider = document.getElementById('guestScroll');
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
-                slider.style.cursor = 'grabbing';
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-
-            slider.addEventListener('mouseleave', () => {
-                isDown = false;
-                slider.style.cursor = 'grab';
-            });
-
-            slider.addEventListener('mouseup', () => {
-                isDown = false;
-                slider.style.cursor = 'grab';
-            });
-
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                slider.scrollLeft = scrollLeft - walk;
-            });
-        }
-
-        // --- Auto Scroll for Guest Images ---
-        let autoScrollInterval;
-        let isAutoScrollPaused = false;
-
-        function startAutoScroll() {
-            const container = document.getElementById('guestScroll');
+            updateGalleryPosition();
             
-            autoScrollInterval = setInterval(() => {
-                if (!isAutoScrollPaused) {
-                    // Check if reached end, reset to start
-                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-                        container.scrollTo({ left: 0, behavior: 'smooth' });
-                    } else {
-                        container.scrollBy({ left: 1, behavior: 'auto' });
+            // Resume after 5 seconds
+            resumeGuestsAutoScroll();
+        }
+
+        function updateGalleryPosition() {
+            const track = document.getElementById('guestsGalleryTrack');
+            const cards = track.querySelectorAll('.guest-card');
+            
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 24; // Gap between cards
+            const offset = -(currentGuestIndex * (cardWidth + gap));
+            
+            track.style.transform = `translateX(${offset}px)`;
+        }
+
+        function startGuestsAutoScroll() {
+            guestsAutoScrollInterval = setInterval(() => {
+                if (!isGuestsAutoScrollPaused) {
+                    const track = document.getElementById('guestsGalleryTrack');
+                    const cards = track.querySelectorAll('.guest-card');
+                    const totalCards = cards.length;
+                    
+                    // Determine visible cards based on screen size
+                    const screenWidth = window.innerWidth;
+                    let visibleCards = 2;
+                    if (screenWidth <= 640) visibleCards = 1;
+                    
+                    const maxIndex = Math.max(0, totalCards - visibleCards);
+                    
+                    // Move to next set of images
+                    currentGuestIndex++;
+                    
+                    // Loop back to start when reaching the end
+                    if (currentGuestIndex > maxIndex) {
+                        currentGuestIndex = 0;
                     }
+                    
+                    updateGalleryPosition();
                 }
-            }, 10);
+            }, GUESTS_SCROLL_INTERVAL);
         }
 
-        function pauseAutoScroll() {
-            isAutoScrollPaused = true;
+        function pauseGuestsAutoScroll() {
+            isGuestsAutoScrollPaused = true;
         }
 
-        function resumeAutoScroll() {
+        function resumeGuestsAutoScroll() {
             setTimeout(() => {
-                isAutoScrollPaused = false;
-            }, 3000); // Resume after 3 seconds
+                isGuestsAutoScrollPaused = false;
+            }, 5000); // Resume after 5 seconds
         }
+
+        // Update gallery position on window resize
+        window.addEventListener('resize', () => {
+            updateGalleryPosition();
+        });
+
+        // --- Legacy function kept for compatibility ---
+        function setupDragScroll() {
+            // No longer needed but kept to avoid errors
+        }
+        
+        // --- Three.js Interactive Hero Background ---
+        function initThreeHero() {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas || typeof THREE === 'undefined') return;
+            
+            // Check for reduced motion and mobile
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const isMobile = window.innerWidth < 768;
+            
+            if (prefersReducedMotion) {
+                canvas.style.display = 'none';
+                return;
+            }
+            
+            // Three.js setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: !isMobile });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
+            camera.position.z = 50;
+            
+            // Mouse position tracking
+            const mouse = { x: 0, y: 0 };
+            const targetRotation = { x: 0, y: 0 };
+            const currentRotation = { x: 0, y: 0 };
+            
+            // Particle system
+            const particleCount = isMobile ? 40 : 100;
+            const particles = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const velocities = [];
+            
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                positions[i] = (Math.random() - 0.5) * 100;
+                positions[i + 1] = (Math.random() - 0.5) * 100;
+                positions[i + 2] = (Math.random() - 0.5) * 50;
+                
+                velocities.push({
+                    x: (Math.random() - 0.5) * 0.015,
+                    y: (Math.random() - 0.5) * 0.015,
+                    z: (Math.random() - 0.5) * 0.015
+                });
+            }
+            
+            particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x00d4ff,
+                size: isMobile ? 1.2 : 1.8,
+                transparent: true,
+                opacity: 0.4,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+            
+            // Connection lines
+            const lineMaterial = new THREE.LineBasicMaterial({
+                color: 0x00d4ff,
+                transparent: true,
+                opacity: 0.1,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const lineGeometry = new THREE.BufferGeometry();
+            const lineSegments = new THREE.LineSegments(lineGeometry, lineMaterial);
+            if (!isMobile) scene.add(lineSegments);
+            
+            // Mouse move handler
+            function onMouseMove(event) {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                targetRotation.y = mouse.x * 0.3;
+                targetRotation.x = mouse.y * 0.3;
+            }
+            
+            // Scroll handler for subtle depth effect
+            function onScroll() {
+                const scrollY = window.scrollY;
+                const heroHeight = document.getElementById('hero').offsetHeight;
+                const scrollPercent = Math.min(scrollY / heroHeight, 1);
+                camera.position.z = 50 + (scrollPercent * 10);
+            }
+            
+            if (!isMobile) {
+                window.addEventListener('mousemove', onMouseMove);
+                window.addEventListener('scroll', onScroll);
+            }
+            
+            // Animation loop
+            let animationId;
+            function animate() {
+                animationId = requestAnimationFrame(animate);
+                
+                // Smooth rotation following mouse
+                currentRotation.x += (targetRotation.x - currentRotation.x) * 0.05;
+                currentRotation.y += (targetRotation.y - currentRotation.y) * 0.05;
+                
+                // Update particle positions
+                const positions = particleSystem.geometry.attributes.position.array;
+                for (let i = 0; i < positions.length; i += 3) {
+                    const idx = i / 3;
+                    positions[i] += velocities[idx].x;
+                    positions[i + 1] += velocities[idx].y;
+                    positions[i + 2] += velocities[idx].z;
+                    
+                    // Boundary check with wrapping
+                    if (Math.abs(positions[i]) > 50) velocities[idx].x *= -1;
+                    if (Math.abs(positions[i + 1]) > 50) velocities[idx].y *= -1;
+                    if (Math.abs(positions[i + 2]) > 25) velocities[idx].z *= -1;
+                }
+                
+                particleSystem.geometry.attributes.position.needsUpdate = true;
+                
+                // Update connection lines
+                if (!isMobile) {
+                    const linePositions = [];
+                    for (let i = 0; i < particleCount; i++) {
+                        for (let j = i + 1; j < particleCount; j++) {
+                            const dx = positions[i * 3] - positions[j * 3];
+                            const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+                            const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+                            const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                            
+                            if (distance < 12) {
+                                linePositions.push(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+                                linePositions.push(positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
+                            }
+                        }
+                    }
+                    lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+                }
+                
+                // Apply mouse-influenced rotation
+                particleSystem.rotation.y = currentRotation.y;
+                particleSystem.rotation.x = currentRotation.x;
+                
+                // Base subtle rotation
+                particleSystem.rotation.y += 0.0003;
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Handle resize
+            function onResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            window.addEventListener('resize', onResize);
+            animate();
+            
+            // Cleanup
+            window.addEventListener('beforeunload', () => {
+                cancelAnimationFrame(animationId);
+                if (!isMobile) {
+                    window.removeEventListener('mousemove', onMouseMove);
+                    window.removeEventListener('scroll', onScroll);
+                }
+                window.removeEventListener('resize', onResize);
+                renderer.dispose();
+                particleSystem.geometry.dispose();
+                particleMaterial.dispose();
+                lineMaterial.dispose();
+                lineGeometry.dispose();
+            });
+        }
+        
+        // Initialize Three.js hero background
+        if (typeof THREE !== 'undefined') {
+            initThreeHero();
+        }
+        
+        // --- Subtle Parallax Effect for History Timeline ---
+        function initTimelineParallax() {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) return;
+            
+            const parallaxLayers = document.querySelectorAll('.parallax-layer');
+            const parallaxBg = document.querySelector('.parallax-bg');
+            
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const historySection = document.getElementById('history');
+                
+                if (!historySection) return;
+                
+                const sectionTop = historySection.offsetTop;
+                const sectionHeight = historySection.offsetHeight;
+                const windowHeight = window.innerHeight;
+                
+                // Only apply parallax when section is in view
+                if (scrolled + windowHeight > sectionTop && scrolled < sectionTop + sectionHeight) {
+                    const relativeScroll = scrolled - sectionTop + windowHeight;
+                    
+                    // Background parallax
+                    if (parallaxBg) {
+                        const bgSpeed = 0.3;
+                        parallaxBg.style.transform = `translateY(${relativeScroll * bgSpeed * -0.1}px)`;
+                    }
+                    
+                    // Layer parallax
+                    parallaxLayers.forEach((layer, index) => {
+                        const speed = parseFloat(layer.dataset.speed) || 0.5;
+                        const yPos = (relativeScroll - (windowHeight * index * 0.2)) * speed * 0.05;
+                        layer.style.transform = `translateY(${yPos}px)`;
+                    });
+                }
+            }
+            
+            // Throttle scroll handler for performance
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', onScroll, { passive: true });
+            updateParallax(); // Initial call
+        }
+        
+        // Initialize timeline parallax
+        initTimelineParallax();
+
+        // Universal Particle Animation System (Coding Club Inspired)
+        class ParticleSystem {
+            constructor(containerId, config = {}) {
+                this.container = document.getElementById(containerId);
+                if (!this.container) return;
+                
+                this.particles = [];
+                this.maxParticles = config.maxParticles || 30;
+                this.color = config.color || '#00d4ff';
+                this.speed = config.speed || 0.3;
+                this.size = config.size || 2;
+                this.init();
+            }
+
+            init() {
+                // Create initial particles
+                for (let i = 0; i < this.maxParticles; i++) {
+                    this.createParticle();
+                }
+                this.animate();
+            }
+
+            createParticle() {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = this.size + 'px';
+                particle.style.height = this.size + 'px';
+                particle.style.background = this.color;
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.pointerEvents = 'none';
+                
+                const particleData = {
+                    element: particle,
+                    x: Math.random() * 100,
+                    y: Math.random() * 100,
+                    speedX: (Math.random() - 0.5) * this.speed,
+                    speedY: (Math.random() - 0.5) * this.speed,
+                    phase: Math.random() * Math.PI * 2
+                };
+                
+                particle.style.left = particleData.x + '%';
+                particle.style.top = particleData.y + '%';
+                
+                this.container.appendChild(particle);
+                this.particles.push(particleData);
+            }
+
+            animate() {
+                this.particles.forEach((particle, index) => {
+                    // Update position
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    // Wrap around edges
+                    if (particle.x < 0) particle.x = 100;
+                    if (particle.x > 100) particle.x = 0;
+                    if (particle.y < 0) particle.y = 100;
+                    if (particle.y > 100) particle.y = 0;
+                    
+                    // Update element
+                    particle.element.style.left = particle.x + '%';
+                    particle.element.style.top = particle.y + '%';
+                    
+                    // Pulse effect
+                    const pulse = Math.sin(Date.now() * 0.001 + particle.phase) * 0.3 + 0.5;
+                    particle.element.style.opacity = pulse * 0.6;
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize particles for all sections with different themes
+        // Each section has a unique color and speed to match its purpose:
+        // Chief Guest: Cyan (primary brand), moderate speed
+        // Leadership: Purple (secondary brand), slower/dignified
+        // Events: Cyan, faster/energetic
+        // History: Blue, slowest/reflective (includes Distinguished Guests Gallery)
+        // Contact: Cyan, moderate speed
+        // Footer: Cyan, moderate speed
+        
+        // Reduce particle count on mobile for performance and reduced visual noise
+        const isMobile = window.innerWidth < 768;
+        const particleDensity = isMobile ? 0.5 : 1; // 50% particles on mobile
+        
+        const particleSystems = [
+            new ParticleSystem('chiefGuestParticles', { maxParticles: Math.round(35 * particleDensity), color: '#00d4ff', speed: 0.25, size: 2 }),
+            new ParticleSystem('leadershipParticles', { maxParticles: Math.round(30 * particleDensity), color: '#8b5cf6', speed: 0.2, size: 2.5 }),
+            new ParticleSystem('eventsParticles', { maxParticles: Math.round(45 * particleDensity), color: '#00d4ff', speed: 0.35, size: 2 }),
+            new ParticleSystem('historyParticles', { maxParticles: Math.round(30 * particleDensity), color: '#60a5fa', speed: 0.18, size: 2 }),
+            new ParticleSystem('contactParticles', { maxParticles: Math.round(32 * particleDensity), color: '#00d4ff', speed: 0.25, size: 2 }),
+            new ParticleSystem('footerParticleContainer', { maxParticles: Math.round(40 * particleDensity), color: '#00d4ff', speed: 0.3, size: 2 })
+        ];
     </script>
 </body>
 </html>
