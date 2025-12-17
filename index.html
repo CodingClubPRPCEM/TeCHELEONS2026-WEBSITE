@@ -1725,51 +1725,6 @@
           </div>
         </section>
 
-
-<!-- EVENT MODAL - Premium Design -->
-<div id="event-modal"
-  class="fixed inset-0 hidden items-center justify-center bg-black/80 z-50 backdrop-blur-md px-4">
-  <div class="bg-gradient-to-br from-gray-800/95 to-gray-900/95 backdrop-blur-xl p-8 sm:p-10 rounded-3xl max-w-2xl w-full relative shadow-2xl" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(0, 212, 255, 0.15);">
-    
-    <!-- Close Button -->
-    <button onclick="closeEventModal()" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full bg-gray-800/50 text-gray-400 hover:text-white hover:bg-cyan-400/20 hover:border-cyan-400 border border-gray-700 text-xl transition-all duration-300">
-      <i class="fas fa-times"></i>
-    </button>
-
-    <!-- Icon Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3);">
-      <i class="fas fa-calendar-check" style="color: #00d4ff; font-size: 0.875rem;"></i>
-      <span class="text-xs font-bold tracking-wider uppercase" style="color: #00d4ff;">Event Details</span>
-    </div>
-
-    <!-- Title -->
-    <h3 id="modal-title" class="text-3xl md:text-4xl font-black mb-4 tech-brand" style="color: #00d4ff; letter-spacing: 0.02em; line-height: 1.2;"></h3>
-    
-    <!-- Date Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg mb-6" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3);">
-      <i class="fas fa-clock text-cyan-400 text-sm"></i>
-      <p id="modal-date" class="text-white text-sm font-semibold"></p>
-    </div>
-    
-    <!-- Description -->
-    <p id="modal-desc" class="text-gray-300 text-base leading-relaxed mb-8"></p>
-
-    <!-- Divider -->
-    <div class="w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent mb-8"></div>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row gap-3">
-      <button class="flex-1 py-4 px-6 text-base rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold hover:shadow-2xl hover:shadow-cyan-400/40 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-2">
-        <i class="fas fa-rocket"></i>
-        <span>Register Now</span>
-      </button>
-      <button onclick="closeEventModal()" class="sm:w-auto px-6 py-4 text-base rounded-xl bg-gray-800/50 border-2 border-gray-700 text-gray-300 font-semibold hover:bg-gray-700/50 hover:border-gray-600 hover:text-white transition-all duration-300">
-        Close
-      </button>
-    </div>
-  </div>
-</div>
-
         <section id="history" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
             <!-- Animated Particle Background -->
             <div class="section-particles" id="historyParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
@@ -2485,105 +2440,152 @@
             }
         });
 
-        let eventData = null; 
-
-        const competitionsList = [
-            // Engineering Events
-            { stream: "engineering", title: "Hackathon 26", date: "19 Jan · 9 AM – 9 PM", desc: "36-hour national-level innovation sprint. Build, code, and pitch your revolutionary tech solution.", image: "images/Flyer.jpeg", category: "Coding" },
-            { stream: "engineering", title: "Project Exhibition", date: "20 Jan · 10 AM", desc: "Showcase your innovative models and research projects. Display cutting-edge engineering solutions.", category: "Technical" },
-            { stream: "engineering", title: "Codethon", date: "20 Jan · 11 AM", desc: "Speed programming contest. Solve complex algorithms and optimize code under time pressure.", category: "Coding" },
-            { stream: "engineering", title: "Circuit Mania", date: "20 Jan · 2 PM", desc: "Electronics circuit debugging and design competition. Test your hardware skills.", category: "Technical" },
-            { stream: "engineering", title: "CAD War", date: "20 Jan · 3 PM", desc: "3D modeling and design competition. Create stunning technical designs.", category: "Design" },
-            { stream: "engineering", title: "Robo Race", date: "21 Jan · 10 AM", desc: "Autonomous robot racing challenge. Navigate obstacles with your smart bot.", category: "Robotics" },
-            
-            // Nursing Events
-            { stream: "nursing", title: "Nursing Skillathon", date: "20 Jan · 10 AM", desc: "Assessment of critical clinical nursing skills. Demonstrate excellence in patient care.", category: "Clinical" },
-            { stream: "nursing", title: "Case Study Presentation", date: "20 Jan · 2 PM", desc: "Present and analyze complex medical case studies. Showcase diagnostic abilities.", category: "Academic" },
-            { stream: "nursing", title: "Health Quiz", date: "21 Jan · 11 AM", desc: "Medical knowledge competition covering anatomy, pharmacology, and patient care.", category: "Quiz" },
-            
-            // Pharmacy & BAMS Events
-            { stream: "pharmacy", title: "Pharma Quiz", date: "20 Jan · 11 AM", desc: "Comprehensive pharmaceutical sciences quiz. Test your drug knowledge.", category: "Quiz" },
-            { stream: "pharmacy", title: "Drug Formulation", date: "20 Jan · 3 PM", desc: "Practical pharmaceutical formulation challenge. Create effective drug delivery systems.", category: "Practical" },
-            { stream: "pharmacy", title: "Ayurveda Expo", date: "21 Jan · 10 AM", desc: "Traditional medicine showcase. Present ancient healing techniques and herbal remedies.", category: "Exhibition" },
-            
-            // General/Common Events
-            { stream: "common", title: "Business Pitch", date: "20 Jan · 1 PM", desc: "Pitch your startup idea to industry experts. Win funding and mentorship opportunities.", category: "Entrepreneurship" },
-            { stream: "common", title: "Debate Face-off", date: "20 Jan · 2 PM", desc: "Formal debate competition. Argue compelling perspectives on contemporary issues.", category: "Oratory" },
-            { stream: "common", title: "Elocution", date: "20 Jan · 4 PM", desc: "Public speaking contest. Deliver powerful speeches that inspire and persuade.", category: "Oratory" },
-            { stream: "common", title: "Poster Presentation", date: "21 Jan · 10 AM", desc: "Visual academic summary. Create impactful research posters.", category: "Academic" },
-            { stream: "common", title: "Best Out of Waste", date: "21 Jan · 11 AM", desc: "Creative eco-friendly art challenge. Transform waste into wonderful creations.", category: "Creative" },
-            { stream: "common", title: "Talent Battle", date: "21 Jan · 3 PM", desc: "Gaming expo and on-spot talent events. Show your unique skills.", category: "Entertainment" },
-            { stream: "common", title: "Anveshan", date: "21 Jan · 2 PM", desc: "Research showcase and exposition. Present groundbreaking research findings.", category: "Research" },
-            { stream: "common", title: "Struck-Fast", date: "21 Jan · 4 PM", desc: "Quick-thinking and crisis management challenge. Make decisions under pressure.", category: "Management" }
-        ];
-
+        let eventData = null;
+        let allEvents = []; // Store all events from API
+        let activeStream = "engineering"; // Currently active filter
         const eventsContainer = document.getElementById("events-container");
+        const filterButtons = document.querySelectorAll(".filter-button");
 
-        function renderCompetitions(stream = "engineering") {
-            eventsContainer.innerHTML = "";
-            competitionsList.filter(e => e.stream === stream).forEach(e => {
-            const imgSrc = e.image || "https://source.unsplash.com/400x250/?technology,event";
-            const logoSrc = e.logo || "https://cdn-icons-png.flaticon.com/512/2916/2916315.png";
-            const category = e.category || "Event";
-            eventsContainer.innerHTML += `
-                <div class="neon-card p-6 rounded-xl group transition-all duration-400" onclick="openEventModal('${e.title}','${e.desc}','${e.date}')">
-                <!-- Image with Overlay -->
-                <div class="relative rounded-xl mb-4 overflow-hidden">
-                  <img src="${imgSrc}" class="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-110">
-                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-                </div>
+        // Fetch events from API on page load
+        async function fetchEvents() {
+            try {
+                const response = await fetch("https://techelons-api.coding-club.workers.dev/events", {
+                    cache: "no-store"
+                });
                 
-                <!-- Category Badge -->
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Handle array response and normalize stream to lowercase
+                allEvents = Array.isArray(data)
+                    ? data.map(e => ({
+                        ...e,
+                        stream: e.stream?.toLowerCase()
+                    }))
+                    : [];
+                
+                console.log('Events loaded successfully:', allEvents.length);
+                
+                // Apply initial filter
+                applyFilter();
+                
+            } catch (error) {
+                console.error('Failed to fetch events:', error);
+                showEventError('Unable to load events. Please refresh the page.');
+            }
+        }
+
+        // Apply filter to events based on active stream
+        function applyFilter() {
+            const filteredEvents = allEvents.filter(event => 
+                event.stream === activeStream
+            );
+            renderEvents(filteredEvents);
+        }
+
+        // Render events from filtered array
+        function renderEvents(events) {
+            eventsContainer.innerHTML = "";
+            
+            // Handle empty results
+            if (events.length === 0) {
+                eventsContainer.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <p class="text-gray-400 text-lg">No events found for this category.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Render each event card
+            events.forEach(event => {
+                const card = createEventCard(event);
+                eventsContainer.appendChild(card);
+            });
+            
+            // Add smooth fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('#events-container > div').forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 50);
+                });
+            }, 10);
+        }
+
+        // Create event card element
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = 'neon-card p-6 rounded-xl group transition-all duration-400 cursor-pointer';
+            
+            card.innerHTML = `
+                <!-- Type Badge -->
                 <div class="flex justify-center mb-3">
-                    <span class="text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.4);">
-                        ${category}
+                    <span class="category-badge text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider" 
+                          style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.4);">
+                        ${event.type || event.stream}
                     </span>
                 </div>
                 
                 <!-- Title -->
-                <h4 class="text-xl font-black text-white mb-2 tech-brand text-center group-hover:text-cyan-400 transition-colors duration-300" style="letter-spacing: 0.02em;">${e.title}</h4>
+                <h3 class="text-xl font-black text-white mb-2 tech-brand text-center group-hover:text-cyan-400 transition-colors duration-300" 
+                    style="letter-spacing: 0.02em;">
+                    ${event.event_name}
+                </h3>
                 
-                <!-- Date -->
-                <div class="flex items-center justify-center gap-2 mb-4 text-gray-400 text-sm">
-                  <i class="fas fa-calendar-alt text-cyan-400"></i>
-                  <p>${e.date}</p>
-                </div>
+                <!-- Short Description -->
+                <p class="text-gray-400 text-sm text-center mb-4">
+                    ${event.short_desc || 'Details coming soon'}
+                </p>
                 
-                <!-- CTA Button with Hover Hint -->
-                <div class="relative">
-                  <button
-                    class="w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-xl group-hover:shadow-cyan-400/40 group-hover:-translate-y-1">
+                <!-- CTA Button -->
+                <button class="gradient-button w-full py-3 px-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl text-white text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-xl group-hover:shadow-cyan-400/40 group-hover:-translate-y-1">
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform duration-300"></i>
                     <span>View Details</span>
-                  </button>
-                </div>
+                </button>
+            `;
+            
+            // Add click handler to redirect
+            card.addEventListener('click', () => {
+                window.location.href = `event-details.html?id=${event.event_id}`;
+            });
+            
+            return card;
+        }
+
+        // Show error message in events container
+        function showEventError(message) {
+            eventsContainer.innerHTML = `
+                <div class="col-span-full text-center py-12">
+                    <i class="fas fa-exclamation-circle text-red-400 text-4xl mb-4"></i>
+                    <p class="text-red-400 text-lg font-semibold mb-2">Error Loading Events</p>
+                    <p class="text-gray-400">${message}</p>
                 </div>
             `;
+        }
+
+        // Setup filter buttons
+        filterButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(b => b.classList.remove("active"));
+                // Add active class to clicked button
+                btn.classList.add("active");
+                // Update active stream and apply filter
+                activeStream = btn.dataset.stream.toLowerCase();
+                applyFilter();
             });
-        }
-
-        function openEventModal(title, desc, date) {
-            document.getElementById("modal-title").innerText = title;
-            document.getElementById("modal-desc").innerText = desc;
-            document.getElementById("modal-date").innerText = date;
-            document.getElementById("event-modal").classList.remove("hidden");
-            document.getElementById("event-modal").classList.add("flex");
-        }
-
-        function closeEventModal() {
-            document.getElementById("event-modal").classList.add("hidden");
-        }
-
-        document.querySelectorAll(".filter-button").forEach(btn => {
-            btn.onclick = () => {
-            document.querySelector(".filter-button.active")?.classList.remove("active");
-            btn.classList.add("active");
-            renderCompetitions(btn.dataset.stream);
-            };
         });
 
-        // Initial render
-        renderCompetitions();
+        // Fetch events when page loads
+        fetchEvents();
         
         function renderWebsite() {
             try {
