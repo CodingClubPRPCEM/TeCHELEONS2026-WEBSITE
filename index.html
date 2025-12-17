@@ -1307,9 +1307,13 @@
                 transition: none !important;
             }
             
-            /* Reduce blur for performance */
-            [class*="blur-"] {
-                filter: blur(20px) !important;
+            /* Safe blur optimization - targeted reduction only */
+            .blur-3xl {
+                filter: blur(24px) !important;
+            }
+            
+            .blur-2xl {
+                filter: blur(16px) !important;
             }
         }
     </style>
@@ -1413,9 +1417,12 @@
         }
     </script>
 
-    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-lg" style="border-bottom: 1px solid rgba(0, 212, 255, 0.15); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between" style="height: 64px;">
+    <nav class="fixed top-0 left-0 right-0 z-50 h-16" style="border-bottom: 1px solid rgba(0, 212, 255, 0.15);">
+        <!-- Separate blur background layer -->
+        <div class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg" style="z-index: -1;"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" style="z-index: 1;">
+            <div class="flex items-center justify-between h-full">
                 <div class="flex items-center">
                     <a href="#hero" class="tech-brand" style="text-decoration: none;">
                         <span class="gradient-text" id="nav-event-name"></span>
@@ -1449,7 +1456,7 @@
         </div>
     </nav>
     
-    <main>
+    <main class="pt-16">
         
         <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden" style="min-height: 100vh; min-height: 100dvh; border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
             <!-- Background Video - Optimized for Performance -->
@@ -1508,7 +1515,7 @@
             </div>
         </section>
         
-<section id="chief-guest" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+<section id="chief-guest" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1); isolation: isolate;">
     <!-- Animated Particle Background -->
     <div class="section-particles" id="chiefGuestParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
     <!-- Spotlight Background Effect -->
