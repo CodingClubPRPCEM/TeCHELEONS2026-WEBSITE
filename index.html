@@ -8,6 +8,30 @@
     <meta name="theme-color" content="#0a0f1c">
     <title>TECHELONS'26 - National Technical Festival | P.R. Pote Patil Educational Group, Amravati</title>
     
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    
+    <!-- Open Graph Meta Tags for Social Media & Search -->
+    <meta property="og:title" content="TECHELONS'26 - National Technical Festival">
+    <meta property="og:description" content="Join 5000+ participants at TECHELONS'26, a National Level Technical Festival by P.R. Pote Patil Educational Group, Amravati. Engineering, Pharmacy, and Nursing competitions on Jan 19-20, 2026.">
+    <meta property="og:image" content="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <meta property="og:url" content="https://www.prpotepatilengg.ac.in">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TECHELONS'26">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TECHELONS'26 - National Technical Festival">
+    <meta name="twitter:description" content="Join 5000+ participants at TECHELONS'26, a National Level Technical Festival by P.R. Pote Patil Educational Group, Amravati.">
+    <meta name="twitter:image" content="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="P.R. Pote Patil Educational Group">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.prpotepatilengg.ac.in">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Three.js deferred for performance - loads after critical content -->
@@ -531,7 +555,7 @@
         
         /* Hero Layering */
         #hero-video {
-            opacity: 0.4;
+            display: none;
         }
         
         #hero-canvas {
@@ -547,8 +571,86 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 15, 28, 0.7) 0%, rgba(10, 15, 28, 0.85) 100%);
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%);
+            z-index: 0;
+        }
+        
+        /* Animated Events Background */
+        .events-bg-animation {
+            position: absolute;
+            inset: 0;
             z-index: 1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+        
+        .event-text-float {
+            position: absolute;
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #00d4ff;
+            text-transform: uppercase;
+            animation: float-horizontal 30s linear infinite;
+        }
+        
+        .event-text-float.highlight {
+            font-size: 3rem;
+            color: #8b5cf6;
+            opacity: 0.4;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+        }
+        
+        .event-text-float:nth-child(1) { top: 5%; animation-duration: 40s; font-size: 2.5rem; }
+        .event-text-float:nth-child(2) { top: 15%; animation-duration: 35s; animation-delay: -5s; font-size: 1.8rem; }
+        .event-text-float:nth-child(3) { top: 25%; animation-duration: 45s; animation-delay: -10s; font-size: 2rem; }
+        .event-text-float:nth-child(4) { top: 35%; animation-duration: 38s; animation-delay: -15s; font-size: 1.5rem; }
+        .event-text-float:nth-child(5) { top: 45%; animation-duration: 42s; animation-delay: -20s; font-size: 2.2rem; }
+        .event-text-float:nth-child(6) { top: 55%; animation-duration: 36s; animation-delay: -25s; font-size: 1.7rem; }
+        .event-text-float:nth-child(7) { top: 65%; animation-duration: 44s; animation-delay: -30s; font-size: 1.9rem; }
+        .event-text-float:nth-child(8) { top: 75%; animation-duration: 39s; animation-delay: -35s; font-size: 1.6rem; }
+        .event-text-float:nth-child(9) { top: 85%; animation-duration: 41s; animation-delay: -40s; font-size: 2.1rem; }
+        .event-text-float:nth-child(10) { top: 95%; animation-duration: 37s; animation-delay: -45s; font-size: 1.8rem; }
+        
+        @keyframes float-horizontal {
+            0% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .event-text-float {
+                font-size: 1rem !important;
+            }
+            .event-text-float.highlight {
+                font-size: 1.5rem !important;
+            }
+            .events-bg-animation {
+                opacity: 0.1;
+            }
+            /* Adjusted animations on mobile for smoother experience */
+            .event-text-float:nth-child(1) { animation-duration: 43s !important; }
+            .event-text-float:nth-child(2) { animation-duration: 40s !important; }
+            .event-text-float:nth-child(3) { animation-duration: 46s !important; }
+            .event-text-float:nth-child(4) { animation-duration: 41s !important; }
+            .event-text-float:nth-child(5) { animation-duration: 45s !important; }
+            .event-text-float:nth-child(6) { animation-duration: 42s !important; }
+            .event-text-float:nth-child(7) { animation-duration: 47s !important; }
+            .event-text-float:nth-child(8) { animation-duration: 44s !important; }
+            .event-text-float:nth-child(9) { animation-duration: 43s !important; }
+            .event-text-float:nth-child(10) { animation-duration: 41s !important; }
         }
         
         .hero-content {
@@ -1332,7 +1434,7 @@
     <script id="event-data-json" type="application/json">
         {
           "event_details": {
-            "name": "TECHELONS'26",
+            "name": "TeCHELONS'26",
             "tagline": "Step to Pioneer",
             "date": "19 - 20 JAN 2026",
             "institute": "P.R.Pote Patil Educational Group, Amravati",
@@ -1423,7 +1525,8 @@
         
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" style="z-index: 1;">
             <div class="flex items-center justify-between h-full">
-                <div class="flex items-center">
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="Institute Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                     <a href="#hero" class="tech-brand" style="text-decoration: none;">
                         <span class="gradient-text" id="nav-event-name"></span>
                     </a>
@@ -1459,14 +1562,22 @@
     <main class="pt-16">
         
         <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden" style="min-height: 100vh; min-height: 100dvh; border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
-            <!-- Background Video - Optimized for Performance -->
-            <!-- TODO: Convert video to WebP/MP4 under 2MB, use poster image for instant load -->
-            <video id="hero-video" autoplay muted loop playsinline preload="none" class="absolute inset-0 w-full h-full object-cover z-0" aria-hidden="true">
-                <source src="Untitled design.mp4" type="video/mp4">
-            </video>
-            
             <!-- Dark overlay -->
             <div class="hero-overlay"></div>
+            
+            <!-- Animated Events Background -->
+            <div class="events-bg-animation">
+                <div class="event-text-float highlight">🚀 HACKATHON 2026 • CODING CLUB PRPCEM</div>
+                <div class="event-text-float">Agriculture Exhibition 2026 • Anveshan 2026</div>
+                <div class="event-text-float">Business Plan 2026 • CAD WAR 2026</div>
+                <div class="event-text-float">Circuit Mania 2026 • Codethon 26</div>
+                <div class="event-text-float highlight">💻 Datathon 2026 • Debate Face-off</div>
+                <div class="event-text-float">Elocution 2026 • Gaming Zone 2026</div>
+                <div class="event-text-float">On spot Event • Expo • Gamified Tech Zone</div>
+                <div class="event-text-float">Struct-Fast 2026 • Best out of Waste</div>
+                <div class="event-text-float highlight">🏆 Nursing Skillathon • Ideathon 2026</div>
+                <div class="event-text-float">Financial Stability Workshop • Poster Presentation • Project Exhibition</div>
+            </div>
             
             <!-- Three.js Canvas -->
             <canvas id="hero-canvas"></canvas>
@@ -1631,7 +1742,7 @@
                     <!-- Profile Image with Ring -->
                     <div class="relative inline-block mb-6">
                         <div class="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full"></div>
-                        <img src="https://prpotepatilengg.ac.in/assets/images/mentor.png" alt="Late Ramchandraji Pote Patil - Mentor and Founder" width="144" height="144" loading="lazy" class="relative w-36 h-36 rounded-full mx-auto object-cover transition-transform duration-300 hover:scale-105" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);">
+                        <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766132163/mentor_b37c972357.png" alt="Late Ramchandraji Pote Patil - Mentor and Founder" width="144" height="144" loading="lazy" class="relative w-36 h-36 rounded-full mx-auto object-cover transition-transform duration-300 hover:scale-105" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);">
                     </div>
                     
                     <!-- Name -->
@@ -1660,7 +1771,7 @@
             <div class="neon-card p-8 text-center transition-all duration-300 hover:transform hover:-translate-y-1" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
                 <!-- Profile Image -->
                 <div class="relative inline-block mb-6">
-                    <img src="https://prpotepatilengg.ac.in/assets/images/chairman.png" alt="Shri. Pravin Pote Patil - Chairman" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
+                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766132147/chairman_17f57cc1cc.png" alt="Shri. Pravin Pote Patil - Chairman" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
                 </div>
                 
                 <!-- Name -->
@@ -1674,7 +1785,7 @@
             <div class="neon-card p-8 text-center transition-all duration-300 hover:transform hover:-translate-y-1" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
                 <!-- Profile Image -->
                 <div class="relative inline-block mb-6">
-                    <img src="https://prpotepatilengg.ac.in/assets/images/vice-chairman.png" alt="Shri. Shreyash Dada Pote Patil - Vice Chairman" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
+                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766132147/vice_chairman_b33257fd35.png" alt="Shri. Shreyash Dada Pote Patil - Vice Chairman" width="128" height="128" loading="lazy" class="w-32 h-32 rounded-full mx-auto object-cover" style="border: 3px solid rgba(0, 212, 255, 0.4); box-shadow: 0 4px 16px rgba(0, 212, 255, 0.15);">
                 </div>
                 
                 <!-- Name -->
@@ -2172,9 +2283,24 @@
                     </h3>
                     
                     <!-- Website Makers in One Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto">
                         
                         <!-- Website Maker 1 -->
+                        <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
+                            <div class="mb-2">
+                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
+                                    <i class="fas fa-code text-lg" style="color: #f59e0b;"></i>
+                                </div>
+                            </div>
+                            <h5 class="text-sm font-bold text-white mb-1">Karamveer Singh Oberoi</h5>
+                            <p class="text-xs text-gray-400 mb-2">Web Developer</p>
+                            <div class="flex items-center justify-center gap-1" style="color: #f59e0b;">
+                                <i class="fas fa-phone text-xs"></i>
+                                <span class="text-xs font-medium">+91 3456756656</span>
+                            </div>
+                        </div>
+
+                        <!-- Website Maker 2 -->
                         <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
                             <div class="mb-2">
                                 <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
@@ -2189,18 +2315,18 @@
                             </div>
                         </div>
 
-                        <!-- Website Maker 2 -->
+                        <!-- Website Maker 3 -->
                         <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
                             <div class="mb-2">
                                 <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
                                     <i class="fas fa-code text-lg" style="color: #f59e0b;"></i>
                                 </div>
                             </div>
-                            <h5 class="text-sm font-bold text-white mb-1">Karamveer Singh Oberoi</h5>
+                            <h5 class="text-sm font-bold text-white mb-1">Ayush Chainani</h5>
                             <p class="text-xs text-gray-400 mb-2">Web Developer</p>
                             <div class="flex items-center justify-center gap-1" style="color: #f59e0b;">
                                 <i class="fas fa-phone text-xs"></i>
-                                <span class="text-xs font-medium">+91 3456756656</span>
+                                <span class="text-xs font-medium">+91 1234567890</span>
                             </div>
                         </div>
                         
