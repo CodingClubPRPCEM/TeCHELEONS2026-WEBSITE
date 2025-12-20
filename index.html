@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TECHELONS'26 is a National Level Technical Festival by P.R. Pote Patil Educational Group, Amravati. Join 5000+ participants across Engineering, Pharmacy, and Nursing domains. Register now for competitions, workshops, and networking opportunities.">
-    <meta name="keywords" content="TECHELONS 2026, technical fest, engineering competition, pharmacy events, nursing competition, Amravati, PRPCEM, hackathon, college fest">
+    <meta name="description" content="TECHELONS'26 - India's Premier National Technical Festival | Jan 19-20, 2026 | Join 5000+ students across Engineering, Pharmacy & Nursing | Win prizes worth lakhs | Hackathons, Workshops, Competitions | P.R. Pote Patil Educational Group, Amravati">
+    <meta name="keywords" content="TECHELONS 2026, technical fest, engineering competition, pharmacy events, nursing competition, Amravati, PRPCEM, hackathon, college fest, Maharashtra technical festival, national level competition, student innovation, tech events India, Vidarbha engineering fest">
+    <meta name="geo.region" content="IN-MH">
+    <meta name="geo.placename" content="Amravati, Maharashtra">
+    <meta name="geo.position" content="20.9374;77.7796">
+    <meta name="ICBM" content="20.9374, 77.7796">
     <meta name="theme-color" content="#0a0f1c">
     <title>TECHELONS'26 - National Technical Festival | P.R. Pote Patil Educational Group, Amravati</title>
     
@@ -14,12 +18,16 @@
     <link rel="apple-touch-icon" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
     
     <!-- Open Graph Meta Tags for Social Media & Search -->
-    <meta property="og:title" content="TECHELONS'26 - National Technical Festival">
-    <meta property="og:description" content="Join 5000+ participants at TECHELONS'26, a National Level Technical Festival by P.R. Pote Patil Educational Group, Amravati. Engineering, Pharmacy, and Nursing competitions on Jan 19-20, 2026.">
+    <meta property="og:title" content="TECHELONS'26 - National Technical Festival | Jan 19-20, 2026">
+    <meta property="og:description" content="🎯 Join 5000+ students at India's premier tech fest! 💡 Hackathons, Workshops & Competitions 🏆 Win prizes worth lakhs | Engineering, Pharmacy & Nursing domains | P.R. Pote Patil Educational Group, Amravati">
     <meta property="og:image" content="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="TECHELONS'26 - National Technical Festival Logo">
     <meta property="og:url" content="https://www.prpotepatilengg.ac.in">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="TECHELONS'26">
+    <meta property="og:locale" content="en_IN">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -911,6 +919,8 @@
             position: relative;
             overflow: hidden;
             padding: 0 60px;
+            contain: layout style;
+            will-change: auto;
         }
 
         .guests-gallery-track {
@@ -925,8 +935,10 @@
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 2px solid rgba(0, 212, 255, 0.2);
+            contain: layout style paint;
+            will-change: auto;
         }
 
         .guest-card:hover {
@@ -941,6 +953,8 @@
             aspect-ratio: 401 / 246;
             object-fit: cover;
             display: block;
+            content-visibility: auto;
+            contain-intrinsic-size: 401px 246px;
         }
 
         .guest-name-overlay {
@@ -1027,6 +1041,12 @@
                 flex: 0 0 calc(100vw - 120px);
                 max-width: 400px;
             }
+            
+            /* Disable expensive hover effects on mobile */
+            .guest-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
 
             .gallery-nav-btn {
                 width: 42px;
@@ -1036,6 +1056,11 @@
 
             .guest-name-overlay {
                 padding: 16px 12px 12px;
+                transform: translateY(0);
+            }
+            
+            .guest-card:hover .guest-name-overlay {
+                transform: translateY(0);
             }
         }
 
@@ -1419,6 +1444,149 @@
             }
         }
     </style>
+    
+    <!-- JSON-LD Structured Data for Rich Search Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "TECHELONS'26",
+      "description": "National Level Technical Festival organized by P.R. Pote Patil Educational Group featuring competitions, workshops, and networking opportunities across Engineering, Pharmacy, and Nursing domains.",
+      "startDate": "2026-01-19T09:00:00+05:30",
+      "endDate": "2026-01-20T18:00:00+05:30",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "P.R. Pote Patil College of Engineering & Management",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Pote Patil Road, Kathora",
+          "addressLocality": "Amravati",
+          "addressRegion": "Maharashtra",
+          "postalCode": "444602",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "20.9374",
+          "longitude": "77.7796"
+        }
+      },
+      "image": [
+        "https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png"
+      ],
+      "organizer": {
+        "@type": "EducationalOrganization",
+        "name": "P.R. Pote Patil Educational Group",
+        "url": "https://www.prpotepatilengg.ac.in",
+        "logo": "https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Pote Patil Road, Kathora",
+          "addressLocality": "Amravati",
+          "addressRegion": "Maharashtra",
+          "postalCode": "444602",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9960451781",
+          "contactType": "Event Coordinator",
+          "email": "techelons@prpotepatilengg.ac.in",
+          "availableLanguage": ["English", "Hindi", "Marathi"]
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.prpotepatilengg.ac.in",
+        "price": "0",
+        "priceCurrency": "INR",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-12-01T00:00:00+05:30"
+      },
+      "performer": {
+        "@type": "Person",
+        "name": "Dr. Atharv Khawale",
+        "jobTitle": "Chief Guest",
+        "description": "Youngest Microsoft MVP & CEO of Code Solution"
+      },
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Engineering, Pharmacy, and Nursing students"
+      },
+      "keywords": "technical festival, engineering competition, hackathon, pharmacy events, nursing competition, student innovation, Amravati, Maharashtra"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "P.R. Pote Patil College of Engineering & Management",
+      "alternateName": "PRPCEM",
+      "url": "https://www.prpotepatilengg.ac.in",
+      "logo": "https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png",
+      "description": "Premier educational institution in Amravati offering Engineering, Pharmacy, and Nursing programs. Host of TECHELONS'26 National Technical Festival.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pote Patil Road, Kathora",
+        "addressLocality": "Amravati",
+        "addressRegion": "Maharashtra",
+        "postalCode": "444602",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "20.9374",
+        "longitude": "77.7796"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-9960451781",
+        "contactType": "Admissions",
+        "email": "techelons@prpotepatilengg.ac.in",
+        "availableLanguage": ["English", "Hindi", "Marathi"]
+      },
+      "sameAs": [
+        "https://www.prpotepatilengg.ac.in"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.prpotepatilengg.ac.in"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "TECHELONS'26",
+          "item": "https://www.prpotepatilengg.ac.in#hero"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Events",
+          "item": "https://www.prpotepatilengg.ac.in#events"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://www.prpotepatilengg.ac.in#contact"
+        }
+      ]
+    }
+    </script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans loading">
 
@@ -1526,8 +1694,8 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full" style="z-index: 1;">
             <div class="flex items-center justify-between h-full">
                 <div class="flex items-center gap-2 sm:gap-3">
-                    <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="Institute Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
-                    <a href="#hero" class="tech-brand" style="text-decoration: none;">
+                    <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="P.R. Pote Patil Educational Group - TECHELONS'26 National Technical Festival Logo" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" width="40" height="40" loading="eager" />
+                    <a href="#hero" class="tech-brand" style="text-decoration: none;" aria-label="TECHELONS'26 Home">
                         <span class="gradient-text" id="nav-event-name"></span>
                     </a>
                 </div>
@@ -1655,14 +1823,12 @@
             <!-- Glow Effect Behind Card -->
             <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-cyan-400/20 blur-3xl rounded-3xl transform scale-105"></div>
             
-            <div class="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-10 md:p-14 text-center shadow-2xl transform transition-all duration-500 hover:scale-[1.02]" style="border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15), 0 0 100px rgba(139, 92, 246, 0.1);">
+            <div class="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-10 md:p-14 text-center shadow-2xl transform transition-all duration-500 hover:scale-[1.02]" style="border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15), 0 0 100px rgba(139, 92, 246, 0.1);" itemscope itemtype="https://schema.org/Person">
 
-                <!-- Stage Icon -->
+                <!-- Chief Guest Image -->
                 <div class="relative inline-block mb-8">
                     <div class="absolute inset-0 bg-cyan-400/20 blur-2xl rounded-full"></div>
-                    <div class="relative w-24 h-24 mx-auto bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-full flex items-center justify-center" style="border: 2px solid rgba(0, 212, 255, 0.4);">
-                        <i class="fas fa-award text-5xl text-cyan-400"></i>
-                    </div>
+                    <img src="https://karamveer2648.github.io/MahaPowerImagesStoring/atharv.jpg" alt="Dr. Atharv Khawale - Chief Guest TECHELONS'26, Youngest Microsoft MVP and CEO of Code Solution" class="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);" width="160" height="160" loading="eager" itemprop="image">
                 </div>
 
                 <!-- Guest Name - Hero Typography -->
@@ -2213,9 +2379,9 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
                         
                         <!-- Faculty Coordinator 1 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);" itemscope itemtype="https://schema.org/Person">
                             <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154415/large_tech_4_4fb79f15e0.jpg" alt="Prof. P.B. Ingle" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);">
+                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154415/large_tech_4_4fb79f15e0.jpg" alt="Prof. P.B. Ingle - Faculty Coordinator TECHELONS'26, P.R. Pote Patil Educational Group" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
                             </div>
                             <h5 class="text-base font-bold text-white mb-1">Prof. P.B. Ingle </h5>
                             <p class="text-xs text-gray-400 mb-2">Faculty Co-ordinator</p>
@@ -2226,9 +2392,9 @@
                         </div>
 
                         <!-- Faculty Coordinator 2 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);" itemscope itemtype="https://schema.org/Person">
                             <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154583/tech_1_spvein.png" alt="Prof. K.K. Nagariya" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);">
+                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154583/tech_1_spvein.png" alt="Prof. K.K. Nagariya - Faculty Coordinator TECHELONS'26, P.R. Pote Patil Educational Group" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
                             </div>
                             <h5 class="text-base font-bold text-white mb-1">Prof. K.K. Nagariya</h5>
                             <p class="text-xs text-gray-400 mb-2">Faculty Co-ordinator</p>
@@ -2239,9 +2405,9 @@
                         </div>
                         
                         <!-- Student Coordinator 1 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);" itemscope itemtype="https://schema.org/Person">
                             <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154584/tech_2_gmni0d.jpg" alt="Prayas Bansod" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);">
+                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154584/tech_2_gmni0d.jpg" alt="Prayas Bansod - Student Coordinator TECHELONS'26, Convenor" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
                             </div>
                             <h5 class="text-base font-bold text-white mb-1">Prayas Bansod</h5>
                             <p class="text-xs text-gray-400 mb-2">convenors Techelons</p>
@@ -2252,9 +2418,9 @@
                         </div>
 
                         <!-- Student Coordinator 2 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);" itemscope itemtype="https://schema.org/Person">
                             <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154582/tech_3_is8yjk.jpg" alt="Ankita Niwalkar" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);">
+                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154582/tech_3_is8yjk.jpg" alt="Ankita Niwalkar - Student Coordinator TECHELONS'26" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
                             </div>
                             <h5 class="text-base font-bold text-white mb-1">Ankita Niwalkar</h5>
                             <p class="text-xs text-gray-400 mb-2">Student Coordinator</p>
