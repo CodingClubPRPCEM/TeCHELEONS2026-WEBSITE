@@ -1,5 +1,5 @@
 // ============================================================================
-// TECHELONS'26 - Event Detail Page
+// TeCHELEONS'26 - Event Detail Page
 // ============================================================================
 
 const API_BASE_URL = 'https://techelons-api.coding-club.workers.dev';
@@ -113,7 +113,7 @@ async function fetchAPI(endpoint) {
 // ============================================================================
 
 function renderEventHeader(event) {
-    document.title = `${event.event_name} - TECHELONS'26`;
+    document.title = `${event.event_name} - TeCHELEONS'26`;
     
     eventTitle.className = 'text-3xl md:text-4xl lg:text-5xl font-black text-white tech-brand';
     eventTitle.innerHTML = `<span class="gradient-text">${event.event_name}</span>`;
