@@ -1,0 +1,13 @@
+# robots.txt for techelons.in
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private sections if any
+# Disallow: /admin/
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://techelons.in/sitemap.xml
