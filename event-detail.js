@@ -113,15 +113,40 @@ async function fetchAPI(endpoint) {
 // ============================================================================
 
 function renderEventHeader(event) {
-    document.title = `${event.event_name} - TeCHELEONS'26`;
+    // Update page title and meta tags for SEO
+    document.title = `${event.event_name} | TeCHELONS'26 | Technical Festival Events`;
+    
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && event.short_desc) {
+        metaDesc.content = event.short_desc.substring(0, 160);
+    }
+    
+    // Update Open Graph tags for social sharing
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    const ogImage = document.querySelector('meta[property="og:image"]');
+    
+    if (ogTitle) ogTitle.content = `${event.event_name} | TeCHELONS'26`;
+    if (ogDesc && event.short_desc) ogDesc.content = event.short_desc.substring(0, 160);
+    if (ogImage && event.poster_url) ogImage.content = event.poster_url;
+    
+    // Update Twitter Card tags
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    const twitterImage = document.querySelector('meta[name="twitter:image"]');
+    
+    if (twitterTitle) twitterTitle.content = `${event.event_name} | TeCHELONS'26`;
+    if (twitterDesc && event.short_desc) twitterDesc.content = event.short_desc.substring(0, 160);
+    if (twitterImage && event.poster_url) twitterImage.content = event.poster_url;
     
     eventTitle.className = 'text-3xl md:text-4xl lg:text-5xl font-black text-white tech-brand';
-    eventTitle.innerHTML = `<span class="gradient-text">${event.event_name}</span>`;
+    eventTitle.innerHTML = `<h1><span class="gradient-text">${event.event_name}</span></h1>`;
     
     const metaItems = [
-        event.stream ? `<i class="fas fa-layer-group mr-1"></i>${event.stream}` : '',
-        event.mode ? `<i class="fas fa-signal mr-1"></i>${event.mode}` : '',
-        event.duration_hrs ? `<i class="fas fa-clock mr-1"></i>${event.duration_hrs} hours` : ''
+        event.stream ? `<i class="fas fa-layer-group mr-1" aria-hidden="true"></i>${event.stream}` : '',
+        event.mode ? `<i class="fas fa-signal mr-1" aria-hidden="true"></i>${event.mode}` : '',
+        event.duration_hrs ? `<i class="fas fa-clock mr-1" aria-hidden="true"></i>${event.duration_hrs} hours` : ''
     ].filter(Boolean);
     
     eventMeta.className = 'flex flex-wrap gap-4 text-gray-400 text-sm';
@@ -133,15 +158,19 @@ function renderEventHeader(event) {
 function renderEventPoster(event) {
     if (event && event.poster_url) {
         eventPoster.className = 'w-full h-auto rounded-lg overflow-hidden';
+        const altText = `${event.event_name} poster - TeCHELONS'26 ${event.stream || ''} event`;
         eventPoster.innerHTML = `
             <img src="${event.poster_url}" 
-                 alt="Event Poster" 
+                 alt="${altText}" 
                  class="w-full h-auto object-contain"
-                 onerror="this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-96 bg-gray-800 rounded-lg\\'><i class=\\'fas fa-image text-6xl text-gray-600\\'></i></div>'">
+                 loading="eager"
+                 width="800"
+                 height="1200"
+                 onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-96 bg-gray-800 rounded-lg\'><i class=\'fas fa-image text-6xl text-gray-600\' aria-hidden=\'true\'></i><span class=\'sr-only\'>Poster not available</span></div>'">
         `;
     } else {
         eventPoster.className = 'flex items-center justify-center h-96 bg-gray-800 rounded-lg';
-        eventPoster.innerHTML = '<i class="fas fa-image text-6xl text-gray-600"></i>';
+        eventPoster.innerHTML = '<i class="fas fa-image text-6xl text-gray-600" aria-hidden="true"></i><span class="sr-only">Poster not available</span>';
     }
 }
 
@@ -161,15 +190,17 @@ function renderEventDescription(event) {
 function renderRegisterButton(event) {
     if (event.reg_link && event.reg_link.trim() !== '') {
         registerBtn.disabled = false;
+        registerBtn.setAttribute('aria-label', `Register for ${event.event_name}`);
         registerBtn.innerHTML = `
-            <i class="fas fa-user-plus mr-2"></i>
+            <i class="fas fa-user-plus mr-2" aria-hidden="true"></i>
             Register Now
         `;
-        registerBtn.onclick = () => window.open(event.reg_link, '_blank');
+        registerBtn.onclick = () => window.open(event.reg_link, '_blank', 'noopener,noreferrer');
     } else {
         registerBtn.disabled = true;
+        registerBtn.setAttribute('aria-label', 'Registration not yet open');
         registerBtn.innerHTML = `
-            <i class="fas fa-lock mr-2"></i>
+            <i class="fas fa-lock mr-2" aria-hidden="true"></i>
             Registration Not Open
         `;
     }
@@ -183,9 +214,9 @@ function renderAgenda(agendaData) {
             .map(item => `
                 <div class="timeline-item pb-6">
                     <div class="flex items-baseline gap-4 mb-2">
-                        <span class="text-cyan-400 font-bold text-sm">
+                        <time class="text-cyan-400 font-bold text-sm">
                             ${item.start_time}${item.end_time ? ` - ${item.end_time}` : ''}
-                        </span>
+                        </time>
                         <h3 class="text-xl font-bold text-white">${item.title}</h3>
                     </div>
                     ${item.description ? `<p class="text-gray-400 text-sm">${item.description}</p>` : ''}
@@ -202,7 +233,7 @@ function renderRules(rulesData) {
         rulesSection.classList.remove('hidden');
         rulesList.innerHTML = rulesData.map(rule => `
             <li class="flex items-start gap-3">
-                <i class="fas fa-check-circle text-cyan-400 mt-1"></i>
+                <i class="fas fa-check-circle text-cyan-400 mt-1" aria-hidden="true"></i>
                 <span>${rule.rule}</span>
             </li>
         `).join('');
@@ -217,7 +248,7 @@ function renderEligibility(eligibilityData) {
         eligibilitySection.classList.remove('hidden');
         eligibilityList.innerHTML = eligibilityData.map(item => `
             <li class="flex items-start gap-3">
-                <i class="fas fa-user-check text-cyan-400 mt-1"></i>
+                <i class="fas fa-user-check text-cyan-400 mt-1" aria-hidden="true"></i>
                 <span>${item.eligible_for}</span>
             </li>
         `).join('');
@@ -269,12 +300,14 @@ function renderGallery(mediaData) {
         
         if (galleryUrls.length > 0) {
             gallerySection.classList.remove('hidden');
-            galleryGrid.innerHTML = galleryUrls.map(url => `
+            galleryGrid.innerHTML = galleryUrls.map((url, index) => `
                 <div class="neon-card overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300">
                     <img src="${url}" 
-                         alt="Event Gallery" 
+                         alt="Event gallery image ${index + 1} - TeCHELONS'26" 
                          class="w-full h-48 object-cover"
                          loading="lazy"
+                         width="400"
+                         height="300"
                          onerror="this.parentElement.remove()">
                 </div>
             `).join('');
@@ -288,13 +321,13 @@ function renderGallery(mediaData) {
 
 function showEventNotFound() {
     document.querySelector('main').innerHTML = `
-        <div class="max-w-2xl mx-auto px-4 py-20 text-center">
+        <div class="max-w-2xl mx-auto px-4 py-20 text-center" role="alert">
             <div class="neon-card p-12">
-                <i class="fas fa-exclamation-triangle text-6xl text-yellow-500 mb-6"></i>
+                <i class="fas fa-exclamation-triangle text-6xl text-yellow-500 mb-6" aria-hidden="true"></i>
                 <h1 class="text-4xl font-bold text-white mb-4 tech-brand">Event Not Found</h1>
                 <p class="text-gray-400 mb-8">The event you're looking for doesn't exist or has been removed.</p>
-                <a href="index.html" class="gradient-button inline-block">
-                    <i class="fas fa-arrow-left mr-2"></i>
+                <a href="index.html" class="gradient-button inline-block" aria-label="Go back to TeCHELONS'26 homepage">
+                    <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>
                     Back to Home
                 </a>
             </div>

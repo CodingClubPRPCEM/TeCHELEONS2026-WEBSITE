@@ -1820,85 +1820,149 @@
             </div>
         </section>
         
-<section id="chief-guest" class="py-24 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1); isolation: isolate;">
-    <!-- Animated Particle Background -->
-    <div class="section-particles" id="chiefGuestParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
-    <!-- Spotlight Background Effect -->
-    <div class="absolute inset-0 pointer-events-none">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-cyan-400/10 via-cyan-400/5 to-transparent rounded-full blur-3xl"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-purple-500/8 via-transparent to-transparent rounded-full blur-2xl"></div>
+<!-- ==================== CHIEF GUEST SECTION - Premium Compact Design ==================== -->
+<section id="chief-guest" class="relative overflow-hidden py-8 sm:py-10" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.2); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+    
+    <!-- Animated Particles Background -->
+    <div class="section-particles" id="chiefGuestParticles" style="position: absolute; inset: 0; pointer-events: none; z-index: 1;"></div>
+    
+    <!-- Gradient Overlays -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" style="z-index: 2;">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
     </div>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-        <!-- Header -->
-        <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
-                <i class="fas fa-microphone-alt" style="color: #00d4ff; font-size: 0.875rem;"></i>
-                <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Keynote Speaker</span>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative" style="z-index: 10;">
+        
+        <!-- Enhanced Header -->
+        <div class="text-center mb-6 md:mb-8">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-3" style="background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);">
+                <i class="fas fa-award text-cyan-400 text-sm"></i>
+                <span class="font-bold tracking-wider uppercase text-cyan-400 text-xs sm:text-sm">Distinguished Speaker</span>
             </div>
-
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-4 tech-brand" style="line-height: 1.1;">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tech-brand" style="line-height: 1.1; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);">
                 <span class="title-premium">Chief Guest</span>
             </h2>
-            <p class="text-gray-400 text-lg mt-3 font-medium">TeCHELONS'26</p>
         </div>
-
-        <!-- Elevated Card with Spotlight -->
-        <div class="relative max-w-3xl mx-auto">
-            <!-- Glow Effect Behind Card -->
-            <div class="absolute inset-0 bg-gradient-to-r from-cyan-400/20 via-purple-500/20 to-cyan-400/20 blur-3xl rounded-3xl transform scale-105"></div>
-            
-            <div class="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-xl rounded-3xl p-10 md:p-14 text-center shadow-2xl transform transition-all duration-500 hover:scale-[1.02]" style="border: 2px solid rgba(0, 212, 255, 0.3); box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15), 0 0 100px rgba(139, 92, 246, 0.1);" itemscope itemtype="https://schema.org/Person">
-
-                <!-- Chief Guest Image -->
-                <div class="relative inline-block mb-8">
-                    <div class="absolute inset-0 bg-cyan-400/20 blur-2xl rounded-full"></div>
-                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766657646/ias_swapnil_wankhede_mc8yfc.jpg" alt="Dr. Atharv Khawale - Chief Guest TECHELONS'26, Youngest Microsoft MVP and CEO of Code Solution" class="relative w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full object-cover" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);" width="160" height="160" loading="eager" itemprop="image">
-                </div>
-
-                <!-- Guest Name - Hero Typography (rank above, name below) -->
-                <h3 class="text-4xl md:text-5xl lg:text-6xl font-black mb-2 tech-brand" style="line-height: 1; letter-spacing: 0.02em;">
-                    <span id="guest-rank" class="title-premium">IAS</span>
-                    <span id="guest-name">Swapnil Wankhade</span>
-                </h3>
-
-                <!-- Designation - Secondary Emphasis -->
-                <p class="text-xl md:text-2xl font-bold mb-8" style="color: #00d4ff; letter-spacing: 0.05em;" id="guest-designation">Indian Administrative Service (IAS) Officer</p>
-
-                <!-- Divider -->
-                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mb-8 rounded-full"></div>
-
-                <!-- Speech Topic - Featured -->
-                <div class="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 mb-8" style="border: 1px solid rgba(0, 212, 255, 0.2);">
-                    <div class="flex items-center justify-center gap-3 mb-3">
-                        <i class="fas fa-quote-left text-cyan-400 text-lg"></i>
-                        <span class="text-xs font-bold tracking-widest uppercase text-cyan-400">Keynote Address</span>
-                        <i class="fas fa-quote-right text-cyan-400 text-lg"></i>
+        
+        <!-- Premium Compact Layout -->
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-[300px_1fr] gap-5 lg:gap-8 items-start">
+                
+                <!-- LEFT: Enhanced Image Card -->
+                <div class="relative order-1 mx-auto w-full max-w-xs" itemscope itemtype="https://schema.org/Person">
+                    <div class="neon-card p-4 sm:p-5 relative overflow-hidden group transition-all duration-300 hover:shadow-2xl" style="background: rgba(10, 15, 28, 0.6); backdrop-filter: blur(10px);">
+                        
+                        <!-- Premium IAS Badge -->
+                        <div class="absolute top-3 right-3 z-20 bg-gradient-to-r from-cyan-400 via-cyan-500 to-blue-500 px-4 py-1.5 rounded-lg shadow-xl transform transition-transform duration-300 group-hover:scale-105" style="box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);">
+                            <span id="guest-rank" class="text-lg sm:text-xl font-black text-white tracking-wide" style="text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">IAS</span>
+                        </div>
+                        
+                        <!-- Enhanced Image Container -->
+                        <div class="relative mx-auto mb-3" style="max-width: 260px;">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 rounded-2xl blur-2xl transform scale-95 group-hover:scale-100 transition-transform duration-500"></div>
+                            
+                            <div class="relative rounded-2xl overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02]" style="aspect-ratio: 1; border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);">
+                                <img 
+                                    src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766657646/ias_swapnil_wankhede_mc8yfc.jpg" 
+                                    alt="IAS Swapnil Wankhade - District Collector of Datia, Chief Guest at TeCHELONS'26" 
+                                    class="w-full h-full object-cover"
+                                    width="260" 
+                                    height="260" 
+                                    loading="eager"
+                                    itemprop="image">
+                                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Enhanced Verification Badge -->
+                        <div class="flex items-center justify-center">
+                            <div class="flex items-center gap-2 bg-cyan-400/20 border border-cyan-400/40 rounded-lg px-3 py-1.5 transition-all duration-300 hover:bg-cyan-400/25" style="box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);">
+                                <i class="fas fa-check-circle text-cyan-400 text-sm"></i>
+                                <span class="text-xs font-bold tracking-wide text-cyan-400">VERIFIED SPEAKER</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-lg md:text-xl font-semibold text-white leading-relaxed" style="letter-spacing: 0.01em;" id="guest-speech-topic">Pioneering the Next Decade in Technology</p>
                 </div>
-
-                <!-- Welcome Message -->
-                <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-                    <span class="text-cyan-400 font-semibold">We are honored</span> to welcome a <span class="text-white font-semibold">visionary leader</span> who will inspire the next generation of <span class="text-cyan-400 font-semibold">pioneers and innovators</span> at TECHELONS'26.
-                </p>
-
-                <!-- Accent Decorations -->
-                <div class="flex justify-center gap-2 mt-8">
-                    <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                    <div class="w-2 h-2 rounded-full bg-purple-500 animate-pulse" style="animation-delay: 0.2s;"></div>
-                    <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" style="animation-delay: 0.4s;"></div>
+                
+                <!-- RIGHT: Enhanced Info Grid -->
+                <div class="relative order-2">
+                    <div class="space-y-4">
+                        
+                        <!-- Name Card - Enhanced -->
+                        <div class="neon-card p-4 sm:p-5 transition-all duration-300 hover:shadow-xl" style="background: rgba(10, 15, 28, 0.6); backdrop-filter: blur(10px);">
+                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-white tech-brand leading-tight mb-2" style="text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">
+                                <span id="guest-name" class="gradient-text">Swapnil Wankhade</span>
+                            </h3>
+                            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                                <div class="flex items-center gap-2 text-cyan-400">
+                                    <i class="fas fa-id-badge text-base"></i>
+                                    <p id="guest-designation" class="text-sm sm:text-base font-bold">District Collector, Datia (MP)</p>
+                                </div>
+                                <div class="flex items-center gap-1.5 text-gray-400 text-xs sm:text-sm">
+                                    <i class="fas fa-map-marker-alt text-cyan-400/70 text-xs"></i>
+                                    <span>From Amravati, Maharashtra</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Combined Card: Background, Keynote & Notable Work -->
+                        <div class="neon-card p-4 sm:p-5 transition-all duration-300 hover:shadow-xl" style="background: rgba(10, 15, 28, 0.5); backdrop-filter: blur(10px);">
+                            <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
+                                
+                                <!-- Background Section -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-cyan-400/20 flex items-center justify-center">
+                                            <i class="fas fa-graduation-cap text-cyan-400"></i>
+                                        </div>
+                                        <h4 class="text-xs font-bold uppercase text-cyan-400 tracking-wider">Background</h4>
+                                    </div>
+                                    <div class="space-y-1.5 text-gray-300 text-xs sm:text-sm">
+                                        <p class="flex items-baseline gap-1.5"><span class="text-cyan-400 font-bold">•</span> <span class="text-white font-semibold">B.E.</span> Electronics & Telecom</p>
+                                        <p class="flex items-baseline gap-1.5"><span class="text-cyan-400 font-bold">•</span> Former <span class="text-white font-semibold">Software Engineer</span></p>
+                                        <p class="flex items-baseline gap-1.5"><span class="text-cyan-400 font-bold">•</span> UPSC <span class="text-white font-semibold">AIR 132</span> (2015-16)</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Keynote Section -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-cyan-400/20 flex items-center justify-center">
+                                            <i class="fas fa-microphone-alt text-cyan-400"></i>
+                                        </div>
+                                        <span class="text-xs font-bold uppercase text-cyan-400 tracking-wider">Keynote</span>
+                                    </div>
+                                    <p id="guest-speech-topic" class="text-xs sm:text-sm font-bold text-white leading-snug" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);">
+                                        "Technology & Innovation in Public Administration"
+                                    </p>
+                                </div>
+                                
+                                <!-- Notable Work Section -->
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-purple-400/20 flex items-center justify-center">
+                                            <i class="fas fa-lightbulb text-purple-400"></i>
+                                        </div>
+                                        <span class="text-xs font-bold uppercase text-purple-400 tracking-wider">Notable Work</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm font-semibold text-white leading-snug">
+                                        Innovative <span class="text-purple-400">"Bus Changing Rooms"</span> Initiative
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Stage Floor Line -->
-        <div class="mt-12 max-w-4xl mx-auto">
-            <div class="h-1 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent rounded-full"></div>
-        </div>
+        
     </div>
 </section>
+
+<!-- ==================== END CHIEF GUEST SECTION ==================== -->
 
 
        <section id="leadership" class="py-20 text-center relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1);">
