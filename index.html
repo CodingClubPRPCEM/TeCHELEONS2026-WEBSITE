@@ -2418,51 +2418,64 @@
             </div>
         </section>
 
-        <section id="contact" class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-top: 1px solid rgba(0, 212, 255, 0.1); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+        <section id="contact" class="py-16 sm:py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.2); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
             <!-- Animated Particle Background -->
             <div class="section-particles" id="contactParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 1;">
+            
+            <!-- Gradient Overlays -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none" style="z-index: 1;">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 2;">
                 
-                <!-- Header -->
-                <div class="text-center mb-16">
-                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px);">
-                        <i class="fas fa-envelope" style="color: #00d4ff; font-size: 0.875rem;"></i>
-                        <span class="text-sm font-bold tracking-wider uppercase" style="color: #00d4ff;">Get in Touch</span>
+                <!-- Enhanced Header -->
+                <div class="text-center mb-12 md:mb-16">
+                    <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-4" style="background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.4); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);">
+                        <i class="fas fa-envelope text-cyan-400 text-sm"></i>
+                        <span class="text-sm font-bold tracking-wider uppercase text-cyan-400">Get in Touch</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-white mt-4 tech-brand" style="letter-spacing: 0.02em;">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tech-brand" style="letter-spacing: 0.02em; text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);">
                         Contact <span class="title-premium">Us</span>
                     </h2>
-                    <p class="text-base text-gray-400 mt-5 max-w-2xl mx-auto">
-                        Questions about TECHELONS'26? We're here to help
+                    <p class="text-sm sm:text-base text-gray-400 mt-4 max-w-2xl mx-auto">
+                        Questions about TeCHELONS'26? We're here to help you innovate
                     </p>
                 </div>
 
-                <!-- Primary Contact Info -->
-                <div class="neon-card p-8 md:p-10 mb-12 max-w-4xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Primary Contact Info - Enhanced & Combined -->
+                <div class="neon-card p-6 sm:p-8 md:p-10 mb-12 max-w-5xl mx-auto transition-all duration-300 hover:shadow-2xl" style="background: rgba(10, 15, 28, 0.6); backdrop-filter: blur(10px);">
+                    
+                    <!-- Contact Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 pb-8 border-b border-cyan-400/20">
                         
                         <!-- Email & Phone -->
                         <div class="space-y-6">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
-                                    <i class="fas fa-envelope text-cyan-400 mr-2"></i>
-                                    Email
-                                </h3>
-                                <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors break-all">
+                            <div class="group/item">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-9 h-9 rounded-lg bg-cyan-400/20 flex items-center justify-center group-hover/item:bg-cyan-400/30 transition-colors">
+                                        <i class="fas fa-envelope text-cyan-400"></i>
+                                    </div>
+                                    <h3 class="text-base sm:text-lg font-bold text-white">Email</h3>
+                                </div>
+                                <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 break-all block hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
                                     techelons@prpotepatilengg.ac.in
                                 </a>
                             </div>
                             
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
-                                    <i class="fas fa-phone text-cyan-400 mr-2"></i>
-                                    Phone
-                                </h3>
+                            <div class="group/item">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-9 h-9 rounded-lg bg-cyan-400/20 flex items-center justify-center group-hover/item:bg-cyan-400/30 transition-colors">
+                                        <i class="fas fa-phone text-cyan-400"></i>
+                                    </div>
+                                    <h3 class="text-base sm:text-lg font-bold text-white">Phone</h3>
+                                </div>
                                 <div class="space-y-2">
-                                    <a href="tel:+919960451781" class="block text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                                    <a href="tel:+919960451781" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
                                         +91 99604 51781
                                     </a>
-                                    <a href="tel:+917387762333" class="block text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                                    <a href="tel:+917387762333" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
                                         +91 73877 62333
                                     </a>
                                 </div>
@@ -2471,176 +2484,208 @@
 
                         <!-- Location & Website -->
                         <div class="space-y-6">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
-                                    <i class="fas fa-location-dot text-cyan-400 mr-2"></i>
-                                    Venue
-                                </h3>
-                                <p class="text-gray-300 text-base font-medium mb-1" id="venue-name">Swami Vivekananda Auditorium</p>
-                                <p class="text-gray-400 text-sm" id="venue-address">Pote Patil Road, Kathora, Amravati -444602</p>
+                            <div class="group/item">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-9 h-9 rounded-lg bg-purple-400/20 flex items-center justify-center group-hover/item:bg-purple-400/30 transition-colors">
+                                        <i class="fas fa-location-dot text-purple-400"></i>
+                                    </div>
+                                    <h3 class="text-base sm:text-lg font-bold text-white">Venue</h3>
+                                </div>
+                                <p class="text-gray-200 text-sm sm:text-base font-semibold mb-1" id="venue-name">Swami Vivekananda Auditorium</p>
+                                <p class="text-gray-400 text-xs sm:text-sm" id="venue-address">Pote Patil Road, Kathora, Amravati - 444602</p>
                             </div>
                             
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-3 flex items-center">
-                                    <i class="fas fa-globe text-cyan-400 mr-2"></i>
-                                    Website
-                                </h3>
-                                <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-base font-medium transition-colors">
+                            <div class="group/item">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-9 h-9 rounded-lg bg-cyan-400/20 flex items-center justify-center group-hover/item:bg-cyan-400/30 transition-colors">
+                                        <i class="fas fa-globe text-cyan-400"></i>
+                                    </div>
+                                    <h3 class="text-base sm:text-lg font-bold text-white">Website</h3>
+                                </div>
+                                <a href="https://www.prpotepatilengg.ac.in" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 inline-flex items-center gap-2 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
                                     prpotepatilengg.ac.in
+                                    <i class="fas fa-external-link-alt text-xs"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Institute Info -->
-                <div class="neon-card p-6 md:p-8 mb-12 max-w-4xl mx-auto">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    
+                    <!-- Institute Info Section -->
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
                         <div>
-                            <h3 class="text-xl font-bold text-white mb-2">P.R. Pote Patil Educational Group</h3>
-                            <p class="text-gray-400 text-sm">An Autonomous Institute • NAAC A++ Grade</p>
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2 gradient-text">P.R. Pote Patil Educational Group</h3>
+                            <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm">
+                                <span class="px-3 py-1 rounded-full font-semibold" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3);">Autonomous Institute</span>
+                                <span class="px-3 py-1 rounded-full font-semibold" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3);">NAAC A++ Grade</span>
+                            </div>
                         </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Facebook" aria-label="Facebook">
+                        <div class="flex gap-2 sm:gap-3">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Facebook" aria-label="Facebook" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
                                 <i class="fab fa-facebook text-cyan-400"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Instagram" aria-label="Instagram">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Instagram" aria-label="Instagram" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
                                 <i class="fab fa-instagram text-cyan-400"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="LinkedIn" aria-label="LinkedIn">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="LinkedIn" aria-label="LinkedIn" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
                                 <i class="fab fa-linkedin text-cyan-400"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-cyan-400/10 hover:bg-cyan-400/20 transition-colors" title="Twitter" aria-label="Twitter">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Twitter" aria-label="Twitter" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
                                 <i class="fab fa-twitter text-cyan-400"></i>
                             </a>
                         </div>
                     </div>
+                    
                 </div>
                 
                 <!-- Organizing Committee -->
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
-                        <span class="text-cyan-400">Organizing</span> Committee
+                <div class="mb-12">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center tech-brand" style="text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">
+                        <span class="gradient-text">Organizing</span> Committee
                     </h3>
-                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
+                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
                     </div>
                 </div>
 
-                <!-- Coordinators Section -->
-                <div class="mt-16">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-12 text-center tech-brand">
-                        <span class="text-cyan-400">Event</span> Coordinators
+                <!-- Coordinators Section - Enhanced -->
+                <div class="mb-12">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-10 text-center tech-brand" style="text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">
+                        <span class="gradient-text">Event</span> Coordinators
                     </h3>
                     
-                    <!-- All Coordinators in One Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+                    <!-- All Coordinators in Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto">
                         
                         <!-- Faculty Coordinator 1 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);" itemscope itemtype="https://schema.org/Person">
-                            <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154415/large_tech_4_4fb79f15e0.jpg" alt="Prof. P.B. Ingle - Faculty Coordinator TECHELONS'26, P.R. Pote Patil Educational Group" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl group" style="background: rgba(10, 15, 28, 0.6); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(10px);" itemscope itemtype="https://schema.org/Person">
+                            <div class="mb-4">
+                                <div class="relative inline-block">
+                                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154415/large_tech_4_4fb79f15e0.jpg" alt="Prof. P.B. Ingle - Faculty Coordinator TeCHELONS'26, P.R. Pote Patil Educational Group" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);" width="80" height="80" loading="lazy" itemprop="image">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-cyan-400 rounded-full flex items-center justify-center border-2 border-gray-900">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="text-base font-bold text-white mb-1">Prof. P.B. Ingle </h5>
-                            <p class="text-xs text-gray-400 mb-2">Faculty Co-ordinator</p>
-                            <div class="flex items-center justify-center gap-2 text-cyan-400">
-                                <i class="fas fa-phone text-xs"></i>
-                                <span class="text-xs font-medium">+919960451781 </span>
+                            <h5 class="text-base sm:text-lg font-bold text-white mb-1">Prof. P.B. Ingle</h5>
+                            <p class="text-xs text-cyan-400 font-semibold mb-3 uppercase tracking-wide">Faculty Coordinator</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-2">
+                                <i class="fas fa-phone text-cyan-400 text-xs"></i>
+                                <span class="text-xs font-medium">+919960451781</span>
                             </div>
                         </div>
 
                         <!-- Faculty Coordinator 2 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(0, 212, 255, 0.25);" itemscope itemtype="https://schema.org/Person">
-                            <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154583/tech_1_spvein.png" alt="Prof. K.K. Nagariya - Faculty Coordinator TECHELONS'26, P.R. Pote Patil Educational Group" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(0, 212, 255, 0.4); box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl group" style="background: rgba(10, 15, 28, 0.6); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(10px);" itemscope itemtype="https://schema.org/Person">
+                            <div class="mb-4">
+                                <div class="relative inline-block">
+                                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154583/tech_1_spvein.png" alt="Prof. K.K. Nagariya - Faculty Coordinator TeCHELONS'26, P.R. Pote Patil Educational Group" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(0, 212, 255, 0.5); box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);" width="80" height="80" loading="lazy" itemprop="image">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-cyan-400 rounded-full flex items-center justify-center border-2 border-gray-900">
+                                        <i class="fas fa-check text-xs text-white"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="text-base font-bold text-white mb-1">Prof. K.K. Nagariya</h5>
-                            <p class="text-xs text-gray-400 mb-2">Faculty Co-ordinator</p>
-                            <div class="flex items-center justify-center gap-2 text-cyan-400">
-                                <i class="fas fa-phone text-xs"></i>
+                            <h5 class="text-base sm:text-lg font-bold text-white mb-1">Prof. K.K. Nagariya</h5>
+                            <p class="text-xs text-cyan-400 font-semibold mb-3 uppercase tracking-wide">Faculty Coordinator</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-2">
+                                <i class="fas fa-phone text-cyan-400 text-xs"></i>
                                 <span class="text-xs font-medium">+917387762333</span>
                             </div>
                         </div>
                         
                         <!-- Student Coordinator 1 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);" itemscope itemtype="https://schema.org/Person">
-                            <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgsfczmpy/image/upload/v1766507005/IMG_5478_wd5nre.jpg" alt="Prayas Bansod - Student Coordinator TECHELONS'26, Convenor" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl group" style="background: rgba(10, 15, 28, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); backdrop-filter: blur(10px);" itemscope itemtype="https://schema.org/Person">
+                            <div class="mb-4">
+                                <div class="relative inline-block">
+                                    <img src="https://res.cloudinary.com/dgsfczmpy/image/upload/v1766507005/IMG_5478_wd5nre.jpg" alt="Prayas Bansod - Student Coordinator TeCHELONS'26, Convenor" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(139, 92, 246, 0.5); box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" width="80" height="80" loading="lazy" itemprop="image">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center border-2 border-gray-900">
+                                        <i class="fas fa-star text-xs text-white"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="text-base font-bold text-white mb-1">Prayas Bansod</h5>
-                            <p class="text-xs text-gray-400 mb-2">convenors Techelons</p>
-                            <div class="flex items-center justify-center gap-2" style="color: #8b5cf6;">
-                                <i class="fas fa-phone text-xs"></i>
+                            <h5 class="text-base sm:text-lg font-bold text-white mb-1">Prayas Bansod</h5>
+                            <p class="text-xs font-semibold mb-3 uppercase tracking-wide" style="color: #8b5cf6;">Student Convenor</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-2">
+                                <i class="fas fa-phone text-xs" style="color: #8b5cf6;"></i>
                                 <span class="text-xs font-medium">+918010832874</span>
                             </div>
                         </div>
 
                         <!-- Student Coordinator 2 -->
-                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(139, 92, 246, 0.25);" itemscope itemtype="https://schema.org/Person">
-                            <div class="mb-3">
-                                <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154582/tech_3_is8yjk.jpg" alt="Ankita Niwalkar - Student Coordinator TECHELONS'26" class="w-16 h-16 mx-auto rounded-full object-cover mb-2" style="border: 2px solid rgba(139, 92, 246, 0.4); box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);" width="64" height="64" loading="lazy" itemprop="image">
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl group" style="background: rgba(10, 15, 28, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); backdrop-filter: blur(10px);" itemscope itemtype="https://schema.org/Person">
+                            <div class="mb-4">
+                                <div class="relative inline-block">
+                                    <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766154582/tech_3_is8yjk.jpg" alt="Ankita Niwalkar - Student Coordinator TeCHELONS'26" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(139, 92, 246, 0.5); box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);" width="80" height="80" loading="lazy" itemprop="image">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center border-2 border-gray-900">
+                                        <i class="fas fa-star text-xs text-white"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <h5 class="text-base font-bold text-white mb-1">Ankita Niwalkar</h5>
-                            <p class="text-xs text-gray-400 mb-2">convenors Techelons</p>
-                            <div class="flex items-center justify-center gap-2" style="color: #8b5cf6;">
-                                <i class="fas fa-phone text-xs"></i>
-                                <span class="text-xs font-medium">+919130933742
-</span>
+                            <h5 class="text-base sm:text-lg font-bold text-white mb-1">Ankita Niwalkar</h5>
+                            <p class="text-xs font-semibold mb-3 uppercase tracking-wide" style="color: #8b5cf6;">Student Convenor</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-2">
+                                <i class="fas fa-phone text-xs" style="color: #8b5cf6;"></i>
+                                <span class="text-xs font-medium">+919130933742</span>
                             </div>
                         </div>
                         
                     </div>
                 </div>
 
-                <!-- Website Makers Section -->
-                <div class="mt-12">
-                    <h3 class="text-xl md:text-2xl font-bold text-white mb-8 text-center tech-brand">
-                        <span class="text-cyan-400">Website</span> Makers
+                <!-- Website Makers Section - Enhanced -->
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-8 text-center tech-brand" style="text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">
+                        <span class="gradient-text">Website</span> Development Team
                     </h3>
                     
-                    <!-- Website Makers in One Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-4xl mx-auto">
+                    <!-- Website Makers Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
                         
                         <!-- Website Maker 1 -->
-                        <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
-                            <div class="mb-2">
-                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
-                                    <i class="fas fa-code text-lg" style="color: #f59e0b;"></i>
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
+                            <div class="mb-3">
+                                <div class="relative inline-block">
+                                    <img src="https://codingclubprpcem.github.io/image-hosting-/Karamveer.png" alt="Karamveer Singh Oberoi - Web Developer TeCHELONS'26" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);" width="80" height="80" loading="lazy">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-gray-900" style="background: #f59e0b;">
+                                        <i class="fas fa-code text-xs text-white"></i>
+                                    </div>
                                 </div>
                             </div>
-                            <h5 class="text-sm font-bold text-white mb-1">Karamveer Singh Oberoi</h5>
-                            <p class="text-xs text-gray-400 mb-2">Web Developer</p>
-                            <div class="flex items-center justify-center gap-1" style="color: #f59e0b;">
-                                <i class="fas fa-phone text-xs"></i>
+                            <h5 class="text-sm sm:text-base font-bold text-white mb-1">Karamveer Singh Oberoi</h5>
+                            <p class="text-xs mb-2" style="color: #f59e0b; font-weight: 600;">Web Developer</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-1.5">
+                                <i class="fas fa-phone text-xs" style="color: #f59e0b;"></i>
                                 <span class="text-xs font-medium">+91 3456756656</span>
                             </div>
                         </div>
 
                         <!-- Website Maker 2 -->
-                        <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
-                            <div class="mb-2">
-                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
-                                    <i class="fas fa-code text-lg" style="color: #f59e0b;"></i>
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
+                            <div class="mb-3">
+                                <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+                                    <i class="fas fa-code text-xl" style="color: #f59e0b;"></i>
                                 </div>
                             </div>
-                            <h5 class="text-sm font-bold text-white mb-1">Sarthak Ghungurde</h5>
-                            <p class="text-xs text-gray-400 mb-2">Web Developer</p>
-                            <div class="flex items-center justify-center gap-1" style="color: #f59e0b;">
-                                <i class="fas fa-phone text-xs"></i>
+                            <h5 class="text-sm sm:text-base font-bold text-white mb-1">Sarthak Ghungurde</h5>
+                            <p class="text-xs mb-2" style="color: #f59e0b; font-weight: 600;">Web Developer</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-1.5">
+                                <i class="fas fa-phone text-xs" style="color: #f59e0b;"></i>
                                 <span class="text-xs font-medium">+91 8975020711</span>
                             </div>
                         </div>
 
                         <!-- Website Maker 3 -->
-                        <div class="neon-card p-4 text-center transition-all duration-300 hover:transform hover:-translate-y-2" style="background: rgba(17, 24, 39, 0.6); border: 1px solid rgba(245, 158, 11, 0.25);">
-                            <div class="mb-2">
-                                <div class="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.4);">
-                                    <i class="fas fa-code text-lg" style="color: #f59e0b;"></i>
+                        <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
+                            <div class="mb-3">
+                                <div class="relative inline-block">
+                                    <img src="https://codingclubprpcem.github.io/image-hosting-/ayushchainani.jpg" alt="Ayush Chainani - Web Developer TeCHELONS'26" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);" width="80" height="80" loading="lazy">
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-gray-900" style="background: #f59e0b;">
+                                        <i class="fas fa-code text-xs text-white"></i>
+                                    </div>
                                 </div>
                             </div>
-                            <h5 class="text-sm font-bold text-white mb-1">Ayush Chainani</h5>
-                            <p class="text-xs text-gray-400 mb-2">Web Developer</p>
-                            <div class="flex items-center justify-center gap-1" style="color: #f59e0b;">
-                                <i class="fas fa-phone text-xs"></i>
+                            <h5 class="text-sm sm:text-base font-bold text-white mb-1">Ayush Chainani</h5>
+                            <p class="text-xs mb-2" style="color: #f59e0b; font-weight: 600;">Web Developer</p>
+                            <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-1.5">
+                                <i class="fas fa-phone text-xs" style="color: #f59e0b;"></i>
                                 <span class="text-xs font-medium">+91 1234567890</span>
                             </div>
                         </div>
