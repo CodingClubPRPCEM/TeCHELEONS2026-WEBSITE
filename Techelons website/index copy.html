@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECHELONS'26 - P. R. Pote Patil Educational Group, Amravati</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-light': '#f8fafc',
+                        'secondary-light': '#f1f5f9',
+                        'accent-primary': '#0891b2',
+                        'accent-secondary': '#06b6d4',
+                        'brand-purple': '#7c3aed',
+                        'brand-blue': '#0284c7',
+                        'text-primary': '#1e293b',
+                        'text-secondary': '#475569'
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 8px rgba(0, 0, 0, 0.08)',
+                        'medium': '0 4px 16px rgba(0, 0, 0, 0.1)',
+                        'large': '0 8px 24px rgba(0, 0, 0, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Professional Dark Theme */
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background-attachment: fixed;
+            font-family: 'Rajdhani', sans-serif;
+            color: #e5e7eb;
+        }
+        
+        /* Subtle animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(8, 145, 178, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.02) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 30s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
+            50% { transform: translateY(-10px) translateX(5px); opacity: 0.7; }
+        }
+        
+        /* Clean Navigation Links */
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #0891b2 !important;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: #0891b2 !important;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #0891b2, #06b6d4);
+            border-radius: 2px;
+        }
+
+        /* Professional Tech Font */
+        .tech-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.3;
+            word-spacing: 0.04em;
+            position: relative;
+        }
+
+        /* Elegant Gradient Text */
+        .gradient-text {
+            background-image: linear-gradient(135deg, #0891b2, #06b6d4, #7c3aed, #0284c7);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-shift 6s ease infinite;
+            transition: all 0.3s ease;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Logo Container Animations */
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% { 
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { 
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 1s ease-out forwards;
+        }
+        
+        .animate-slide-up {
+            animation: slide-up 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+        
+        /* Premium TECHELONS Title Styling */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { 
+                filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8))
+                        drop-shadow(0 0 40px rgba(168, 85, 247, 0.6))
+                        drop-shadow(0 0 60px rgba(34, 211, 238, 0.4))
+                        drop-shadow(0 4px 30px rgba(0, 0, 0, 0.9));
+            }
+            50% { 
+                filter: drop-shadow(0 0 35px rgba(6, 182, 212, 1))
+                        drop-shadow(0 0 65px rgba(168, 85, 247, 0.8))
+                        drop-shadow(0 0 95px rgba(34, 211, 238, 0.6))
+                        drop-shadow(0 4px 40px rgba(0, 0, 0, 0.9));
+            }
+        }
+        
+        @keyframes float-title {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .title-premium {
+            background: linear-gradient(
+                110deg,
+                #06b6d4 0%,
+                #22d3ee 15%,
+                #a78bfa 35%,
+                #c084fc 50%,
+                #e879f9 65%,
+                #a78bfa 85%,
+                #06b6d4 100%
+            );
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite, glow-pulse 2.5s ease-in-out infinite, float-title 5s ease-in-out infinite;
+            font-weight: 900;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Title Animations */
+        @keyframes gradient-text {
+            0%, 100% { 
+                background-position: 0% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+            }
+        }
+        
+        @keyframes title-reveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes pulse-slow {
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.3;
+                transform: scale(1.1);
+            }
+        }
+        
+        .animate-gradient-text {
+            animation: gradient-text 4s ease infinite;
+        }
+        
+        .animate-title-reveal {
+            animation: title-reveal 1.2s ease-out forwards;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+        
+        /* Fade-in animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Professional Button */
+        .gradient-button {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(8, 145, 178, 0.2);
+        }
+        
+        .gradient-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+        
+        .gradient-button:hover::before {
+            left: 100%;
+        }
+        
+        .gradient-button:hover {
+            background: linear-gradient(135deg, #0284c7, #0891b2);
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Modern Filter Buttons */
+        .filter-button {
+            @apply px-6 py-2.5 rounded-full font-semibold transition-all duration-300 border-2;
+            min-width: 140px;
+            border-color: #22d3ee;
+            background: rgba(255,255,255,0.05);
+            color: #e5e7eb;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+        .filter-button.active {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+            @apply text-white border-transparent;
+            box-shadow: 0 4px 12px rgba(34, 211, 238, 0.5);
+            transform: scale(1.02);
+        }
+        .filter-button:not(.active):hover {
+            background: rgba(34, 211, 238, 0.2);
+            border-color: #22d3ee;
+            color: #22d3ee;
+            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Clean Professional Cards */
+        .neon-card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+        
+        .neon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), rgba(124, 58, 237, 0.05));
+            border-radius: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .neon-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+            border-color: rgba(34, 211, 238, 0.6);
+        }
+        
+        .neon-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Modern Category Badges */
+        .category-badge {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(8, 145, 178, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            color: #0891b2;
+            font-weight: 600;
+        }
+        
+        .neon-card:hover .category-badge {
+            background: linear-gradient(135deg, rgba(8, 145, 178, 0.2), rgba(6, 182, 212, 0.2));
+            border-color: rgba(8, 145, 178, 0.5);
+            box-shadow: 0 2px 8px rgba(8, 145, 178, 0.15);
+        }
+
+        /* Professional Scroll Container - 1.4x Larger, Shows 3 Images */
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1.05rem;
+            padding: 1.4rem;
+            cursor: grab;
+            scrollbar-width: thin;
+            scrollbar-color: #22d3ee rgba(17, 24, 39, 0.5);
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 2px solid rgba(34, 211, 238, 0.3);
+            border-radius: 1rem;
+            background: rgba(17, 24, 39, 0.3);
+        }
+
+        .scroll-container:active {
+            cursor: grabbing;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-track {
+            background: rgba(17, 24, 39, 0.5);
+            border-radius: 10px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, #0891b2, #22d3ee);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #22d3ee, #06b6d4);
+            box-shadow: 0 2px 8px rgba(34, 211, 238, 0.5);
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb:active {
+            background: linear-gradient(90deg, #06b6d4, #0891b2);
+        }
+
+        /* Refined Scroll Items - 1.4x Larger */
+        .scroll-item {
+            flex: 0 0 auto;
+            width: 392px;
+            height: 280px;
+            border-radius: 1rem;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(34, 211, 238, 0.4);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .scroll-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+            border-color: rgba(34, 211, 238, 0.6);
+        }
+
+        .scroll-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .scroll-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Clean Navigation Buttons */
+        .scroll-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 211, 238, 0.5);
+            color: #22d3ee;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .scroll-nav-btn:hover {
+            background: #0891b2;
+            color: white;
+            box-shadow: 0 6px 16px rgba(34, 211, 238, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .scroll-nav-btn.left {
+            left: 10px;
+        }
+
+        .scroll-nav-btn.right {
+            right: 10px;
+        }
+
+        /* Professional Event Cards */
+        .event-info-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding: 1.5rem;
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-info-card:hover {
+            border-color: rgba(34, 211, 238, 0.6);
+            box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .event-info-card img {
+            width: 160px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .event-info-card {
+                flex-direction: column;
+            }
+            
+            .event-info-card img {
+                width: 100%;
+                height: 180px;
+            }
+            
+            .scroll-item {
+                width: 240px;
+                height: 180px;
+            }
+            
+            .tech-brand {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+    <script id="event-data-json" type="application/json">
+        {
+          "event_details": {
+            "name": "TECHELONS'26",
+            "tagline": "Step to Pioneer",
+            "date": "20 JAN 2026",
+            "institute": "P.R.Pote Patil Educational Group, Amravati",
+            "group": " An Autonomous Institute",
+            "accreditation": "ACCREDITED WITH NAAC A++ Grade",
+            "type": "National Level Event",
+            "prizes": "WIN PRIZES WORTH LAKHS"
+          },
+          "venue": {
+            "name": "Swami Vivekananda Auditorium",
+            "address": "Pote Patil Road, Kathora, Amravati -444602"
+          },
+          "contacts": [
+            {
+              "role": "Patron",
+              "name": "Shri. Rameshji Pote Patil",
+              "designation": "Chairman"
+            },
+            {
+              "role": "Chief Patron",
+              "name": "Dr. M. R. Pote Patil",
+              "designation": "Vice Chairman"
+            },
+            {
+              "role": "Executive Patron",
+              "name": "Dr. P. G. Khandarkar",
+              "designation": "Principal"
+            },
+            {
+              "role": "Faculty Coordinator",
+              "name": "Prof. P. B. Ingale",
+              "phone": "99604 51781"
+            },
+            {
+              "role": "Faculty Coordinator",
+              "name": "Prof. K. K. Nagariya",
+              "phone": "73877 62333"
+            },
+            {
+              "role": "Convenor",
+              "name": "Prayas Bansod",
+              "phone": "8010832874"
+            },
+            {
+              "role": "Convenor",
+              "name": "Ankita Niwalkar",
+              "phone": "91309 33742"
+            }
+          ],
+          "communication": {
+            "website": "www.prpotepatilengg.ac.in",
+            "email": "techelons@prpotepatilengg.ac.in",
+            "logon": "For More Details Log On Our Website www.prpotepatilengg.ac.in, techelons@prpotepatilengg.ac.in"
+          },
+          "events_by_stream": {
+            "engineering": [
+                {"name": "Code Sprint (New)", "description": "Rapid coding challenge on advanced data structures."},
+                {"name": "Drone Design", "description": "Showcase and competition for autonomous drone models."},
+                {"name": "Paper Presentation", "description": "Research paper presentation on emerging technologies."},
+                {"name": "CAD War", "description": "3D modeling and design competition."}
+            ],
+            "nursing": [
+                {"name": "Clinical Case Study (New)", "description": "Presentation and defense of critical patient case studies."},
+                {"name": "Nursing Skillathon", "description": "Assessment of critical clinical nursing skills."}
+            ],
+            "pharmacy": [
+                 {"name": "Herbal Drug Formulation (New)", "description": "Competition on developing new natural medicine formulas."},
+                 {"name": "Pharmacy Marketing Pitch (New)", "description": "Pitching a new over-the-counter health product."}
+            ],
+            "common": [
+                {"name": "The Manager", "description": "Business simulation and leadership challenge."},
+                {"name": "Photography Contest", "description": "On-the-spot photography competition."},
+                {"name": "Debate Face-off, Elocution", "description": "Formal debate and public speaking contest."},
+                {"name": "Installation of Best out of waste", "description": "Creative eco-friendly art challenge."}
+            ]
+          },
+          "chief_guest": {
+            "name": "Dr. Eklavya Singh",
+            "designation": "CEO, Future Tech Innovations",
+            "speech": "Inaugural Address on 'Pioneering the Next Decade in Technology'"
+          }
+        }
+    </script>
+
+    <nav class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-lg shadow-lg border-b border-cyan-400/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#hero" class="text-2xl font-extrabold flex items-center tech-brand">
+                        <span class="gradient-text" id="nav-event-name"></span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#hero" class="nav-link text-text-secondary px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#chief-guest" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Chief Guest</a>
+                        <a href="#support-system" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Support</a>
+                        <a href="#events" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Events</a>
+                        <a href="#history" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Previous</a>
+                        <a href="#contact" class="nav-link text-gray-300 px-3 py-2 rounded-md text-base font-medium hover:text-cyan-400">Contact</a>
+            
+                    </div>
+                </div>
+                <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-cyan-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-400 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </div>
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
+                <a href="#hero" class="nav-link text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#chief-guest" class="nav-link text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Chief Guest</a>
+                <a href="#support-system" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Support</a>
+                <a href="#events" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Events</a>
+                <a href="#history" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Previous</a>
+                <a href="#contact" class="text-gray-300 hover:bg-gray-800 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        
+        <section id="hero" class="relative pt-16 pb-24 text-center overflow-hidden border-b border-gray-200">
+            <!-- Background Video -->
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="Untitled design.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Dark overlay for better text visibility -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70 z-1"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                
+
+                <!-- LOGO SECTION -->
+<div class="flex flex-col items-center mb-8 group animate-fade-in">
+
+    <!-- LOGO CONTAINER -->
+    <div class="relative mb-4 animate-float">
+        <div
+            class="absolute inset-0 rounded-2xl blur-2xl opacity-50
+            bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600
+            group-hover:opacity-70 transition-all duration-500 animate-pulse-glow">
+        </div>
+
+        <div
+            class="relative w-32 h-32 rounded-2xl
+            bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-md flex items-center justify-center
+            border-2 border-cyan-400/60 shadow-2xl shadow-cyan-400/30
+            group-hover:scale-110 group-hover:border-cyan-400 group-hover:shadow-cyan-400/50 transition-all duration-300 hover:rotate-3">
+
+            <img src="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png" alt="Club Logo" class="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-300" />
+        </div>
+    </div>
+
+    <!-- EVENT TYPE TEXT -->
+    <p id="event-type"
+       class="text-base md:text-lg text-cyan-300 font-bold tracking-wide uppercase drop-shadow-lg animate-slide-up" style="text-shadow: 0 2px 10px rgba(0,0,0,0.8);">
+    </p>
+</div>
+
+                
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-6 tech-brand" style="line-height: 1.1;">
+                    <span id="event-name-hero" class="title-premium"></span>
+                </h1>
+                
+                <div class="flex justify-center mb-6">
+                    <div class="h-1 w-24 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
+                </div>
+                
+                <p class="text-xl md:text-2xl font-semibold mb-6 text-white drop-shadow-lg" style="text-shadow: 0 2px 10px rgba(0,0,0,0.7);" id="event-tagline-hero"></p>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg" style="text-shadow: 0 2px 15px rgba(0,0,0,0.7);" id="institute-name">P.R.Pote Patil Educational Group, Amravati</h2>
+                <p class="text-base text-gray-200 mb-2 drop-shadow-md" id="institute-group-details"></p>
+                <p class="text-base text-cyan-300 font-semibold mb-6 drop-shadow-lg">ACCREDITED WITH NAAC A++ GRADE</p>
+                
+                <p class="text-2xl md:text-3xl font-medium mb-8 text-cyan-400 drop-shadow-lg" style="text-shadow: 0 2px 12px rgba(0,0,0,0.8);" id="event-date-hero"></p>
+                
+                <div class="max-w-5xl mx-auto pt-8">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-center shadow-2xl hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-300">
+                        <i class="fas fa-award text-5xl text-cyan-400 mb-4 drop-shadow-lg"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4 drop-shadow-lg">About TECHELONS</h3>
+                        <p class="text-gray-100 text-base leading-relaxed drop-shadow-md">
+                            Techelons is one of the most important and well known technical festivals organized by P. R. Pote Patil Educational Group, Amravati under the guidance of Shri Pravin Pote Patil and Shri Shreyas Dada Pote Patil. In the last 10 Years of Techelons Journey, various well-known and world famous international guests have arrived and inaugurated the events. Techelons is the technical festival which provides a platform to the participants from multidisciplinary fields to show their talents and win exiting and bumper prizes. We welcome you all in Techelons 2024 at P. R. Pote Patil Educational Group, Amravati.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+<section id="chief-guest" class="py-16 bg-gray-900 border-t border-b border-cyan-400/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">
+                Keynote Speaker
+            </span>
+
+            <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">
+                <span class="text-cyan-400">Chief Guest</span> of TECHELONS'26
+            </h2>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-gray-800/50 backdrop-blur-md border border-cyan-400/30 rounded-2xl p-8 max-w-2xl mx-auto text-center flex flex-col items-center shadow-2xl hover:border-cyan-400/60 transition-all duration-300">
+
+            <!-- IMAGE -->
+            <div class="relative w-40 h-40 mb-6 group">
+
+                <!-- Subtle ring -->
+                <div class="absolute inset-0 rounded-full border-2 border-cyan-400/40 
+                            group-hover:border-cyan-400/70 shadow-lg shadow-cyan-400/20
+                            transition-all duration-300">
+                </div>
+
+                <!-- Image or Icon -->
+                <div class="w-full h-full rounded-full bg-gray-700 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-user-circle text-7xl text-gray-400 group-hover:scale-105 transition-transform duration-300"></i>
+                </div>
+            </div>
+
+            <!-- TEXT SECTION -->
+            <h3 class="text-2xl font-bold text-cyan-400 mb-2" id="guest-name"></h3>
+            <p class="text-lg font-semibold text-gray-300 mb-3" id="guest-designation"></p>
+            <p class="text-gray-400 text-base italic" id="guest-speech-topic"></p>
+
+            <p class="text-gray-400 mt-4 text-sm">
+                We are honored to welcome a visionary leader to inspire the next generation of pioneers at TECHELONS'26.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+       <section id="leadership" class="py-16 text-center bg-gray-800">
+
+    <!-- Title -->
+    <p class="text-xs tracking-wide mb-2 uppercase text-cyan-400 font-semibold">Leadership</p>
+    <h2 class="text-2xl md:text-3xl font-bold mb-10 text-white">
+        Meet Our <span class="text-cyan-400">Mentor</span>
+    </h2>
+
+    <!-- TOP (MENTOR) -->
+    <div class="flex justify-center mb-12">
+        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl max-w-xs text-center hover:border-cyan-400/60 transition-all duration-300">
+            <img src="https://i.ibb.co/QFTbVrbq/mentor.png" alt="mentor" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
+            <h3 class="text-lg font-bold mt-5 text-white">Liate Ramchandra Pote</h3>
+            <p class="text-cyan-400 mt-2 text-sm font-semibold">Mentor</p>
+        </div>
+    </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-10 text-white">
+        Meet Our <span class="text-cyan-400">Pillars</span>
+    </h2>
+    <!-- BOTTOM (VISIONARY LEADERS) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+
+        <!-- Card 1 -->
+        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl text-center hover:border-cyan-400/60 transition-all duration-300">
+          <img src="https://i.ibb.co/mrkNSTx7/chairman.png"  alt="chairman" alt="chairman" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
+            <h3 class="text-lg font-bold mt-5 text-white">Shri. Pravin Pote Patil</h3>
+            <p class="text-cyan-400 mt-2 text-sm font-semibold">Chairman</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-8 rounded-2xl shadow-2xl text-center hover:border-cyan-400/60 transition-all duration-300">
+            <img src="https://i.ibb.co/p6s17cpY/vice-chairman.png" alt="vice chairman" class="w-32 h-32 rounded-full mx-auto border-4 border-cyan-400/40 shadow-lg shadow-cyan-400/20">
+            <h3 class="text-lg font-bold mt-5 text-white">Shri. Shreyash Dada Pote Patil</h3>
+            <p class="text-cyan-400 mt-2 text-sm font-semibold">Vice-Chairman</p>
+        </div>
+
+    </div>
+
+</section>
+
+        <section id="events" class="py-20 bg-gray-900 border-t border-b border-cyan-400/30">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- HEADER -->
+            <div class="text-center mb-10">
+              <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">
+                Competitions
+              </span>
+
+              <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">
+                Events by <span class="text-cyan-400">Stream</span>
+              </h2>
+
+              <p class="text-base text-gray-400 mt-4 max-w-2xl mx-auto">
+                Select a stream to see the specialized and general events available.
+              </p>
+            </div>
+
+            <!-- STREAM FILTER BUTTONS -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+              <button class="filter-button active px-6 py-2.5 text-base rounded-full"
+                data-stream="engineering">Engineering</button>
+
+              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+                data-stream="nursing">Nursing</button>
+
+              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+                data-stream="pharmacy">Pharmacy / BAMS</button>
+
+              <button class="filter-button px-6 py-2.5 text-base rounded-full"
+                data-stream="common">General</button>
+            </div>
+
+            <!-- EVENT CARDS -->
+            <div id="events-container"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+
+          </div>
+        </section>
+
+
+<!-- EVENT MODAL -->
+<div id="event-modal"
+  class="fixed inset-0 hidden items-center justify-center bg-black/70 z-50 backdrop-blur-sm">
+  <div class="bg-gray-900 border border-cyan-400/50 p-8 rounded-2xl max-w-xl w-full relative shadow-2xl">
+    <button onclick="closeEventModal()" class="absolute top-4 right-4 text-gray-400 hover:text-cyan-400 text-2xl transition-colors">&times;</button>
+
+    <h3 id="modal-title" class="text-2xl font-bold text-cyan-400 mb-3"></h3>
+    <p id="modal-desc" class="text-gray-400 mb-3 text-sm"></p>
+    <p id="modal-date" class="text-gray-300 mb-5 text-sm font-semibold"></p>
+
+    <button class="w-full py-3 text-base rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+      Register Now
+    </button>
+  </div>
+</div>
+
+        <section id="history" class="py-20 bg-gray-800 border-t border-b border-cyan-400/30">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- HEADER -->
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">Legacy</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Journey of <span class="text-cyan-400">TECHELONS</span></h2>
+                    <p class="text-base text-gray-400 mt-4 max-w-2xl mx-auto">
+                        A legacy of innovation, excellence, and inspiration that continues to grow.
+                    </p>
+                </div>
+
+                <!-- ABOUT TECHLONS 2025 -->
+                <div class="neon-card p-6 mb-12">
+                    <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">About TECHELONS 2025</h3>
+                    <div class="text-gray-300 text-sm leading-relaxed space-y-3 max-w-4xl mx-auto">
+                        <p>TECHELONS 2025 marked a milestone year in our journey, bringing together brilliant minds from across the nation to showcase innovation and technical excellence.</p>
+                        <p>The event featured groundbreaking projects in emerging technologies including AI, Robotics, and Sustainable Engineering, with over 50+ competitions and workshops.</p>
+                        <p>Distinguished industry leaders and innovators graced the occasion, inspiring students to push boundaries and pioneer new solutions for real-world challenges.</p>
+                        <p>With participation from 100+ institutions and thousands of passionate students, TECHELONS 2025 created an ecosystem of collaboration and learning.</p>
+                        <p>The event's success reinforced our commitment to nurturing the next generation of tech pioneers and innovators who will shape tomorrow's world.</p>
+                    </div>
+                </div>
+
+                <!-- GUEST VISITS CAROUSEL -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
+                        <span class="text-cyan-400">Distinguished Guests</span> & Visits
+                    </h3>
+                    
+                    <div class="relative">
+                        <button class="scroll-nav-btn left" onclick="scrollGuestImages('left')">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="scroll-container" id="guestScroll">
+                            <!-- Guest Images from Previous Events - Unique Only -->
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/CzRj4zvV/10.jpg" alt="Distinguished Guest Visit" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/3dkgZdL8/11.jpg" alt="Guest Visit" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/fJVxvJHV/13.jpg" alt="Guest Speaker" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/7fjStwcY/18.jpg" alt="Guest Visit" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/HjZw5Q9R/2.jpg" alt="Event Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/yk20ps58/20.jpg" alt="Guest of Honor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/GH6vgdNp/21.jpg" alt="Special Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/D8R1pnDZ/22.jpg" alt="Guest Visit" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/N5ZRCBVT/25.jpg" alt="Chief Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/7fjStwc0/26.jpg" alt="Guest Speaker" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/N5ZRCBV1/27.jpg" alt="Special Visitor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/PP01VTcy/28.jpg" alt="Guest of Honor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/svb5Hs8n/29.jpg" alt="Distinguished Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/2Vgn9rJc/30.jpg" alt="Special Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/YhTQDMVy/31.jpg" alt="Event Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/QF51RvGg/32.jpg" alt="Chief Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/186wLbhc/33.jpg" alt="Guest Speaker" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/NKTmWZqx/34.jpg" alt="Distinguished Visitor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/WdrgQxLn/35.jpg" alt="Guest of Honor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/ZW3p1Xtw/36.jpg" alt="Special Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/yD9cw24G/39.jpg" alt="Distinguished Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/Z0783rLh/4.jpg" alt="Chief Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/sMS7tbCC/40.jpg" alt="Guest Speaker" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/LJfLrGFm/41.jpg" alt="Special Visitor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/CZgkYJwy/42.jpg" alt="Guest of Honor" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/BXjxCXh9/9.jpg" alt="Event Guest" loading="lazy">
+                            </div>
+                            <div class="scroll-item">
+                                <img src="https://i.postimg.cc/3kpmPzQ8/apj-abdul-kalam.jpg" alt="Dr. APJ Abdul Kalam" loading="lazy">
+                            </div>
+                        </div>
+                        
+                        <button class="scroll-nav-btn right" onclick="scrollGuestImages('right')">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PREVIOUS EVENTS -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
+                        Highlights from <span class="text-cyan-400">Past Events</span>
+                    </h3>
+                    
+                    <div class="space-y-5">
+                        <!-- Event 1 -->
+                        <div class="event-info-card">
+                            <img src="https://via.placeholder.com/200x150/1e293b/22d3ee?text=Hackathon" alt="Hackathon Event">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold text-cyan-400 mb-2">National Hackathon 2025</h4>
+                                <p class="text-gray-300 mb-2 text-sm">48-hour coding marathon with 200+ participants building innovative solutions for social impact. Winners received funding and mentorship opportunities.</p>
+                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 50+ Teams</span>
+                            </div>
+                        </div>
+
+                        <!-- Event 2 -->
+                        <div class="event-info-card">
+                            <img src="https://via.placeholder.com/200x150/1e293b/7c3aed?text=Robotics" alt="Robotics Competition">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold text-cyan-400 mb-2">Robo Wars Championship</h4>
+                                <p class="text-gray-300 mb-2 text-sm">Intense robot combat competition featuring autonomous bots and remote-controlled machines. Showcased cutting-edge mechatronics and AI.</p>
+                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 30+ Robots</span>
+                            </div>
+                        </div>
+
+                        <!-- Event 3 -->
+                        <div class="event-info-card">
+                            <img src="https://via.placeholder.com/200x150/1e293b/06b6d4?text=Tech+Talk" alt="Tech Talk">
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold text-cyan-400 mb-2">Industry Expert Sessions</h4>
+                                <p class="text-gray-300 mb-2 text-sm">Inspiring talks and workshops by industry leaders on emerging technologies, career guidance, and entrepreneurship in tech.</p>
+                                <span class="text-cyan-400 text-xs font-semibold">January 2025 • 15+ Speakers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALLERY SECTION -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
+                        <span class="text-cyan-400">Event Gallery</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Gallery Image 1 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+1" alt="Event Gallery 1" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 2 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+2" alt="Event Gallery 2" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 3 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/7c3aed?text=Gallery+3" alt="Event Gallery 3" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 4 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+4" alt="Event Gallery 4" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 5 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+5" alt="Event Gallery 5" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 6 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/7c3aed?text=Gallery+6" alt="Event Gallery 6" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 7 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/22d3ee?text=Gallery+7" alt="Event Gallery 7" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Gallery Image 8 -->
+                        <div class="neon-card overflow-hidden aspect-square hover:scale-102 transition-transform duration-300 cursor-pointer">
+                            <img src="https://via.placeholder.com/300x300/1e293b/06b6d4?text=Gallery+8" alt="Event Gallery 8" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-gray-800 border-t border-b border-cyan-400/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-semibold text-cyan-400 mb-2 block border border-cyan-400/50 rounded-full px-4 py-1 inline-block">Get in Touch</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4">Contact <span class="text-cyan-400">Us</span></h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto">Have questions? Reach out to us through any of the following channels</p>
+                </div>
+
+                <!-- Quick Contact Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <!-- Email Card -->
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
+                                <i class="fas fa-envelope text-3xl text-cyan-400"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Email Us</h4>
+                            <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm break-all">techelons@prpotepatilengg.ac.in</a>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
+                                <i class="fas fa-phone text-3xl text-cyan-400"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Call Us</h4>
+                            <a href="tel:+919960451781" class="text-cyan-400 hover:text-cyan-300 text-sm">+91 99604 51781</a>
+                            <a href="tel:+917387762333" class="text-cyan-400 hover:text-cyan-300 text-sm">+91 73877 62333</a>
+                        </div>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="bg-gray-900/50 backdrop-blur-md border border-cyan-400/30 p-6 rounded-2xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300 group">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="bg-cyan-400/10 p-4 rounded-full mb-4 group-hover:bg-cyan-400/20 transition-colors">
+                                <i class="fas fa-location-dot text-3xl text-cyan-400"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-white mb-2">Visit Us</h4>
+                            <p class="text-gray-400 text-sm" id="venue-name"></p>
+                            <p class="text-gray-400 text-xs mt-1" id="venue-address"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Institute Info Card -->
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-cyan-400/30 p-8 rounded-2xl mb-12 shadow-xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-university text-cyan-400 mr-3"></i>
+                                Institute Information
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <i class="fas fa-building text-cyan-400 mt-1 mr-3 text-sm"></i>
+                                    <div>
+                                        <p class="text-white font-semibold">P.R. Pote Patil Educational Group</p>
+                                        <p class="text-gray-400 text-sm">An Autonomous Institute</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-award text-cyan-400 mt-1 mr-3 text-sm"></i>
+                                    <p class="text-gray-400 text-sm">Accredited with NAAC A++ Grade</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-cyan-400 mt-1 mr-3 text-sm"></i>
+                                    <p class="text-gray-400 text-sm">Pote Patil Road, Kathora, Amravati - 444602, Maharashtra, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-link text-cyan-400 mr-3"></i>
+                                Quick Links
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-globe text-cyan-400 mr-3 text-sm"></i>
+                                    <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="text-cyan-400 hover:text-cyan-300 text-sm">www.prpotepatilengg.ac.in</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-cyan-400 mr-3 text-sm"></i>
+                                    <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm">techelons@prpotepatilengg.ac.in</a>
+                                </div>
+                            </div>
+                            <div class="mt-6">
+                                <h4 class="text-white font-semibold mb-3 text-sm">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Facebook">
+                                        <i class="fab fa-facebook text-cyan-400 text-lg"></i>
+                                    </a>
+                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Instagram">
+                                        <i class="fab fa-instagram text-cyan-400 text-lg"></i>
+                                    </a>
+                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="LinkedIn">
+                                        <i class="fab fa-linkedin text-cyan-400 text-lg"></i>
+                                    </a>
+                                    <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400/20 p-3 rounded-full transition-colors" title="Twitter">
+                                        <i class="fab fa-twitter text-cyan-400 text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Organizing Committee - Compact Horizontal -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">
+                        <span class="text-cyan-400">Organizing Committee</span>
+                    </h3>
+                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-4">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="bg-gray-900 border-t-2 border-cyan-400/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <!-- About Section -->
+                <div class="md:col-span-2">
+                    <h4 class="text-2xl font-bold mb-3 tech-brand"><span class="text-cyan-400" id="footer-event-name"></span></h4>
+                    <p class="text-gray-400 text-sm mb-3" id="footer-group-details"></p>
+                    <p class="text-gray-500 text-xs leading-relaxed mb-4">A National Level Technical Festival showcasing innovation, technology, and talent across Engineering, Pharmacy, and Nursing domains. Join us for competitions, workshops, and networking opportunities.</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Facebook">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Instagram">
+                            <i class="fab fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="LinkedIn">
+                            <i class="fab fa-linkedin text-lg"></i>
+                        </a>
+                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="Twitter">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="#" class="bg-cyan-400/10 hover:bg-cyan-400 hover:text-gray-900 p-2.5 rounded-lg transition-all duration-300 text-cyan-400" title="YouTube">
+                            <i class="fab fa-youtube text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="text-white font-bold text-lg mb-4 border-b border-cyan-400/30 pb-2">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>About</a></li>
+                        <li><a href="#competitions" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Competitions</a></li>
+                        <li><a href="#guests" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Special Guests</a></li>
+                        <li><a href="#team" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Our Team</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 text-sm transition-colors flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="text-white font-bold text-lg mb-4 border-b border-cyan-400/30 pb-2">Contact Info</h5>
+                    <ul class="space-y-3">
+                        <li class="flex items-start text-gray-400 text-sm">
+                            <i class="fas fa-map-marker-alt text-cyan-400 mt-1 mr-2 text-xs"></i>
+                            <span>Pote Patil Road, Kathora,<br>Amravati - 444602</span>
+                        </li>
+                        <li class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-phone text-cyan-400 mr-2 text-xs"></i>
+                            <a href="tel:+919960451781" class="hover:text-cyan-400 transition-colors">+91 99604 51781</a>
+                        </li>
+                        <li class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-envelope text-cyan-400 mr-2 text-xs"></i>
+                            <a href="mailto:techelons@prpotepatilengg.ac.in" class="hover:text-cyan-400 transition-colors break-all">techelons@prpotepatilengg.ac.in</a>
+                        </li>
+                        <li class="flex items-center text-gray-400 text-sm">
+                            <i class="fas fa-globe text-cyan-400 mr-2 text-xs"></i>
+                            <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="hover:text-cyan-400 transition-colors">prpotepatilengg.ac.in</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-cyan-400/30">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-400 text-xs text-center md:text-left">
+                        &copy; 2026 <span class="text-cyan-400 font-semibold">TECHELONS'26</span>. All Rights Reserved. 
+                        <span class="text-gray-500">|</span> 
+                        <a href="https://www.prpotepatilengg.ac.in" target="_blank" class="hover:text-cyan-400 transition-colors">P.R. Pote Patil Educational Group, Amravati</a>
+                    </p>
+                    <div class="flex items-center space-x-4 text-xs text-gray-500">
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                        <span>|</span>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Terms & Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (renderWebsite()) { // Check if data loading was successful
+                setupMobileMenu();
+                setupScrollSpy();
+                setupDragScroll();
+                startAutoScroll(); // Start automatic scrolling for guest images
+            }
+        });
+
+        let eventData = null; 
+
+        const competitionsList = [
+            // Engineering Events
+            { stream: "engineering", title: "Hackathon 26", date: "19 Jan · 9 AM – 9 PM", desc: "36-hour national-level innovation sprint. Build, code, and pitch your revolutionary tech solution.", image: "images/Flyer.jpeg", category: "Coding" },
+            { stream: "engineering", title: "Project Exhibition", date: "20 Jan · 10 AM", desc: "Showcase your innovative models and research projects. Display cutting-edge engineering solutions.", category: "Technical" },
+            { stream: "engineering", title: "Codethon", date: "20 Jan · 11 AM", desc: "Speed programming contest. Solve complex algorithms and optimize code under time pressure.", category: "Coding" },
+            { stream: "engineering", title: "Circuit Mania", date: "20 Jan · 2 PM", desc: "Electronics circuit debugging and design competition. Test your hardware skills.", category: "Technical" },
+            { stream: "engineering", title: "CAD War", date: "20 Jan · 3 PM", desc: "3D modeling and design competition. Create stunning technical designs.", category: "Design" },
+            { stream: "engineering", title: "Robo Race", date: "21 Jan · 10 AM", desc: "Autonomous robot racing challenge. Navigate obstacles with your smart bot.", category: "Robotics" },
+            
+            // Nursing Events
+            { stream: "nursing", title: "Nursing Skillathon", date: "20 Jan · 10 AM", desc: "Assessment of critical clinical nursing skills. Demonstrate excellence in patient care.", category: "Clinical" },
+            { stream: "nursing", title: "Case Study Presentation", date: "20 Jan · 2 PM", desc: "Present and analyze complex medical case studies. Showcase diagnostic abilities.", category: "Academic" },
+            { stream: "nursing", title: "Health Quiz", date: "21 Jan · 11 AM", desc: "Medical knowledge competition covering anatomy, pharmacology, and patient care.", category: "Quiz" },
+            
+            // Pharmacy & BAMS Events
+            { stream: "pharmacy", title: "Pharma Quiz", date: "20 Jan · 11 AM", desc: "Comprehensive pharmaceutical sciences quiz. Test your drug knowledge.", category: "Quiz" },
+            { stream: "pharmacy", title: "Drug Formulation", date: "20 Jan · 3 PM", desc: "Practical pharmaceutical formulation challenge. Create effective drug delivery systems.", category: "Practical" },
+            { stream: "pharmacy", title: "Ayurveda Expo", date: "21 Jan · 10 AM", desc: "Traditional medicine showcase. Present ancient healing techniques and herbal remedies.", category: "Exhibition" },
+            
+            // General/Common Events
+            { stream: "common", title: "Business Pitch", date: "20 Jan · 1 PM", desc: "Pitch your startup idea to industry experts. Win funding and mentorship opportunities.", category: "Entrepreneurship" },
+            { stream: "common", title: "Debate Face-off", date: "20 Jan · 2 PM", desc: "Formal debate competition. Argue compelling perspectives on contemporary issues.", category: "Oratory" },
+            { stream: "common", title: "Elocution", date: "20 Jan · 4 PM", desc: "Public speaking contest. Deliver powerful speeches that inspire and persuade.", category: "Oratory" },
+            { stream: "common", title: "Poster Presentation", date: "21 Jan · 10 AM", desc: "Visual academic summary. Create impactful research posters.", category: "Academic" },
+            { stream: "common", title: "Best Out of Waste", date: "21 Jan · 11 AM", desc: "Creative eco-friendly art challenge. Transform waste into wonderful creations.", category: "Creative" },
+            { stream: "common", title: "Talent Battle", date: "21 Jan · 3 PM", desc: "Gaming expo and on-spot talent events. Show your unique skills.", category: "Entertainment" },
+            { stream: "common", title: "Anveshan", date: "21 Jan · 2 PM", desc: "Research showcase and exposition. Present groundbreaking research findings.", category: "Research" },
+            { stream: "common", title: "Struck-Fast", date: "21 Jan · 4 PM", desc: "Quick-thinking and crisis management challenge. Make decisions under pressure.", category: "Management" }
+        ];
+
+        const eventsContainer = document.getElementById("events-container");
+
+        function renderCompetitions(stream = "engineering") {
+            eventsContainer.innerHTML = "";
+            competitionsList.filter(e => e.stream === stream).forEach(e => {
+            const imgSrc = e.image || "https://source.unsplash.com/400x250/?technology,event";
+            const logoSrc = e.logo || "https://cdn-icons-png.flaticon.com/512/2916/2916315.png";
+            const category = e.category || "Event";
+            eventsContainer.innerHTML += `
+                <div class="neon-card p-5 rounded-xl group cursor-pointer hover:shadow-medium transition-all duration-300">
+                <img src="${imgSrc}" class="rounded-lg mb-3 w-full h-40 object-cover">
+                
+                <!-- EVENT LOGO -->
+                <div class="flex justify-center mb-3">
+                  <div class="relative group">
+                    <div
+                      class="absolute inset-0 rounded-xl blur-lg opacity-20 
+                      bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 
+                      group-hover:opacity-40 transition-all duration-300">
+                    </div>
+
+                    <div
+                      class="relative w-16 h-16 rounded-xl 
+                      bg-gray-800/80 backdrop-blur-sm flex items-center justify-center 
+                      border border-cyan-400/30 
+                      group-hover:scale-105 group-hover:border-cyan-400/60 transition-all duration-300">
+                      
+                      <img src="${logoSrc}" alt="Event Logo"
+                        class="w-10 h-10 object-contain" />
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Category Badge -->
+                <div class="flex justify-center mb-2">
+                    <span class="category-badge text-xs px-3 py-1 rounded-full font-semibold bg-cyan-400/20 text-cyan-400 border border-cyan-400/30">
+                        ${category}
+                    </span>
+                </div>
+                
+                <h4 class="text-lg font-bold text-white mb-1 tech-brand text-center">${e.title}</h4>
+                <p class="text-gray-400 mb-2 text-center text-xs">${e.date}</p>
+                <button onclick="openEventModal('${e.title}','${e.desc}','${e.date}')"
+                    class="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg text-white text-sm font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 hover:-translate-y-1">
+                    View Details
+                </button>
+                </div>
+            `;
+            });
+        }
+
+        function openEventModal(title, desc, date) {
+            document.getElementById("modal-title").innerText = title;
+            document.getElementById("modal-desc").innerText = desc;
+            document.getElementById("modal-date").innerText = date;
+            document.getElementById("event-modal").classList.remove("hidden");
+            document.getElementById("event-modal").classList.add("flex");
+        }
+
+        function closeEventModal() {
+            document.getElementById("event-modal").classList.add("hidden");
+        }
+
+        document.querySelectorAll(".filter-button").forEach(btn => {
+            btn.onclick = () => {
+            document.querySelector(".filter-button.active")?.classList.remove("active");
+            btn.classList.add("active");
+            renderCompetitions(btn.dataset.stream);
+            };
+        });
+
+        // Initial render
+        renderCompetitions();
+        
+        function renderWebsite() {
+            try {
+                const jsonElement = document.getElementById('event-data-json');
+                eventData = JSON.parse(jsonElement.textContent);
+            } catch (error) {
+                console.error('FATAL ERROR: JSON data structure is invalid.', error);
+                document.querySelector('main').innerHTML = '<div class="text-center p-20 text-red-500">Error loading website content. Please check the JSON data structure for missing commas or quotes.</div>';
+                return false; 
+            }
+            
+            // --- 1. Render Hero and About Details ---
+            document.getElementById('nav-event-name').textContent = eventData.event_details.name;
+            document.getElementById('event-type').textContent = eventData.event_details.type;
+            document.getElementById('event-name-hero').textContent = eventData.event_details.name;
+            document.getElementById('event-tagline-hero').textContent = eventData.event_details.tagline;
+            document.getElementById('event-date-hero').textContent = eventData.event_details.date;
+            document.getElementById('accreditation-text').textContent = eventData.event_details.accreditation;
+            document.getElementById('prize-text').textContent = eventData.event_details.prizes;
+            document.getElementById('institute-name').textContent = eventData.event_details.institute;
+            document.getElementById('institute-group-details').textContent = eventData.event_details.group;
+
+
+            // --- 2. Render Chief Guest Section ---
+            document.getElementById('guest-name').textContent = eventData.chief_guest.name;
+            document.getElementById('guest-designation').textContent = eventData.chief_guest.designation;
+            document.getElementById('guest-speech-topic').textContent = eventData.chief_guest.speech;
+
+            // --- 3. Render Contact & Venue Section ---
+            // Venue Information
+            document.getElementById('venue-name').textContent = eventData.venue.name;
+            document.getElementById('venue-address').textContent = eventData.venue.address;
+            
+            // Organizing Committee - Horizontal Name & Phone Display
+            const committeeContainer = document.getElementById('organizing-committee');
+            committeeContainer.innerHTML = eventData.contacts.map(contact => `
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-cyan-400/40 px-6 py-3 rounded-xl hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-400/20 transition-all duration-300">
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <p class="text-white font-bold text-sm whitespace-nowrap">${contact.name}</p>
+                            <p class="text-cyan-400 text-xs">${contact.role}</p>
+                        </div>
+                        ${contact.phone ? `
+                        <div class="border-l border-cyan-400/30 pl-4">
+                            <a href="tel:+91${contact.phone.replace(/\s/g, '')}" class="text-gray-300 hover:text-cyan-400 text-sm font-semibold transition-colors whitespace-nowrap inline-flex items-center">
+                                <i class="fas fa-phone-alt text-cyan-400 mr-2 text-xs"></i>
+                                +91 ${contact.phone}
+                            </a>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `).join('');
+            
+            // --- 4. Render Footer Info ---
+            document.getElementById('footer-event-name').textContent = eventData.event_details.name;
+            document.getElementById('footer-group-details').textContent = eventData.event_details.group;
+            
+            return true;
+        }
+        
+        // --- Mobile Menu Toggle Logic ---
+        function setupMobileMenu() {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            
+            button.addEventListener('click', () => {
+                const isExpanded = button.getAttribute('aria-expanded') === 'true' || false;
+                button.setAttribute('aria-expanded', !isExpanded);
+                menu.classList.toggle('hidden');
+            });
+            
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+        
+        // --- Scroll Spy Logic ---
+        function setupScrollSpy() {
+            const sections = document.querySelectorAll('main > section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const options = {
+                root: null, 
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        if (link) {
+                            link.classList.add('active');
+                        }
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // --- Guest Images Carousel Scroll ---
+        function scrollGuestImages(direction) {
+            const container = document.getElementById('guestScroll');
+            const scrollAmount = 410; // One image width (392px) + gap
+            
+            // Pause auto-scroll when user clicks arrows
+            pauseAutoScroll();
+            
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+            
+            // Resume after 3 seconds
+            resumeAutoScroll();
+        }
+
+        // --- Drag to Scroll Functionality ---
+        function setupDragScroll() {
+            const slider = document.getElementById('guestScroll');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.style.cursor = 'grabbing';
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        }
+
+        // --- Auto Scroll for Guest Images ---
+        let autoScrollInterval;
+        let isAutoScrollPaused = false;
+
+        function startAutoScroll() {
+            const container = document.getElementById('guestScroll');
+            
+            autoScrollInterval = setInterval(() => {
+                if (!isAutoScrollPaused) {
+                    // Check if reached end, reset to start
+                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                        container.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        container.scrollBy({ left: 1, behavior: 'auto' });
+                    }
+                }
+            }, 10);
+        }
+
+        function pauseAutoScroll() {
+            isAutoScrollPaused = true;
+        }
+
+        function resumeAutoScroll() {
+            setTimeout(() => {
+                isAutoScrollPaused = false;
+            }, 3000); // Resume after 3 seconds
+        }
+    </script>
+</body>
+</html>
