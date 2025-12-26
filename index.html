@@ -2427,17 +2427,17 @@
             </div>
         </section>
 
-        <section id="contact" class="py-16 sm:py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.2); border-bottom: 1px solid rgba(0, 212, 255, 0.1);">
+        <section id="contact" class="py-16 sm:py-20 relative overflow-hidden" style="background: linear-gradient(135deg, #0a0f1c 0%, #1a1f35 100%); border-top: 1px solid rgba(0, 212, 255, 0.2); border-bottom: 1px solid rgba(0, 212, 255, 0.1); isolation: isolate;">
             <!-- Animated Particle Background -->
-            <div class="section-particles" id="contactParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+            <div class="section-particles" id="contactParticles" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></div>
             
             <!-- Gradient Overlays -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none" style="z-index: 1;">
-                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+            <div class="absolute inset-0 overflow-hidden" style="z-index: 2; pointer-events: none;">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" style="pointer-events: none;"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s; pointer-events: none;"></div>
             </div>
             
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 2;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="position: relative; z-index: 100;">
                 
                 <!-- Enhanced Header -->
                 <div class="text-center mb-12 md:mb-16">
@@ -2454,10 +2454,10 @@
                 </div>
 
                 <!-- Primary Contact Info - Enhanced & Combined -->
-                <div class="neon-card p-6 sm:p-8 md:p-10 mb-12 max-w-5xl mx-auto transition-all duration-300 hover:shadow-2xl" style="background: rgba(10, 15, 28, 0.6); backdrop-filter: blur(10px);">
+                <div class="neon-card p-6 sm:p-8 md:p-10 mb-12 max-w-5xl mx-auto transition-all duration-300 hover:shadow-2xl" style="background: rgba(10, 15, 28, 0.6); backdrop-filter: blur(10px); position: relative; z-index: auto;">
                     
                     <!-- Contact Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 pb-8 border-b border-cyan-400/20">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 pb-8 border-b border-cyan-400/20" style="position: relative; z-index: auto;">
                         
                         <!-- Email & Phone -->
                         <div class="space-y-6">
@@ -2468,7 +2468,7 @@
                                     </div>
                                     <h3 class="text-base sm:text-lg font-bold text-white">Email</h3>
                                 </div>
-                                <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 break-all block hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                                <a href="mailto:techelons@prpotepatilengg.ac.in" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 break-all block hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); pointer-events: auto; cursor: pointer;">
                                     techelons@prpotepatilengg.ac.in
                                 </a>
                             </div>
@@ -2481,10 +2481,10 @@
                                     <h3 class="text-base sm:text-lg font-bold text-white">Phone</h3>
                                 </div>
                                 <div class="space-y-2">
-                                    <a href="tel:+919960451781" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                                    <a href="tel:+919960451781" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); pointer-events: auto; cursor: pointer;">
                                         +91 99604 51781
                                     </a>
-                                    <a href="tel:+917387762333" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                                    <a href="tel:+917387762333" class="block text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); pointer-events: auto; cursor: pointer;">
                                         +91 73877 62333
                                     </a>
                                 </div>
@@ -2511,7 +2511,7 @@
                                     </div>
                                     <h3 class="text-base sm:text-lg font-bold text-white">Website</h3>
                                 </div>
-                                <a href="https://www.prpotepatilengg.ac.in" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 inline-flex items-center gap-2 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);">
+                                <a href="https://www.prpotepatilengg.ac.in" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300 text-sm sm:text-base font-medium transition-all duration-300 inline-flex items-center gap-2 hover:translate-x-1" style="text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); pointer-events: auto; cursor: pointer;">
                                     prpotepatilengg.ac.in
                                     <i class="fas fa-external-link-alt text-xs"></i>
                                 </a>
@@ -2523,40 +2523,30 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
                         <div>
                             <h3 class="text-lg sm:text-xl font-bold text-white mb-2 gradient-text">P.R. Pote Patil Educational Group</h3>
+                            <p class="text-sm sm:text-base text-gray-300 font-medium mb-3">P.R. Pote Patil College of Engineering and Management</p>
                             <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm">
                                 <span class="px-3 py-1 rounded-full font-semibold" style="background: rgba(0, 212, 255, 0.15); color: #00d4ff; border: 1px solid rgba(0, 212, 255, 0.3);">Autonomous Institute</span>
                                 <span class="px-3 py-1 rounded-full font-semibold" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.3);">NAAC A++ Grade</span>
                             </div>
                         </div>
                         <div class="flex gap-2 sm:gap-3">
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Facebook" aria-label="Facebook" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
+                            <a href="https://www.facebook.com/potegroupcampus" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Facebook" aria-label="Facebook" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1); pointer-events: auto; cursor: pointer;">
                                 <i class="fab fa-facebook text-cyan-400"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Instagram" aria-label="Instagram" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
+                            <a href="https://www.instagram.com/prpotegroup?igsh=MW91Nm4ya2xvZXQzYg==" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Instagram" aria-label="Instagram" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1); pointer-events: auto; cursor: pointer;">
                                 <i class="fab fa-instagram text-cyan-400"></i>
                             </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="LinkedIn" aria-label="LinkedIn" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
+                            <a href="https://www.linkedin.com/company/prpcem/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="LinkedIn" aria-label="LinkedIn" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1); pointer-events: auto; cursor: pointer;">
                                 <i class="fab fa-linkedin text-cyan-400"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 border border-cyan-400/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-110 hover:shadow-lg" title="Twitter" aria-label="Twitter" style="box-shadow: 0 4px 15px rgba(0, 212, 255, 0.1);">
-                                <i class="fab fa-twitter text-cyan-400"></i>
                             </a>
                         </div>
                     </div>
                     
                 </div>
                 
-                <!-- Organizing Committee -->
-                <div class="mb-12">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-8 text-center tech-brand" style="text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);">
-                        <span class="gradient-text">Organizing</span> Committee
-                    </h3>
-                    <div id="organizing-committee" class="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
-                    </div>
-                </div>
-
+               
                 <!-- Coordinators Section - Enhanced -->
-                <div class="mb-12">
+                <div class="mb-12" style="position: relative; z-index: auto;">
                     
                     <!-- Faculty Mentors Subsection -->
                     <div class="mb-10">
@@ -2665,7 +2655,9 @@
                         <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
                             <div class="mb-3">
                                 <div class="relative inline-block">
-                                    <img src="https://codingclubprpcem.github.io/image-hosting-/Karamveer.png" alt="Karamveer Singh Oberoi - Web Developer TeCHELONS'26" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);" width="80" height="80" loading="lazy">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mx-auto" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);">
+                                        <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766771837/Gemini_Generated_Image_t8y1cwt8y1cwt8y1_pfyrnw.webp" alt="Karamveer Singh Oberoi - Web Developer TeCHELONS'26" class="w-full h-full object-cover" style="object-position: center 20%;" loading="lazy">
+                                    </div>
                                     <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-gray-900" style="background: #f59e0b;">
                                         <i class="fas fa-code text-xs text-white"></i>
                                     </div>
@@ -2675,15 +2667,20 @@
                             <p class="text-xs mb-2" style="color: #f59e0b; font-weight: 600;">Web Developer</p>
                             <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-1.5">
                                 <i class="fas fa-phone text-xs" style="color: #f59e0b;"></i>
-                                <span class="text-xs font-medium">+91 3456756656</span>
+                                <span class="text-xs font-medium">+91 9359791895</span>
                             </div>
                         </div>
 
                         <!-- Website Maker 2 -->
                         <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
                             <div class="mb-3">
-                                <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%); border: 2px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
-                                    <i class="fas fa-code text-xl" style="color: #f59e0b;"></i>
+                                <div class="relative inline-block">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mx-auto" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);">
+                                        <img src="https://res.cloudinary.com/dgyefxprx/image/upload/v1766758320/WhatsApp_Image_2025-12-25_at_23.49.22_773158d2_mnpfmz.jpg" alt="Sarthak Ghungurde - Web Developer TeCHELONS'26" class="w-full h-full object-cover" style="object-position: center 20%;" loading="lazy">
+                                    </div>
+                                    <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-gray-900" style="background: #f59e0b;">
+                                        <i class="fas fa-code text-xs text-white"></i>
+                                    </div>
                                 </div>
                             </div>
                             <h5 class="text-sm sm:text-base font-bold text-white mb-1">Sarthak Ghungurde</h5>
@@ -2698,7 +2695,9 @@
                         <div class="neon-card p-5 text-center transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl group" style="background: rgba(10, 15, 28, 0.5); border: 1px solid rgba(245, 158, 11, 0.3); backdrop-filter: blur(10px);">
                             <div class="mb-3">
                                 <div class="relative inline-block">
-                                    <img src="https://codingclubprpcem.github.io/image-hosting-/ayushchainani.jpg" alt="Ayush Chainani - Web Developer TeCHELONS'26" class="w-20 h-20 mx-auto rounded-full object-cover" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);" width="80" height="80" loading="lazy">
+                                    <div class="w-20 h-20 rounded-full overflow-hidden mx-auto" style="border: 3px solid rgba(245, 158, 11, 0.5); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);">
+                                        <img src="https://codingclubprpcem.github.io/image-hosting-/ayushchainani.jpg" alt="Ayush Chainani - Web Developer TeCHELONS'26" class="w-full h-full object-cover" style="object-position: center 20%;" loading="lazy">
+                                    </div>
                                     <div class="absolute -bottom-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center border-2 border-gray-900" style="background: #f59e0b;">
                                         <i class="fas fa-code text-xs text-white"></i>
                                     </div>
@@ -2708,7 +2707,7 @@
                             <p class="text-xs mb-2" style="color: #f59e0b; font-weight: 600;">Web Developer</p>
                             <div class="flex items-center justify-center gap-2 text-gray-300 bg-gray-800/50 rounded-lg px-3 py-1.5">
                                 <i class="fas fa-phone text-xs" style="color: #f59e0b;"></i>
-                                <span class="text-xs font-medium">+91 1234567890</span>
+                                <span class="text-xs font-medium">+91 9307528352</span>
                             </div>
                         </div>
                         
@@ -2733,20 +2732,14 @@
                     <p class="text-sm mb-3 font-medium" style="color: #94a3b8; font-family: 'JetBrains Mono', monospace;" id="footer-group-details"></p>
                     <p class="text-xs leading-relaxed mb-4 max-w-md" style="color: #64748b;">A National Level Technical Festival showcasing innovation, technology, and talent across Engineering, Pharmacy, and Nursing domains.</p>
                     <div class="flex space-x-2">
-                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Facebook">
+                        <a href="https://www.facebook.com/potegroupcampus" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Facebook">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Instagram">
+                        <a href="https://www.instagram.com/prpotegroup?igsh=MW91Nm4ya2xvZXQzYg==" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="LinkedIn">
+                        <a href="https://www.linkedin.com/company/prpcem/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="LinkedIn">
                             <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-9 h-9 flex items-center justify-center rounded transition-all duration-300" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; backdrop-filter: blur(10px);" onmouseover="this.style.transform='translateY(-5px)'; this.style.background='rgba(0, 212, 255, 0.1)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'; this.style.color='#00d4ff'; this.style.boxShadow='0 10px 30px rgba(0, 212, 255, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.background='rgba(255, 255, 255, 0.05)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'; this.style.color='#94a3b8'; this.style.boxShadow='none';" title="YouTube">
-                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -3132,41 +3125,68 @@
         // Fetch events when page loads
         fetchEvents();
         
+        /**
+         * Safely set text content for an element (null-safe)
+         * @param {string} elementId - The ID of the element to update
+         * @param {string} value - The text value to set
+         */
+        function safelySetTextContent(elementId, value) {
+            const element = document.getElementById(elementId);
+            if (!element) {
+                console.debug(`Element #${elementId} not found - skipping`);
+                return false;
+            }
+            if (value === null || value === undefined) {
+                console.debug(`No value provided for #${elementId} - skipping`);
+                return false;
+            }
+            try {
+                element.textContent = String(value);
+                return true;
+            } catch (error) {
+                console.error(`Failed to update #${elementId}:`, error);
+                return false;
+            }
+        }
+
         function renderWebsite() {
             try {
                 const jsonElement = document.getElementById('event-data-json');
+                if (!jsonElement) {
+                    console.error('FATAL ERROR: event-data-json script element not found');
+                    return false;
+                }
                 eventData = JSON.parse(jsonElement.textContent);
             } catch (error) {
                 console.error('FATAL ERROR: JSON data structure is invalid.', error);
-                document.querySelector('main').innerHTML = '<div class="text-center p-20 text-red-500">Error loading website content. Please check the JSON data structure for missing commas or quotes.</div>';
+                const mainElement = document.querySelector('main');
+                if (mainElement) {
+                    mainElement.innerHTML = '<div class="text-center p-20 text-red-500">Error loading website content. Please check the JSON data structure for missing commas or quotes.</div>';
+                }
                 return false; 
             }
             
-            // --- 1. Render Hero and About Details ---
-            document.getElementById('nav-event-name').textContent = eventData.event_details.name;
-            document.getElementById('event-type').textContent = eventData.event_details.type;
-            document.getElementById('event-name-hero').textContent = eventData.event_details.name;
-            document.getElementById('event-tagline-hero').textContent = eventData.event_details.tagline;
-            document.getElementById('event-date-hero').textContent = eventData.event_details.date;
-            document.getElementById('accreditation-text').textContent = eventData.event_details.accreditation;
-            document.getElementById('prize-text').textContent = eventData.event_details.prizes;
-            document.getElementById('institute-name').textContent = eventData.event_details.institute;
-            document.getElementById('institute-group-details').textContent = eventData.event_details.group;
+            // --- 1. Render Hero and About Details (null-safe) ---
+            safelySetTextContent('nav-event-name', eventData.event_details?.name);
+            safelySetTextContent('event-type', eventData.event_details?.type);
+            safelySetTextContent('event-name-hero', eventData.event_details?.name);
+            safelySetTextContent('event-tagline-hero', eventData.event_details?.tagline);
+            safelySetTextContent('event-date-hero', eventData.event_details?.date);
+            safelySetTextContent('accreditation-text', eventData.event_details?.accreditation);
+            safelySetTextContent('prize-text', eventData.event_details?.prizes);
+            safelySetTextContent('institute-name', eventData.event_details?.institute);
+            safelySetTextContent('institute-group-details', eventData.event_details?.group);
 
 
-            // --- 2. Render Chief Guest Section ---
-            // Support separate 'rank' (e.g., IAS) above the name
-            if (document.getElementById('guest-rank')) {
-                document.getElementById('guest-rank').textContent = eventData.chief_guest.rank || '';
-            }
-            document.getElementById('guest-name').textContent = eventData.chief_guest.name;
-            document.getElementById('guest-designation').textContent = eventData.chief_guest.designation;
-            document.getElementById('guest-speech-topic').textContent = eventData.chief_guest.speech;
+            // --- 2. Render Chief Guest Section (null-safe) ---
+            safelySetTextContent('guest-rank', eventData.chief_guest?.rank || '');
+            safelySetTextContent('guest-name', eventData.chief_guest?.name);
+            safelySetTextContent('guest-designation', eventData.chief_guest?.designation);
+            safelySetTextContent('guest-speech-topic', eventData.chief_guest?.speech);
 
-            // --- 3. Render Contact & Venue Section ---
-            // Venue Information
-            document.getElementById('venue-name').textContent = eventData.venue.name;
-            document.getElementById('venue-address').textContent = eventData.venue.address;
+            // --- 3. Render Contact & Venue Section (null-safe) ---
+            safelySetTextContent('venue-name', eventData.venue?.name);
+            safelySetTextContent('venue-address', eventData.venue?.address);
             
             // Organizing Committee - Horizontal Name & Phone Display
             const committeeContainer = document.getElementById('organizing-committee');
@@ -3188,9 +3208,9 @@
                 </div>
             `).join('');
             
-            // --- 4. Render Footer Info ---
-            document.getElementById('footer-event-name').textContent = eventData.event_details.name;
-            document.getElementById('footer-group-details').textContent = eventData.event_details.group;
+            // --- 4. Render Footer Info (null-safe) ---
+            safelySetTextContent('footer-event-name', eventData.event_details?.name);
+            safelySetTextContent('footer-group-details', eventData.event_details?.group);
             
             return true;
         }
