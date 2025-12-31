@@ -1453,6 +1453,428 @@
                 filter: blur(16px) !important;
             }
         }
+
+        /* ================================================================
+           COMPREHENSIVE RESPONSIVE FIX - MOBILE FIRST (320px-1920px+)
+           ================================================================ */
+        
+        /* Base: Prevent horizontal overflow on all screen sizes */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        /* Universal container system */
+        .max-w-7xl,
+        .max-w-6xl,
+        .max-w-5xl,
+        .max-w-4xl,
+        .max-w-3xl,
+        .max-w-2xl {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Ensure all sections respect container constraints */
+        section {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Fix clickability issues - ensure all links are above decorative layers */
+        a,
+        button,
+        input,
+        select,
+        textarea {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer;
+        }
+        
+        /* Text must break properly */
+        p, span, div, a, h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Flexible images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Flexbox children must allow shrinking */
+        .flex > * {
+            min-width: 0;
+        }
+        
+        /* Grid responsiveness */
+        .grid {
+            width: 100%;
+        }
+        
+        /* ===== 320px - Small Mobile Devices ===== */
+        @media (min-width: 320px) and (max-width: 479px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .max-w-7xl,
+            .max-w-6xl,
+            .max-w-5xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            /* Hero adjustments */
+            #hero .hero-content {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Reduce all section padding except hero */
+            section:not(#hero) {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            /* Typography scaling */
+            h1 { font-size: 1.75rem !important; }
+            h2 { font-size: 1.5rem !important; }
+            h3 { font-size: 1.25rem !important; }
+            h4 { font-size: 1rem !important; }
+            
+            /* Cards */
+            .neon-card {
+                padding: 0.75rem !important;
+            }
+            
+            /* Buttons */
+            .hero-cta {
+                padding: 0.625rem 1rem;
+                font-size: 0.875rem;
+            }
+            
+            /* Filter buttons */
+            .filter-button {
+                padding: 0.5rem 0.875rem;
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* ===== 480px - Mobile Landscape ===== */
+        @media (min-width: 480px) and (max-width: 767px) {
+            .max-w-7xl,
+            .max-w-6xl,
+            .max-w-5xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            section:not(#hero) {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
+            }
+            
+            h1 { font-size: 2rem !important; }
+            h2 { font-size: 1.75rem !important; }
+            h3 { font-size: 1.5rem !important; }
+            
+            .neon-card {
+                padding: 1rem !important;
+            }
+        }
+        
+        /* ===== 768px - Tablet ===== */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .max-w-7xl,
+            .max-w-6xl,
+            .max-w-5xl {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+            
+            section:not(#hero) {
+                padding-top: 3.5rem !important;
+                padding-bottom: 3.5rem !important;
+            }
+            
+            h1 { font-size: clamp(2.25rem, 4vw, 2.75rem) !important; }
+            h2 { font-size: clamp(2rem, 3.5vw, 2.5rem) !important; }
+            
+            .neon-card {
+                padding: 1.5rem !important;
+            }
+        }
+        
+        /* ===== 1024px - Desktop ===== */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .max-w-7xl,
+            .max-w-6xl {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            section:not(#hero) {
+                padding-top: 4rem !important;
+                padding-bottom: 4rem !important;
+            }
+            
+            h1 { font-size: clamp(2.5rem, 4.5vw, 3.5rem) !important; }
+            h2 { font-size: clamp(2.25rem, 4vw, 3rem) !important; }
+        }
+        
+        /* ===== 1440px+ - Large Desktop & Ultra-wide ===== */
+        @media (min-width: 1440px) {
+            .max-w-7xl {
+                max-width: 1280px;
+            }
+            
+            .max-w-6xl {
+                max-width: 1152px;
+            }
+            
+            section:not(#hero) {
+                padding-top: 5rem !important;
+                padding-bottom: 5rem !important;
+            }
+            
+            /* Limit maximum text size */
+            h1 { font-size: clamp(3rem, 5vw, 4rem) !important; }
+            h2 { font-size: clamp(2.5rem, 4vw, 3.5rem) !important; }
+        }
+        
+        /* Navigation fixes for all devices */
+        nav {
+            width: 100%;
+            max-width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        /* Mobile menu must overlay properly */
+        #mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100%;
+            background: rgba(10, 15, 28, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            z-index: 999;
+        }
+        
+        /* Hero section responsive canvas */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+        
+        /* Events background animation must not overflow */
+        .events-bg-animation {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Contact section - fix all interactive elements */
+        #contact a,
+        #contact button {
+            position: relative;
+            z-index: 100 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+        
+        /* Social media icons fix */
+        #contact .fab {
+            pointer-events: none;
+        }
+        
+        /* Cards must not interfere with links */
+        .neon-card {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .neon-card a,
+        .neon-card button {
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Gallery navigation buttons */
+        .gallery-nav-btn {
+            position: absolute;
+            z-index: 20;
+            pointer-events: auto !important;
+        }
+        
+        /* Filter buttons */
+        .filter-button {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        
+        /* Modal responsiveness */
+        #eventModal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        @media (max-width: 767px) {
+            #eventModal {
+                padding: 0.5rem;
+            }
+            
+            #eventModal > div {
+                margin: 0;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        
+        /* Timeline mobile fix */
+        @media (max-width: 767px) {
+            .timeline-line {
+                left: 20px !important;
+            }
+            
+            .timeline-dot {
+                left: 20px !important;
+            }
+        }
+        
+        /* Chief guest section responsive */
+        @media (max-width: 1023px) {
+            #chief-guest .grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Leadership grid */
+        @media (max-width: 767px) {
+            #leadership .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+        }
+        
+        /* Contact coordinators grid */
+        @media (max-width: 639px) {
+            #contact .grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        /* Prevent text overflow in badges */
+        .inline-flex {
+            max-width: 100%;
+        }
+        
+        .inline-flex span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            /* Disable hover effects on touch devices */
+            .neon-card:hover,
+            .guest-card:hover,
+            .event-card:hover,
+            button:hover,
+            a:hover {
+                transform: none !important;
+            }
+            
+            /* Increase tap targets */
+            button,
+            a {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 0.75rem 1rem;
+            }
+            
+            /* Remove hover-only overlays */
+            .guest-name-overlay {
+                transform: translateY(0) !important;
+            }
+        }
+        
+        /* Print optimizations */
+        @media print {
+            nav,
+            #mobile-menu,
+            .section-particles,
+            .hero-overlay,
+            #hero-canvas,
+            .gallery-nav-btn {
+                display: none !important;
+            }
+            
+            section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Accessibility - ensure focus states are visible */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid #00d4ff;
+            outline-offset: 2px;
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .neon-card {
+                border-width: 2px;
+            }
+            
+            a {
+                text-decoration: underline;
+            }
+        }
     </style>
     
     <!-- JSON-LD Structured Data for Rich Search Results -->
