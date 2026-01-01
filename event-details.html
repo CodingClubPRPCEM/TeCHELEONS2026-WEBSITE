@@ -13,6 +13,15 @@
     <link rel="canonical" href="https://techelons.in/event-details.html">
     <meta name="theme-color" content="#0a0f1c">
     
+    <!-- Favicons & App Icons -->
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#0a0f1c">
+    <meta name="msapplication-TileImage" href="https://i.ibb.co/B9knK8c/prpotegrp-logo-removebg-preview.png">
+    
     <!-- Open Graph Tags for Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Event Details | TeCHELONS'26">
@@ -26,15 +35,28 @@
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@techelons">
+    <meta name="twitter:creator" content="@techelons">
     <meta name="twitter:title" content="Event Details | TeCHELONS'26">
     <meta name="twitter:description" content="View complete event information including rules, eligibility, fees, and registration for TeCHELONS'26 competitions.">
     <meta name="twitter:image" content="https://techelons.in/assets/og-image.webp">
+    <meta name="twitter:image:alt" content="TeCHELONS'26 Event Details">
     
     <!-- Geo Tags -->
     <meta name="geo.region" content="IN-MH">
     <meta name="geo.placename" content="Amravati">
     <meta name="geo.position" content="20.9374;77.7796">
     <meta name="ICBM" content="20.9374, 77.7796">
+    
+    <!-- Language & Mobile App Tags -->
+    <meta http-equiv="content-language" content="en">
+    <meta name="language" content="English">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TeCHELONS'26">
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="format-detection" content="address=yes">
     
     <!-- Performance Optimization -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -51,10 +73,18 @@
       "name": "Event Details - TeCHELONS'26",
       "description": "Detailed information about TeCHELONS'26 technical festival events including rules, eligibility, fees, and registration.",
       "url": "https://techelons.in/event-details.html",
+      "inLanguage": "en-IN",
+      "datePublished": "2025-12-01T00:00:00+05:30",
+      "dateModified": "2026-01-02T00:00:00+05:30",
       "isPartOf": {
         "@type": "WebSite",
         "name": "TeCHELONS",
-        "url": "https://techelons.in"
+        "url": "https://techelons.in",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://techelons.in/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -83,7 +113,54 @@
         "@type": "Organization",
         "name": "TeCHELONS",
         "url": "https://techelons.in",
-        "logo": "https://techelons.in/assets/logo.webp"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://techelons.in/assets/logo.webp",
+          "width": 512,
+          "height": 512
+        },
+        "sameAs": [
+          "https://www.facebook.com/potegroupcampus",
+          "https://www.instagram.com/prpotegroup",
+          "https://www.linkedin.com/company/prpcem/"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-9960451781",
+          "contactType": "Event Coordinator",
+          "email": "techelons@prpotepatilengg.ac.in",
+          "availableLanguage": ["English", "Hindi", "Marathi"]
+        }
+      },
+      "mainEntity": {
+        "@type": "Event",
+        "name": "TeCHELONS'26",
+        "startDate": "2026-01-19T09:00:00+05:30",
+        "endDate": "2026-01-20T18:00:00+05:30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "P.R. Pote Patil College of Engineering & Management",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Pote Patil Road, Kathora",
+            "addressLocality": "Amravati",
+            "addressRegion": "Maharashtra",
+            "postalCode": "444602",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "20.9374",
+            "longitude": "77.7796"
+          }
+        },
+        "organizer": {
+          "@type": "EducationalOrganization",
+          "name": "P.R. Pote Patil Educational Group",
+          "url": "https://techelons.in"
+        }
       }
     }
     </script>
@@ -250,6 +327,59 @@
             border-width: 0;
         }
         
+        /* ================================================================
+           COMPREHENSIVE RESPONSIVE SYSTEM - MOBILE FIRST (320px-1920px+)
+           ================================================================ */
+        
+        /* Base: Prevent horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        /* Universal container constraints */
+        .max-w-6xl,
+        .max-w-7xl {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Text must break properly */
+        p, span, div, a, h1, h2, h3, h4, h5, h6, li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        /* Flexible images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Ensure all links and buttons are clickable */
+        a, button {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        
+        /* Grid must be flexible */
+        .grid {
+            width: 100%;
+        }
+        
+        /* Navigation must stay on top */
+        nav {
+            width: 100%;
+            max-width: 100%;
+            z-index: 1000;
+        }
+        
         /* Mobile Responsive Optimizations */
         @media (max-width: 767px) {
             /* Reduce navbar height on mobile */
@@ -381,6 +511,229 @@
             .neon-card {
                 padding: 1.5rem;
             }
+            
+            main {
+                padding-top: 5rem;
+            }
+            
+            .max-w-6xl {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        /* ===== 320px - Small Mobile ===== */
+        @media (min-width: 320px) and (max-width: 479px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .max-w-6xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            main {
+                padding-top: 64px !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            section {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .neon-card {
+                padding: 0.875rem !important;
+                border-radius: 12px;
+            }
+            
+            #event-title {
+                font-size: 1.5rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2.tech-brand {
+                font-size: 1.25rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            h2.tech-brand i {
+                font-size: 1rem !important;
+                margin-right: 0.5rem !important;
+            }
+            
+            .prose {
+                font-size: 0.8125rem;
+            }
+            
+            .prose h1 { font-size: 1.25rem !important; }
+            .prose h2 { font-size: 1.125rem !important; }
+            .prose h3 { font-size: 1rem !important; }
+            
+            #register-btn {
+                padding: 0.75rem 1rem !important;
+                font-size: 0.875rem !important;
+            }
+            
+            #fees-text {
+                font-size: 2rem !important;
+            }
+            
+            .timeline-item {
+                padding-left: 1rem;
+                padding-bottom: 1rem !important;
+            }
+        }
+        
+        /* ===== 480px - Mobile Landscape ===== */
+        @media (min-width: 480px) and (max-width: 767px) {
+            .max-w-6xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            main {
+                padding-top: 72px;
+            }
+            
+            #event-title {
+                font-size: 1.875rem !important;
+            }
+            
+            h2.tech-brand {
+                font-size: 1.5rem !important;
+            }
+        }
+        
+        /* ===== 1024px+ - Desktop ===== */
+        @media (min-width: 1025px) and (max-width: 1439px) {
+            .max-w-6xl {
+                max-width: 1024px;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            main {
+                padding-top: 5.5rem;
+            }
+            
+            #event-title {
+                font-size: clamp(2.5rem, 4vw, 3rem);
+            }
+            
+            h2.tech-brand {
+                font-size: 2.25rem;
+            }
+        }
+        
+        /* ===== 1440px+ - Large Desktop ===== */
+        @media (min-width: 1440px) {
+            .max-w-6xl {
+                max-width: 1152px;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            main {
+                padding-top: 6rem;
+                padding-bottom: 4rem;
+            }
+            
+            #event-title {
+                font-size: clamp(2.75rem, 4vw, 3.5rem);
+            }
+            
+            h2.tech-brand {
+                font-size: 2.5rem;
+            }
+            
+            .neon-card {
+                padding: 2.5rem;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .neon-card:hover {
+                transform: none !important;
+                border-color: rgba(0, 212, 255, 0.25);
+            }
+            
+            .gradient-button:hover:not(:disabled) {
+                transform: none !important;
+            }
+            
+            a, button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* High contrast mode */
+        @media (prefers-contrast: high) {
+            .neon-card {
+                border-width: 2px;
+            }
+            
+            a:not(.gradient-button) {
+                text-decoration: underline;
+            }
+        }
+        
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .skeleton {
+                animation: none;
+                background: rgba(255,255,255,0.08);
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            nav {
+                position: relative;
+            }
+            
+            .gradient-button {
+                display: none;
+            }
+            
+            .neon-card {
+                border: 1px solid #333;
+                box-shadow: none;
+            }
+        }
+        
+        /* Focus visible for accessibility */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #00d4ff;
+            outline-offset: 2px;
+        }
+        
+        /* Ensure proper stacking context */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Grid responsive behavior */
+        @media (max-width: 639px) {
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .grid.grid-cols-1.md\\:grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -388,14 +741,14 @@
     
     <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 z-50 h-16" style="border-bottom: 1px solid rgba(0, 212, 255, 0.15);">
-        <div class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg" style="z-index: -1;"></div>
+        <div class="absolute inset-0 bg-gray-900/95 backdrop-blur-lg" style="z-index: -1; pointer-events: none;"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
             <div class="flex items-center justify-between h-full">
-                <a href="index.html" class="tech-brand text-xl" aria-label="TeCHELONS'26 Home">
+                <a href="/" class="tech-brand text-xl" aria-label="TeCHELONS'26 Home - Return to main page" title="TeCHELONS'26">
                     <span class="gradient-text">TeCHELONS'26</span>
                 </a>
-                <a href="index.html" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm" aria-label="Back to Homepage">
-                    <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>Back to Home
+                <a href="/" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm" aria-label="Back to Homepage" title="Back to Home">
+                    <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i><span>Back to Home</span>
                 </a>
             </div>
         </div>
@@ -507,8 +860,15 @@
     </main>
     
     <!-- Footer -->
-    <footer class="border-t border-gray-800 py-8 text-center text-gray-500 text-sm" role="contentinfo">
-        <p>&copy; 2026 TeCHELONS. All rights reserved. | <a href="https://techelons.in" class="hover:text-cyan-400 transition-colors">techelons.in</a></p>
+    <footer class="border-t border-gray-800 py-8 text-center text-gray-500 text-sm" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+        <p>&copy; <time datetime="2026" itemprop="copyrightYear">2026</time> <span itemprop="copyrightHolder" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">TeCHELONS</span></span>. All rights reserved. | <a href="/" class="hover:text-cyan-400 transition-colors" aria-label="TeCHELONS main website" title="Visit TeCHELONS homepage">techelons.in</a></p>
+        <nav aria-label="Footer navigation" class="mt-4">
+            <a href="/#events" class="text-gray-500 hover:text-cyan-400 transition-colors mx-2" title="View all events">Events</a>
+            <span class="text-gray-700">|</span>
+            <a href="/#contact" class="text-gray-500 hover:text-cyan-400 transition-colors mx-2" title="Contact us">Contact</a>
+            <span class="text-gray-700">|</span>
+            <a href="https://www.prpotepatilengg.ac.in" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-cyan-400 transition-colors mx-2" title="P.R. Pote Patil College website">College Website</a>
+        </nav>
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
